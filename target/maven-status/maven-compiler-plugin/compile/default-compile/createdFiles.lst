@@ -1,0 +1,11 @@
+Model\Endereco.class
+Model\Orcamento.class
+Model\Arte.class
+View\MainView.class
+Model\Pedido.class
+Model\Cliente.class
+Model\Produto.class
+Model\Pessoa.class
+Model\Contrato.class
+Model\Tatuador.class
+View\MainView$1.class
