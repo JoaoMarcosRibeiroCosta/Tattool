@@ -26,21 +26,214 @@ public class CadClienteView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        LbCadCli = new javax.swing.JLabel();
+        LbIdCli = new javax.swing.JLabel();
+        LbNomeCli = new javax.swing.JLabel();
+        LbCpfCli = new javax.swing.JLabel();
+        LbRuaCli = new javax.swing.JLabel();
+        LbNumeroCli = new javax.swing.JLabel();
+        LbBairroCli = new javax.swing.JLabel();
+        LbCidadeCLi = new javax.swing.JLabel();
+        TxtIdCLi = new javax.swing.JTextField();
+        TxtCpfCLi = new javax.swing.JTextField();
+        TxtNomeCLi = new javax.swing.JTextField();
+        TxtRuaCLi = new javax.swing.JTextField();
+        TxtNumeroCLi = new javax.swing.JTextField();
+        TxtBairroCli = new javax.swing.JTextField();
+        txtCidadeCli = new javax.swing.JTextField();
+        BtNovo = new javax.swing.JButton();
+        BtConsultar = new javax.swing.JButton();
+        BtGravar = new javax.swing.JButton();
+        BtAlterar = new javax.swing.JButton();
+        BtExcluir = new javax.swing.JButton();
+        MenuCadCli = new javax.swing.JMenuBar();
+        MenuContratos = new javax.swing.JMenu();
+        MenuContratosCadastrados = new javax.swing.JMenuItem();
+        MenuContratosNovo = new javax.swing.JMenuItem();
+        MenuArtes = new javax.swing.JMenu();
+        MenuArtesAnteriores = new javax.swing.JMenuItem();
+        MenuNovaArte = new javax.swing.JMenuItem();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        LbCadCli.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        LbCadCli.setText("Cadastro de Cliente");
+
+        LbIdCli.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        LbIdCli.setText("ID:");
+
+        LbNomeCli.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        LbNomeCli.setText("Nome:");
+
+        LbCpfCli.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        LbCpfCli.setText("CPF:");
+
+        LbRuaCli.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        LbRuaCli.setText("Rua:");
+
+        LbNumeroCli.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        LbNumeroCli.setText("Numero:");
+
+        LbBairroCli.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        LbBairroCli.setText("Bairro:");
+
+        LbCidadeCLi.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        LbCidadeCLi.setText("Cidade:");
+
+        TxtNumeroCLi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtNumeroCLiActionPerformed(evt);
+            }
+        });
+
+        BtNovo.setFont(new java.awt.Font("sansserif", 3, 14)); // NOI18N
+        BtNovo.setText("Novo");
+
+        BtConsultar.setFont(new java.awt.Font("sansserif", 3, 14)); // NOI18N
+        BtConsultar.setText("Consultar");
+
+        BtGravar.setFont(new java.awt.Font("sansserif", 3, 14)); // NOI18N
+        BtGravar.setText("Gravar");
+
+        BtAlterar.setFont(new java.awt.Font("sansserif", 3, 14)); // NOI18N
+        BtAlterar.setText("Alterar");
+
+        BtExcluir.setFont(new java.awt.Font("sansserif", 3, 14)); // NOI18N
+        BtExcluir.setText("Excluir");
+
+        MenuContratos.setText("Contratos");
+
+        MenuContratosCadastrados.setText("Contratos cadastrados");
+        MenuContratos.add(MenuContratosCadastrados);
+
+        MenuContratosNovo.setText("Novo Contrato");
+        MenuContratosNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuContratosNovoActionPerformed(evt);
+            }
+        });
+        MenuContratos.add(MenuContratosNovo);
+
+        MenuCadCli.add(MenuContratos);
+
+        MenuArtes.setText("Artes");
+
+        MenuArtesAnteriores.setText("Artes Anteriores");
+        MenuArtes.add(MenuArtesAnteriores);
+
+        MenuNovaArte.setText("Nova Arte");
+        MenuArtes.add(MenuNovaArte);
+
+        MenuCadCli.add(MenuArtes);
+
+        setJMenuBar(MenuCadCli);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(LbIdCli, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(LbRuaCli, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(LbNomeCli)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(TxtBairroCli, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(LbCidadeCLi))
+                                    .addComponent(TxtRuaCLi, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(LbNumeroCli)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(TxtNumeroCLi, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtCidadeCli, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(TxtNomeCLi)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                    .addComponent(TxtIdCLi, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(LbCpfCli)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(TxtCpfCLi, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(220, 220, 220)
+                                .addComponent(BtNovo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(BtConsultar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(BtGravar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(BtAlterar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(BtExcluir))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(250, 250, 250)
+                        .addComponent(LbCadCli))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(LbBairroCli)))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addComponent(LbCadCli)
+                .addGap(57, 57, 57)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LbCpfCli)
+                    .addComponent(LbIdCli, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TxtIdCLi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TxtCpfCLi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LbNomeCli)
+                    .addComponent(TxtNomeCLi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LbRuaCli, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TxtRuaCLi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LbNumeroCli)
+                    .addComponent(TxtNumeroCLi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LbBairroCli)
+                    .addComponent(LbCidadeCLi)
+                    .addComponent(TxtBairroCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCidadeCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 205, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BtNovo)
+                    .addComponent(BtGravar)
+                    .addComponent(BtAlterar)
+                    .addComponent(BtExcluir)
+                    .addComponent(BtConsultar))
+                .addGap(19, 19, 19))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void TxtNumeroCLiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtNumeroCLiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtNumeroCLiActionPerformed
+
+    private void MenuContratosNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuContratosNovoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MenuContratosNovoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +271,32 @@ public class CadClienteView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtAlterar;
+    private javax.swing.JButton BtConsultar;
+    private javax.swing.JButton BtExcluir;
+    private javax.swing.JButton BtGravar;
+    private javax.swing.JButton BtNovo;
+    private javax.swing.JLabel LbBairroCli;
+    private javax.swing.JLabel LbCadCli;
+    private javax.swing.JLabel LbCidadeCLi;
+    private javax.swing.JLabel LbCpfCli;
+    private javax.swing.JLabel LbIdCli;
+    private javax.swing.JLabel LbNomeCli;
+    private javax.swing.JLabel LbNumeroCli;
+    private javax.swing.JLabel LbRuaCli;
+    private javax.swing.JMenu MenuArtes;
+    private javax.swing.JMenuItem MenuArtesAnteriores;
+    private javax.swing.JMenuBar MenuCadCli;
+    private javax.swing.JMenu MenuContratos;
+    private javax.swing.JMenuItem MenuContratosCadastrados;
+    private javax.swing.JMenuItem MenuContratosNovo;
+    private javax.swing.JMenuItem MenuNovaArte;
+    private javax.swing.JTextField TxtBairroCli;
+    private javax.swing.JTextField TxtCpfCLi;
+    private javax.swing.JTextField TxtIdCLi;
+    private javax.swing.JTextField TxtNomeCLi;
+    private javax.swing.JTextField TxtNumeroCLi;
+    private javax.swing.JTextField TxtRuaCLi;
+    private javax.swing.JTextField txtCidadeCli;
     // End of variables declaration//GEN-END:variables
 }

@@ -8,6 +8,7 @@ package Model;
  * @author Aluno
  */
 public class Pessoa {
+    private String id;
     private int cpf;
     private String nome;
     private Endereco endereco;
