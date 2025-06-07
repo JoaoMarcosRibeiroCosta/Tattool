@@ -5,6 +5,7 @@ Model\Pedido.class
 Model\Cliente.class
 Model\Produto.class
 View\CadClienteView$2.class
+<<<<<<< HEAD
 Model\Orcamento.class
 View\CadArteView.class
 View\CadClienteView$1.class
@@ -19,4 +20,22 @@ Model\Tatuador.class
 View\MainView$1.class
 Controller\ConexaoSQLServer.class
 View\CadArteView$2.class
+=======
+View\TelaCadContrato$2.class
+Model\Orcamento.class
+View\CadArteView.class
+View\CadClienteView$1.class
+View\CadClienteView$4.class
+View\CadArteView$1.class
+Model\Contrato.class
+View\CadClienteView$3.class
+Model\Arte.class
+View\MainView.class
+View\TelaCadContrato.class
+Model\Tatuador.class
+View\MainView$1.class
+Connection\ConexaoSQLServer.class
+View\CadArteView$2.class
+View\TelaCadContrato$1.class
+>>>>>>> 0ba10d8e637b7b799bffde6a065e5c6ba04e065b
 Model\Pessoa.class

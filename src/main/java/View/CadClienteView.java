@@ -49,7 +49,6 @@ public class CadClienteView extends javax.swing.JFrame {
         MenuCadCli = new javax.swing.JMenuBar();
         MenuContratos = new javax.swing.JMenu();
         MenuContratosCadastrados = new javax.swing.JMenuItem();
-        MenuContratosNovo = new javax.swing.JMenuItem();
         MenuArtes = new javax.swing.JMenu();
         MenuArtesAnteriores = new javax.swing.JMenuItem();
         MenuNovaArte = new javax.swing.JMenuItem();
@@ -80,6 +79,12 @@ public class CadClienteView extends javax.swing.JFrame {
         LbCidadeCLi.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         LbCidadeCLi.setText("Cidade:");
 
+        TxtIdCLi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtIdCLiActionPerformed(evt);
+            }
+        });
+
         TxtNumeroCLi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TxtNumeroCLiActionPerformed(evt);
@@ -104,15 +109,12 @@ public class CadClienteView extends javax.swing.JFrame {
         MenuContratos.setText("Contratos");
 
         MenuContratosCadastrados.setText("Contratos cadastrados");
-        MenuContratos.add(MenuContratosCadastrados);
-
-        MenuContratosNovo.setText("Novo Contrato");
-        MenuContratosNovo.addActionListener(new java.awt.event.ActionListener() {
+        MenuContratosCadastrados.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuContratosNovoActionPerformed(evt);
+                MenuContratosCadastradosActionPerformed(evt);
             }
         });
-        MenuContratos.add(MenuContratosNovo);
+        MenuContratos.add(MenuContratosCadastrados);
 
         MenuCadCli.add(MenuContratos);
 
@@ -231,9 +233,14 @@ public class CadClienteView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtNumeroCLiActionPerformed
 
-    private void MenuContratosNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuContratosNovoActionPerformed
+    private void TxtIdCLiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtIdCLiActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_MenuContratosNovoActionPerformed
+    }//GEN-LAST:event_TxtIdCLiActionPerformed
+
+    private void MenuContratosCadastradosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuContratosCadastradosActionPerformed
+        TelaCadContrato novaTela = new TelaCadContrato();
+        novaTela.setVisible(true);
+    }//GEN-LAST:event_MenuContratosCadastradosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -289,7 +296,6 @@ public class CadClienteView extends javax.swing.JFrame {
     private javax.swing.JMenuBar MenuCadCli;
     private javax.swing.JMenu MenuContratos;
     private javax.swing.JMenuItem MenuContratosCadastrados;
-    private javax.swing.JMenuItem MenuContratosNovo;
     private javax.swing.JMenuItem MenuNovaArte;
     private javax.swing.JTextField TxtBairroCli;
     private javax.swing.JTextField TxtCpfCLi;

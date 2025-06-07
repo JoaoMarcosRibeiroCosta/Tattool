@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\script\poo2\Tattool\src\main\java\com\mycompany\tattool\Tattool.java
 C:\script\poo2\Tattool\src\main\java\Model\Pessoa.java
 C:\script\poo2\Tattool\src\main\java\Model\Orcamento.java
@@ -14,3 +15,21 @@ C:\script\poo2\Tattool\src\main\java\View\CadClienteView.java
 C:\script\poo2\Tattool\src\main\java\View\CadArteView.java
 C:\script\poo2\Tattool\src\main\java\Model\Produto.java
 C:\script\poo2\Tattool\src\main\java\View\MainView.java
+=======
+C:\Users\usuario\Downloads\Tattool\src\main\java\Model\Pedido.java
+C:\Users\usuario\Downloads\Tattool\src\main\java\Controller\ImagemController.java
+C:\Users\usuario\Downloads\Tattool\src\main\java\Controller\ConexaoSQLServer.java
+C:\Users\usuario\Downloads\Tattool\src\main\java\Model\Endereco.java
+C:\Users\usuario\Downloads\Tattool\src\main\java\Model\Produto.java
+C:\Users\usuario\Downloads\Tattool\src\main\java\View\CadClienteView.java
+C:\Users\usuario\Downloads\Tattool\src\main\java\View\MainView.java
+C:\Users\usuario\Downloads\Tattool\src\main\java\Model\Orcamento.java
+C:\Users\usuario\Downloads\Tattool\src\main\java\Model\Pessoa.java
+C:\Users\usuario\Downloads\Tattool\src\main\java\View\TelaCadContrato.java
+C:\Users\usuario\Downloads\Tattool\src\main\java\Model\Cliente.java
+C:\Users\usuario\Downloads\Tattool\src\main\java\View\CadArteView.java
+C:\Users\usuario\Downloads\Tattool\src\main\java\com\mycompany\tattool\Tattool.java
+C:\Users\usuario\Downloads\Tattool\src\main\java\Model\Tatuador.java
+C:\Users\usuario\Downloads\Tattool\src\main\java\Model\Contrato.java
+C:\Users\usuario\Downloads\Tattool\src\main\java\Model\Arte.java
+>>>>>>> 0ba10d8e637b7b799bffde6a065e5c6ba04e065b
