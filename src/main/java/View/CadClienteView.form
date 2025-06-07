@@ -13,13 +13,8 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Contratos cadastrados"/>
               </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="MenuContratosNovo">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Novo Contrato"/>
-              </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuContratosNovoActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuContratosCadastradosActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -251,6 +246,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="TxtIdCLi">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TxtIdCLiActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="TxtCpfCLi">
     </Component>
