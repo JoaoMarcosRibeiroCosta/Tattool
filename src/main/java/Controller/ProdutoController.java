@@ -10,8 +10,10 @@ package Controller;
 public class ProdutoController extends ConexaoSQLServer{
 
     @Override
-    public String EscolherEntrada() {
-        String entrada = "INSERT INTO Produto(descricao, valor) VALUES('Tinta',25)";
+   public String EscolherEntrada() {
+        String descricao = "teste";
+        double valor = 10.99;
+        String entrada = String.format("INSERT INTO Produto(descricao, valor) VALUES('%s', %.2f)", descricao, valor);
         return entrada;
     }
 }
