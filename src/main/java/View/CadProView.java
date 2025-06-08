@@ -28,40 +28,139 @@ public class CadProView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        LbCadProTitulo = new javax.swing.JLabel();
+        LbIdPro = new javax.swing.JLabel();
+        LbDescricaoPro = new javax.swing.JLabel();
+        LbValorPro = new javax.swing.JLabel();
+        LbEstoquePro = new javax.swing.JLabel();
+        TxtIdPro = new javax.swing.JTextField();
+        TxtDescricaoPro = new javax.swing.JTextField();
+        TxtValorPro = new javax.swing.JTextField();
+        TxtEstoquePro = new javax.swing.JTextField();
+        BtGravar = new javax.swing.JButton();
+        BtAlterar = new javax.swing.JButton();
+        BtNovo = new javax.swing.JButton();
+        BtConsultar = new javax.swing.JButton();
+        BtExcluir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        LbCadProTitulo.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        LbCadProTitulo.setText("Cadastro de Produto");
+
+        LbIdPro.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        LbIdPro.setText("ID:");
+
+        LbDescricaoPro.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        LbDescricaoPro.setText("Descrição:");
+
+        LbValorPro.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        LbValorPro.setText("Valor:");
+
+        LbEstoquePro.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        LbEstoquePro.setText("Estoque:");
+
+        BtGravar.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        BtGravar.setText("Gravar");
+        BtGravar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BtGravarActionPerformed(evt);
             }
         });
+
+        BtAlterar.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        BtAlterar.setText("Alterar");
+
+        BtNovo.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        BtNovo.setText("Novo");
+
+        BtConsultar.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        BtConsultar.setText("Consultar");
+
+        BtExcluir.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        BtExcluir.setText("Excluir");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(272, 272, 272)
-                .addComponent(jButton1)
-                .addContainerGap(418, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(206, 206, 206)
+                                .addComponent(LbCadProTitulo))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(53, 53, 53)
+                                .addComponent(LbIdPro)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(TxtIdPro, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 174, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(BtNovo)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(BtConsultar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(BtGravar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(BtAlterar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(BtExcluir))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(LbValorPro)
+                                    .addComponent(LbDescricaoPro)
+                                    .addComponent(LbEstoquePro))
+                                .addGap(12, 12, 12)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TxtValorPro, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TxtDescricaoPro, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TxtEstoquePro, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(277, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(199, 199, 199))
+                .addGap(36, 36, 36)
+                .addComponent(LbCadProTitulo)
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LbIdPro)
+                    .addComponent(TxtIdPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LbDescricaoPro)
+                    .addComponent(TxtDescricaoPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LbValorPro)
+                    .addComponent(TxtValorPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LbEstoquePro)
+                    .addComponent(TxtEstoquePro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 188, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BtExcluir)
+                    .addComponent(BtAlterar)
+                    .addComponent(BtGravar)
+                    .addComponent(BtConsultar)
+                    .addComponent(BtNovo))
+                .addGap(19, 19, 19))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BtGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtGravarActionPerformed
         controller.Cadastrar();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BtGravarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -99,6 +198,19 @@ public class CadProView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton BtAlterar;
+    private javax.swing.JButton BtConsultar;
+    private javax.swing.JButton BtExcluir;
+    private javax.swing.JButton BtGravar;
+    private javax.swing.JButton BtNovo;
+    private javax.swing.JLabel LbCadProTitulo;
+    private javax.swing.JLabel LbDescricaoPro;
+    private javax.swing.JLabel LbEstoquePro;
+    private javax.swing.JLabel LbIdPro;
+    private javax.swing.JLabel LbValorPro;
+    private javax.swing.JTextField TxtDescricaoPro;
+    private javax.swing.JTextField TxtEstoquePro;
+    private javax.swing.JTextField TxtIdPro;
+    private javax.swing.JTextField TxtValorPro;
     // End of variables declaration//GEN-END:variables
 }

@@ -34,6 +34,10 @@ public abstract class ConexaoSQLServer {
             e.printStackTrace();
         }
     }
+    public static Connection conectar() throws Exception {
+        Class.forName(driverJDBC);
+        return DriverManager.getConnection(url, user, senha);
+    }
     
     public void Cadastrar() {
         String insert = EscolherEntrada();

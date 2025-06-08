@@ -4,6 +4,10 @@
  */
 package View;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Aluno
@@ -26,54 +30,131 @@ public class CadArteView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        LbArteTitulo = new javax.swing.JLabel();
+        LbArteId = new javax.swing.JLabel();
+        LbArteUrl = new javax.swing.JLabel();
+        TxtArteId = new javax.swing.JTextField();
+        TxtArteUrl = new javax.swing.JTextField();
+        BtNovo = new javax.swing.JButton();
+        BtCarregarImagem = new javax.swing.JToggleButton();
+        BtGravar = new javax.swing.JButton();
+        BtExcluir = new javax.swing.JButton();
+        LbImagem = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setText("Url");
+        LbArteTitulo.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        LbArteTitulo.setText("Cadastro de Arte");
 
-        jToggleButton1.setText("Carregar Imagem");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        LbArteId.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        LbArteId.setText("ID:");
+
+        LbArteUrl.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        LbArteUrl.setText("URL:");
+
+        BtNovo.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        BtNovo.setText("Novo");
+
+        BtCarregarImagem.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        BtCarregarImagem.setText("Carregar Imagem");
+        BtCarregarImagem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                BtCarregarImagemActionPerformed(evt);
             }
         });
+
+        BtGravar.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        BtGravar.setText("Gravar");
+
+        BtExcluir.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        BtExcluir.setText("Excluir");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(LbArteTitulo)
+                .addGap(200, 200, 200))
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jToggleButton1)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(34, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(LbArteId)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(TxtArteId, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(68, 68, 68)
+                        .addComponent(BtNovo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BtCarregarImagem, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BtGravar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BtExcluir))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(LbArteUrl)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(TxtArteUrl, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+                            .addComponent(LbImagem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addComponent(jLabel1)
+                .addContainerGap()
+                .addComponent(LbArteTitulo)
+                .addGap(51, 51, 51)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LbArteId)
+                    .addComponent(TxtArteId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToggleButton1)
-                .addContainerGap(184, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LbArteUrl)
+                    .addComponent(TxtArteUrl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(LbImagem, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BtCarregarImagem)
+                    .addComponent(BtNovo)
+                    .addComponent(BtGravar)
+                    .addComponent(BtExcluir))
+                .addGap(19, 19, 19))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    private void BtCarregarImagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtCarregarImagemActionPerformed
+        String caminho = TxtArteUrl.getText(); // campo onde está o caminho da imagem
+
+    if (caminho != null && !caminho.isEmpty()) {
+        ImageIcon imagem = new ImageIcon(caminho);
+        Image imgRedimensionada = imagem.getImage().getScaledInstance(
+            LbImagem.getWidth(),
+            LbImagem.getHeight(),
+            Image.SCALE_SMOOTH
+        );
+        LbImagem.setIcon(new ImageIcon(imgRedimensionada));
+    } else {
+        JOptionPane.showMessageDialog(this, "Caminho da imagem inválido.");
+    }
+    }//GEN-LAST:event_BtCarregarImagemActionPerformed
 
     /**
-     * @param args the command line arguments
+     * Connection conn = // sua conexão com o banco
+PreparedStatement stmt = conn.prepareStatement("SELECT url FROM arte WHERE id = ?");
+stmt.setInt(1, idArte);
+ResultSet rs = stmt.executeQuery();
+
+if (rs.next()) {
+    String caminho = rs.getString("url");
+    TxtArteUrl.setText(caminho);
+}
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -108,8 +189,15 @@ public class CadArteView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JToggleButton BtCarregarImagem;
+    private javax.swing.JButton BtExcluir;
+    private javax.swing.JButton BtGravar;
+    private javax.swing.JButton BtNovo;
+    private javax.swing.JLabel LbArteId;
+    private javax.swing.JLabel LbArteTitulo;
+    private javax.swing.JLabel LbArteUrl;
+    private javax.swing.JLabel LbImagem;
+    private javax.swing.JTextField TxtArteId;
+    private javax.swing.JTextField TxtArteUrl;
     // End of variables declaration//GEN-END:variables
 }
