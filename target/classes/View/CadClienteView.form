@@ -26,13 +26,11 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="MenuArtesAnteriores">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Artes Anteriores"/>
+                <Property name="text" type="java.lang.String" value="Cadastrar Arte"/>
               </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="MenuNovaArte">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Nova Arte"/>
-              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MenuArtesAnterioresActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

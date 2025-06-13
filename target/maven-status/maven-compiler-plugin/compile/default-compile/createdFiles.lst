@@ -26,4 +26,5 @@ Controller\ConexaoSQLServer.class
 View\CadArteView$2.class
 View\TelaCadContrato$1.class
 Model\Pessoa.class
+View\CadClienteView$5.class
 View\CadProView$2.class

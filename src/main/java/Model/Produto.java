@@ -9,24 +9,27 @@ package Model;
  * @author Aluno
  */
 public class Produto {
-    private int codigo;
+    private int id;
     private String descricao;
     private int quantidade;
     private float valor;
 
-    public Produto(int codigo, String descricao, int quantidade, float valor) {
-        this.codigo = codigo;
+    public Produto(int id, String descricao, int quantidade, float valor) {
+        this.id = id;
         this.descricao = descricao;
         this.quantidade = quantidade;
         this.valor = valor;
     }
 
-    public int getCodigo() {
-        return codigo;
+    public Produto() {
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getDescricao() {

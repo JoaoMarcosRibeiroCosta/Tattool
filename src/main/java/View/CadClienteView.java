@@ -51,7 +51,6 @@ public class CadClienteView extends javax.swing.JFrame {
         MenuContratosCadastrados = new javax.swing.JMenuItem();
         MenuArtes = new javax.swing.JMenu();
         MenuArtesAnteriores = new javax.swing.JMenuItem();
-        MenuNovaArte = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -120,11 +119,13 @@ public class CadClienteView extends javax.swing.JFrame {
 
         MenuArtes.setText("Artes");
 
-        MenuArtesAnteriores.setText("Artes Anteriores");
+        MenuArtesAnteriores.setText("Cadastrar Arte");
+        MenuArtesAnteriores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuArtesAnterioresActionPerformed(evt);
+            }
+        });
         MenuArtes.add(MenuArtesAnteriores);
-
-        MenuNovaArte.setText("Nova Arte");
-        MenuArtes.add(MenuNovaArte);
 
         MenuCadCli.add(MenuArtes);
 
@@ -242,6 +243,11 @@ public class CadClienteView extends javax.swing.JFrame {
         novaTela.setVisible(true);
     }//GEN-LAST:event_MenuContratosCadastradosActionPerformed
 
+    private void MenuArtesAnterioresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuArtesAnterioresActionPerformed
+        CadArteView novaArte = new CadArteView();
+        novaArte.setVisible(true);
+    }//GEN-LAST:event_MenuArtesAnterioresActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -296,7 +302,6 @@ public class CadClienteView extends javax.swing.JFrame {
     private javax.swing.JMenuBar MenuCadCli;
     private javax.swing.JMenu MenuContratos;
     private javax.swing.JMenuItem MenuContratosCadastrados;
-    private javax.swing.JMenuItem MenuNovaArte;
     private javax.swing.JTextField TxtBairroCli;
     private javax.swing.JTextField TxtCpfCLi;
     private javax.swing.JTextField TxtIdCLi;
