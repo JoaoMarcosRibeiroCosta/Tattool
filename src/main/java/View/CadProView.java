@@ -4,6 +4,8 @@
  */
 package View;
 import Controller.ProdutoController;
+import Model.Produto;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -138,9 +140,9 @@ public class CadProView extends javax.swing.JFrame {
                     .addComponent(LbDescricaoPro)
                     .addComponent(TxtDescricaoPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LbValorPro)
-                    .addComponent(TxtValorPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TxtValorPro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LbValorPro))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LbEstoquePro)
@@ -159,7 +161,15 @@ public class CadProView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtGravarActionPerformed
-        controller.Cadastrar();
+        Produto produto = new Produto();
+        produto.setDescricao(TxtDescricaoPro.getText());
+        produto.setQuantidade( Integer.parseInt(TxtEstoquePro.getText()));
+        produto.setValor(Float.parseFloat(TxtValorPro.getText()));
+        controller.inserirProduto(produto);
+        TxtDescricaoPro.setText("");
+        TxtEstoquePro.setText("");
+        TxtValorPro.setText("");
+        JOptionPane.showMessageDialog(null, "Produto Cadastrado!", "Cadastro", JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_BtGravarActionPerformed
 
     /**

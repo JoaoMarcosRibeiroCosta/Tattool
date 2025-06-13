@@ -8,7 +8,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public abstract class ConexaoSQLServer {
+public class ConexaoSQLServer {
     public static String driverJDBC = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
     public static String url = "jdbc:sqlserver://localhost:1433;databaseName=Tattool;encrypt=true;trustServerCertificate=true";
     public static String user = "sa";
@@ -38,23 +38,4 @@ public abstract class ConexaoSQLServer {
         Class.forName(driverJDBC);
         return DriverManager.getConnection(url, user, senha);
     }
-    
-    public void Cadastrar() {
-        String insert = EscolherEntrada();
-        try{
-            Class.forName(driverJDBC);
-            con = DriverManager.getConnection(url,user,senha);
-            System.out.println("Inserindo dados...");
-            st = con.createStatement();
-            st.executeUpdate(insert);
-            System.out.println("Dados inseridos com sucesso!");
-            st.close();
-            con.close();
-        }catch(Exception e){
-            System.out.println(e);
-        }
-        ResultSet rs = null;
-    }
-    
-    public abstract String EscolherEntrada();
-}
+}   

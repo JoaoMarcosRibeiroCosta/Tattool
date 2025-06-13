@@ -13,9 +13,9 @@ import java.sql.ResultSet;
 public class ProdutoController extends ConexaoSQLServer {
 
     public boolean inserirProduto(Produto produto) {
-        String sql = "INSERT INTO Produto (descricao, valor, estoque) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO Produto (descricao, valor, quantidade) VALUES (?, ?, ?)";
         try (Connection con = conectar(); 
-             PreparedStatement stmt = con.prepareStatement(sql)) {
+            PreparedStatement stmt = con.prepareStatement(sql)) {
             stmt.setString(1, produto.getDescricao());
             stmt.setDouble(2, produto.getValor());
             stmt.setInt(3, produto.getQuantidade());
@@ -76,8 +76,4 @@ public class ProdutoController extends ConexaoSQLServer {
         }
     }
 
-    @Override
-    public String EscolherEntrada() {
-        return null; // não usada neste caso, pode ser deixada em branco ou removida da superclasse
-    }
 }
