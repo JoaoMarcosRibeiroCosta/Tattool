@@ -21,15 +21,16 @@ public class PessoaController extends ConexaoSQLServer{
 
     public boolean inserirPessoa(Pessoa pessoa) {
         EnderecoController enderecoController = new EnderecoController();
-        String sql = "INSERT INTO Pessoa (cpf, nome, endereco_id) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO Pessoa (cpf, nome, rua, numero, bairro, cidade) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection con = conectar(); 
             PreparedStatement stmt = con.prepareStatement(sql)) {
-            
-            int idEndereco = enderecoController.inserirEndereco(pessoa.getEndereco());
-            
+
             stmt.setInt(1, pessoa.getCpf());
             stmt.setString(2, pessoa.getNome());
-            stmt.setInt(3, idEndereco);    
+            stmt.setString(3, pessoa.getRua());
+            stmt.setInt(4, pessoa.getNumero());
+            stmt.setString(5, pessoa.getBairro());
+            stmt.setString(6, pessoa.getCidade());
             stmt.executeUpdate();
             stmt.close();
             con.close();
@@ -50,8 +51,12 @@ public class PessoaController extends ConexaoSQLServer{
             if (rs.next()) {
                 Pessoa pessoa = new Pessoa();
                 pessoa.setId(rs.getInt("id"));
+                pessoa.setCpf(rs.getInt("cpf"));
                 pessoa.setNome(rs.getString("nome"));
-                pessoa.setEndereco(rs.getInt("endereco_id"));
+                pessoa.setRua(rs.getString("rua"));
+                pessoa.setRua(rs.getInt("numero"));
+                pessoa.setRua(rs.getString("bairro"));
+                pessoa.setRua(rs.getString("cidade"));
                 return pessoa;
             }
             rs.close();
@@ -64,14 +69,17 @@ public class PessoaController extends ConexaoSQLServer{
         return null;
     }
 
-    public boolean atualizarPessoa(Produto produto) {
-        String sql = "UPDATE Produto SET descricao = ?, valor = ?, quantidade = ? WHERE id = ?";
+    public boolean atualizarPessoa(Pessoa pessoa) {
+        String sql = "UPDATE Produto SET nome = ?,cpf = ?, rua = ?, numero = ?, bairro = ?, cidade = ? WHERE id = ?";
         try (Connection con = conectar(); 
              PreparedStatement stmt = con.prepareStatement(sql)) {
-            stmt.setString(1, produto.getDescricao());
-            stmt.setDouble(2, produto.getValor());
-            stmt.setInt(3, produto.getQuantidade());
-            stmt.setInt(4, produto.getId());
+            stmt.setString(1, pessoa.getNome());
+            stmt.setInt(2, pessoa.getCpf());
+            stmt.setString(3, pessoa.getRua));
+            stmt.setInt(4, pessoa.getNumero);
+            
+            
+            stmt.setInt(7, pessoa.getId());
             stmt.executeUpdate();
             stmt.close();
             con.close();

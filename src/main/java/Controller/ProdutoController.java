@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class ProdutoController  extends ConexaoSQLServer{
 
-    public boolean inserirProduto(Produto produto) {
+    public boolean inserir(Produto produto) {
         String sql = "INSERT INTO Produto (descricao, valor, quantidade) VALUES (?, ?, ?)";
         try (Connection con = conectar(); 
             PreparedStatement stmt = con.prepareStatement(sql)) {
@@ -32,7 +32,7 @@ public class ProdutoController  extends ConexaoSQLServer{
         }
     }
 
-    public Produto buscarProduto(int id) {
+    public Produto buscar(int id) {
         String sql = "SELECT * FROM Produto WHERE id = ?";
         try (Connection con = conectar(); 
              PreparedStatement stmt = con.prepareStatement(sql)) {
@@ -56,7 +56,7 @@ public class ProdutoController  extends ConexaoSQLServer{
         return null;
     }
 
-    public boolean atualizarProduto(Produto produto) {
+    public boolean atualizar(Produto produto) {
         String sql = "UPDATE Produto SET descricao = ?, valor = ?, quantidade = ? WHERE id = ?";
         try (Connection con = conectar(); 
              PreparedStatement stmt = con.prepareStatement(sql)) {
@@ -75,7 +75,7 @@ public class ProdutoController  extends ConexaoSQLServer{
         }
     }
 
-    public boolean excluirProduto(int id) {
+    public boolean excluir(int id) {
         String sql = "DELETE FROM Produto WHERE id = ?";
         try (
             Connection con = conectar();     
