@@ -165,7 +165,7 @@ public class CadProView extends javax.swing.JFrame {
         produto.setDescricao(TxtDescricaoPro.getText());
         produto.setQuantidade( Integer.parseInt(TxtEstoquePro.getText()));
         produto.setValor(Float.parseFloat(TxtValorPro.getText()));
-        controller.inserir(produto);
+        controller.inserirProduto(produto);
         TxtDescricaoPro.setText("");
         TxtEstoquePro.setText("");
         TxtValorPro.setText("");
