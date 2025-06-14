@@ -45,7 +45,7 @@ public class CadProView extends javax.swing.JFrame {
         BtConsultar = new javax.swing.JButton();
         BtExcluir = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         LbCadProTitulo.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         LbCadProTitulo.setText("Cadastro de Produto");

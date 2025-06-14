@@ -34,10 +34,10 @@ public class MainView extends javax.swing.JFrame {
         MenuCadTat = new javax.swing.JMenuItem();
         MenuCadProd = new javax.swing.JMenuItem();
         MenuCadArte = new javax.swing.JMenuItem();
+        MenuCadContrato = new javax.swing.JMenuItem();
         MenuMovimentos = new javax.swing.JMenu();
         MenuMovOrc = new javax.swing.JMenuItem();
         MenuMovPed = new javax.swing.JMenuItem();
-        MenuMovCont = new javax.swing.JMenuItem();
         MenuRelatorio = new javax.swing.JMenu();
         MenuRelProd = new javax.swing.JMenuItem();
         MenuRelCli = new javax.swing.JMenuItem();
@@ -70,35 +70,65 @@ public class MainView extends javax.swing.JFrame {
 
         MenuCadCli.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
         MenuCadCli.setText("Cadastrar Cliente");
+        MenuCadCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuCadCliActionPerformed(evt);
+            }
+        });
         MenuCadastros.add(MenuCadCli);
 
         MenuCadTat.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
         MenuCadTat.setText("Cadastrar Tatuador");
+        MenuCadTat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuCadTatActionPerformed(evt);
+            }
+        });
         MenuCadastros.add(MenuCadTat);
 
         MenuCadProd.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
         MenuCadProd.setText("Cadastrar Produto");
+        MenuCadProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuCadProdActionPerformed(evt);
+            }
+        });
         MenuCadastros.add(MenuCadProd);
 
         MenuCadArte.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, 0));
         MenuCadArte.setText("Cadastrar Arte");
+        MenuCadArte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuCadArteActionPerformed(evt);
+            }
+        });
         MenuCadastros.add(MenuCadArte);
+
+        MenuCadContrato.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
+        MenuCadContrato.setText("Cadastrar Contrato");
+        MenuCadContrato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuCadContratoActionPerformed(evt);
+            }
+        });
+        MenuCadastros.add(MenuCadContrato);
 
         BarraDeMenu.add(MenuCadastros);
 
         MenuMovimentos.setText("Movimentos");
 
-        MenuMovOrc.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
+        MenuMovOrc.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, 0));
         MenuMovOrc.setText("Orçamento");
+        MenuMovOrc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuMovOrcActionPerformed(evt);
+            }
+        });
         MenuMovimentos.add(MenuMovOrc);
 
-        MenuMovPed.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F6, 0));
+        MenuMovPed.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F7, 0));
         MenuMovPed.setText("Pedido");
         MenuMovimentos.add(MenuMovPed);
-
-        MenuMovCont.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F7, 0));
-        MenuMovCont.setText("Contrato");
-        MenuMovimentos.add(MenuMovCont);
 
         BarraDeMenu.add(MenuMovimentos);
 
@@ -129,6 +159,35 @@ public class MainView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void MenuCadCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCadCliActionPerformed
+        CadClienteView novoCliente = new CadClienteView();
+        novoCliente.setVisible(true);
+    }//GEN-LAST:event_MenuCadCliActionPerformed
+
+    private void MenuCadTatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCadTatActionPerformed
+        CadTatuadorView novoTatuador = new CadTatuadorView();
+        novoTatuador.setVisible(true);
+    }//GEN-LAST:event_MenuCadTatActionPerformed
+
+    private void MenuCadProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCadProdActionPerformed
+        CadProView novoProduto = new CadProView();
+        novoProduto.setVisible(true);
+    }//GEN-LAST:event_MenuCadProdActionPerformed
+
+    private void MenuCadArteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCadArteActionPerformed
+        CadArteView novaArte = new CadArteView();
+        novaArte.setVisible(true);
+    }//GEN-LAST:event_MenuCadArteActionPerformed
+
+    private void MenuCadContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCadContratoActionPerformed
+        TelaCadContrato novoContrato = new TelaCadContrato();
+        novoContrato.setVisible(true);
+    }//GEN-LAST:event_MenuCadContratoActionPerformed
+
+    private void MenuMovOrcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuMovOrcActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MenuMovOrcActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,10 +229,10 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JLabel LbTitulo;
     private javax.swing.JMenuItem MenuCadArte;
     private javax.swing.JMenuItem MenuCadCli;
+    private javax.swing.JMenuItem MenuCadContrato;
     private javax.swing.JMenuItem MenuCadProd;
     private javax.swing.JMenuItem MenuCadTat;
     private javax.swing.JMenu MenuCadastros;
-    private javax.swing.JMenuItem MenuMovCont;
     private javax.swing.JMenuItem MenuMovOrc;
     private javax.swing.JMenuItem MenuMovPed;
     private javax.swing.JMenu MenuMovimentos;
