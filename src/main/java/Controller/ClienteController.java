@@ -10,7 +10,9 @@ package Controller;
  */
 
 import static Controller.ConexaoSQLServer.conectar;
+import Model.Arte;
 import Model.Cliente;
+import Model.Pessoa;
 import java.io.IOException;
 import java.net.URL;
 import javax.imageio.ImageIO;
@@ -21,7 +23,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import javax.swing.table.DefaultTableModel;
 
-public class ClienteController extends ConexaoSQLServer{
+public class ClienteController extends PessoaController{
     public BufferedImage carregarImagemDeURL(String urlString) {
         try {
             URL url = new URL(urlString);
@@ -31,32 +33,43 @@ public class ClienteController extends ConexaoSQLServer{
             return null;
         }
     }
-    public boolean inserir(Cliente cliente) {
+    public boolean inserirCliente(Cliente cliente) {
         String sql = "INSERT INTO cliente (pessoa_id, arte_anterior_id) VALUES (?, ?, ?)";
         try (Connection con = conectar(); 
             PreparedStatement stmt = con.prepareStatement(sql)) {
+            
+            boolean pessoaInserida = super.inserirPessoa(cliente);
+            if (!pessoaInserida) {
+                return false;
+            }
             stmt.setInt(1, cliente.getId());
+            stmt.setInt(2,cliente.getArteId());
             stmt.executeUpdate();
             stmt.close();
             con.close();
 
             return true;
         } catch (Exception e) {
-            System.out.println("Erro ao inserir arte: " + e.getMessage());
+            System.out.println("Erro ao inserir cliente: " + e.getMessage());
             return false;
         }
     }
 
-    public Arte buscar(int id) {
-        String sql = "SELECT * FROM arte WHERE id = ?";
+    public Cliente buscarCliente(int id) {
+        String sql = "SELECT * FROM cliente WHERE id = ?";
         try (Connection con = conectar(); 
              PreparedStatement stmt = con.prepareStatement(sql)) {
+            
+            Pessoa pessoa = super.buscarPessoa(id);
+            if (pessoa == null) {
+                 return null;
+            }
+            
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                Arte cliente = new Arte();
-                cliente.setId(rs.getInt("id"));
-                cliente.setImagem(rs.getString("imagem"));
+                int arte =(rs.getInt("arte_anterior_id"));
+                Cliente cliente = new Cliente(arte, id ,pessoa.getCpf(), pessoa.getNome(), pessoa.getRua(), pessoa.getNumero(), pessoa.getBairro(),pessoa.getCidade());
                 return cliente;
             }
             rs.close();
@@ -69,7 +82,7 @@ public class ClienteController extends ConexaoSQLServer{
         return null;
     }
 
-    public boolean atualizar(Arte cliente) {
+    public boolean atualizarCliente(Arte cliente) {
         String sql = "UPDATE cliente SET imagem = ? WHERE id = ?";
         try (Connection con = conectar(); 
              PreparedStatement stmt = con.prepareStatement(sql)) {
@@ -85,7 +98,7 @@ public class ClienteController extends ConexaoSQLServer{
         }
     }
 
-    public boolean excluir(int id) {
+    public boolean excluirCliente(int id) {
         String sql = "DELETE FROM cliente WHERE id = ?";
         try (
             Connection con = conectar();     

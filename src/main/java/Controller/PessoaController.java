@@ -20,7 +20,6 @@ import javax.swing.table.DefaultTableModel;
 public class PessoaController extends ConexaoSQLServer{
 
     public boolean inserirPessoa(Pessoa pessoa) {
-        EnderecoController enderecoController = new EnderecoController();
         String sql = "INSERT INTO Pessoa (cpf, nome, rua, numero, bairro, cidade) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection con = conectar(); 
             PreparedStatement stmt = con.prepareStatement(sql)) {
@@ -35,11 +34,12 @@ public class PessoaController extends ConexaoSQLServer{
             stmt.close();
             con.close();
 
+            ResultSet rs = stmt.executeQuery();
             return true;
         } catch (Exception e) {
             System.out.println("Erro ao inserir pessoa: " + e.getMessage());
-            return false;
         }
+        return false;
     }
 
     public Pessoa buscarPessoa(int id) {
@@ -54,9 +54,9 @@ public class PessoaController extends ConexaoSQLServer{
                 pessoa.setCpf(rs.getInt("cpf"));
                 pessoa.setNome(rs.getString("nome"));
                 pessoa.setRua(rs.getString("rua"));
-                pessoa.setRua(rs.getInt("numero"));
-                pessoa.setRua(rs.getString("bairro"));
-                pessoa.setRua(rs.getString("cidade"));
+                pessoa.setNumero(rs.getInt("numero"));
+                pessoa.setBairro(rs.getString("bairro"));
+                pessoa.setCidade(rs.getString("cidade"));
                 return pessoa;
             }
             rs.close();
@@ -70,15 +70,15 @@ public class PessoaController extends ConexaoSQLServer{
     }
 
     public boolean atualizarPessoa(Pessoa pessoa) {
-        String sql = "UPDATE Produto SET nome = ?,cpf = ?, rua = ?, numero = ?, bairro = ?, cidade = ? WHERE id = ?";
+        String sql = "UPDATE Pessoa SET nome = ?,cpf = ?, rua = ?, numero = ?, bairro = ?, cidade = ? WHERE id = ?";
         try (Connection con = conectar(); 
              PreparedStatement stmt = con.prepareStatement(sql)) {
             stmt.setString(1, pessoa.getNome());
             stmt.setInt(2, pessoa.getCpf());
-            stmt.setString(3, pessoa.getRua));
-            stmt.setInt(4, pessoa.getNumero);
-            
-            
+            stmt.setString(3, pessoa.getRua());
+            stmt.setInt(4, pessoa.getNumero());
+            stmt.setString(5,pessoa.getBairro());
+            stmt.setString(6,pessoa.getCidade());
             stmt.setInt(7, pessoa.getId());
             stmt.executeUpdate();
             stmt.close();
@@ -86,13 +86,13 @@ public class PessoaController extends ConexaoSQLServer{
 
             return true;
         } catch (Exception e) {
-            System.out.println("Erro ao atualizar produto: " + e.getMessage());
+            System.out.println("Erro ao atualizar pessoa: " + e.getMessage());
             return false;
         }
     }
 
     public boolean excluirPessoa(int id) {
-        String sql = "DELETE FROM Produto WHERE id = ?";
+        String sql = "DELETE FROM Pessoa WHERE id = ?";
         try (
             Connection con = conectar();     
             PreparedStatement stmt = con.prepareStatement(sql)) {
@@ -103,7 +103,7 @@ public class PessoaController extends ConexaoSQLServer{
 
             return true;
         } catch (Exception e) {
-            System.out.println("Erro ao excluir produto: " + e.getMessage());
+            System.out.println("Erro ao excluir pessoa: " + e.getMessage());
             return false;
         }
     }
@@ -111,7 +111,7 @@ public class PessoaController extends ConexaoSQLServer{
     
     public DefaultTableModel carregarTabela(String filtro) {
         DefaultTableModel model = new DefaultTableModel();
-        String sql = "SELECT * FROM Produto"+filtro;
+        String sql = "SELECT * FROM Pessoa "+filtro;
         try (Connection con = conectar(); PreparedStatement stmt = con.prepareStatement(sql); ResultSet rs = stmt.executeQuery()){
 
             ResultSetMetaData rsmd = rs.getMetaData();
@@ -133,7 +133,7 @@ public class PessoaController extends ConexaoSQLServer{
             con.close();
 
         } catch (Exception e) {
-            System.out.println("Erro ao carregar dados: " + e.getMessage());
+            System.out.println("Erro ao carregar dados de pesssoas: " + e.getMessage());
         }
 
         return model;

@@ -10,29 +10,22 @@ package Model;
  */
 public class Cliente extends Pessoa{
     
-    private Arte arte;
-    private Contrato contrato;
+    private int arte;
 
-    public Cliente(Arte arte, Contrato contrato, int id, int cpf, String nome, String rua,int numero,String bairro,String cidade) {
+    public Cliente(int arte, int id, int cpf, String nome, String rua,int numero,String bairro,String cidade) {
         super(id, cpf, nome,rua,numero,bairro,cidade);
         this.arte = arte;
-        this.contrato = contrato;
     }
 
-    public Arte getArte() {
+    public Cliente() {
+    }
+
+    public int getArteId() {
         return arte;
     }
 
-    public Contrato getContrato() {
-        return contrato;
-    }
-
-    public void setArte(Arte arte) {
+    public void setArteId(int arte) {
         this.arte = arte;
     }
 
-    public void setContrato(Contrato contrato) {
-        this.contrato = contrato;
-    }
-    
 }
