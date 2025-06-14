@@ -12,8 +12,8 @@ public class Tatuador extends Pessoa {
     private String estilo; // estilo do tatuador
     private float TotalVenda; // o total de vendas
 
-    public Tatuador(String estilo, float TotalVenda, int id, int cpf, String nome, int endereco) {
-        super(id, cpf, nome, endereco);
+    public Tatuador(String estilo, float TotalVenda, int id, int cpf, String nome, String rua,int numero,String bairro,String cidade) {
+        super(id, cpf, nome,rua,numero,bairro,cidade);
         this.estilo = estilo;
         this.TotalVenda = TotalVenda;
     }
