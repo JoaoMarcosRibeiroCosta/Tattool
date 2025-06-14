@@ -13,8 +13,8 @@ public class Cliente extends Pessoa{
     private Arte arte;
     private Contrato contrato;
 
-    public Cliente(Arte arte, Contrato contrato, int cpf, String nome, Endereco endereco) {
-        super(cpf, nome, endereco);
+    public Cliente(Arte arte, Contrato contrato, int id, int cpf, String nome, int endereco) {
+        super(id, cpf, nome, endereco);
         this.arte = arte;
         this.contrato = contrato;
     }

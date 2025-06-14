@@ -3,18 +3,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package View;
-
+import Controller.ProdutoController;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author usuario
  */
 public class ConsultaProdutoView extends javax.swing.JFrame {
-
+    ProdutoController controller = new ProdutoController();
     /**
      * Creates new form ConsultaProdutoView
      */
     public ConsultaProdutoView() {
         initComponents();
+        carregarTabela();
     }
 
     /**
@@ -99,6 +101,12 @@ public class ConsultaProdutoView extends javax.swing.JFrame {
         });
     }
 
+    public void carregarTabela() {
+        String filtro = " WHERE descricao LIKE '%tinta%';";
+        //  if(tem filtro){ muda o filtro) else( filtro = "") :)
+        DefaultTableModel model = controller.carregarTabela(filtro);
+        jTable1.setModel(model);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

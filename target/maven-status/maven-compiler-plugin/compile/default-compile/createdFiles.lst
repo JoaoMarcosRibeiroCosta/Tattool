@@ -1,7 +1,6 @@
 Model\Endereco.class
 View\CadClienteView.class
 View\MainView$2.class
-Controller\ImagemController.class
 Model\Pedido.class
 Model\Cliente.class
 Model\Produto.class
@@ -10,6 +9,7 @@ View\CadTatuadorView$2.class
 View\TelaCadContrato$2.class
 Model\Orcamento.class
 View\CadArteView.class
+Controller\ArteController.class
 View\CadTatuadorView.class
 View\CadTatuadorView$1.class
 View\CadClienteView$1.class
@@ -21,10 +21,12 @@ View\MainView$7.class
 View\CadArteView$1.class
 Model\Contrato.class
 Controller\ProdutoController.class
+View\ConsultaProdutoView.class
 View\CadClienteView$3.class
 com\mycompany\tattool\Tattool.class
 Model\Arte.class
 View\MainView.class
+View\ConsultaProdutoView$1.class
 View\MainView$5.class
 View\CadProView.class
 View\TelaCadContrato.class

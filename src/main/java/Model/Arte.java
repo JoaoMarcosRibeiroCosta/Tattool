@@ -17,6 +17,8 @@ public class Arte {
         this.imagem = imagem;
     }
 
+    public Arte(){
+    }
     public int getId() {
         return id;
     }

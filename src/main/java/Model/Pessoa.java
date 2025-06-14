@@ -8,17 +8,27 @@ package Model;
  * @author Aluno
  */
 public class Pessoa {
-    private String id;
+    private int id;
     private int cpf;
     private String nome;
-    private Endereco endereco;
+    private int endereco;
 
-    public Pessoa(int cpf, String nome, Endereco endereco) {
+    public Pessoa(int id,int cpf, String nome, int endereco) {
+        this.id = id;
         this.cpf = cpf;
         this.nome = nome;
         this.endereco = endereco;
     }
+
+    public Pessoa() {
+    }
     
+    public int getId(){
+        return id;
+    }
+    public void setId(int id){
+        this.id = id;
+    }
     public int getCpf() {
         return cpf;
     }
@@ -27,7 +37,7 @@ public class Pessoa {
         return nome;
     }
 
-    public Endereco getEndereco() {
+    public int getEndereco() {
         return endereco;
     }
 
@@ -39,7 +49,7 @@ public class Pessoa {
         this.nome = nome;
     }
 
-    public void setEndereco(Endereco endereco) {
+    public void setEndereco(int endereco) {
         this.endereco = endereco;
     }
     

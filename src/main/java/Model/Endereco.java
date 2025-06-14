@@ -9,18 +9,30 @@ package Model;
  * @author Aluno
  */
 public class Endereco {
+    private int id;
     private String rua;
     private int numero;
     private String bairro;
     private String cidade;
 
-    public Endereco(String rua, int numero, String bairro, String cidade) {
+    public Endereco(int id, String rua, int numero, String bairro, String cidade) {
+        this.id = id;
         this.rua = rua;
         this.numero = numero;
         this.bairro = bairro;
         this.cidade = cidade;
     }
 
+    public Endereco(){}
+    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getRua() {
         return rua;
     }
