@@ -9,24 +9,24 @@ package Model;
  * @author Aluno
  */
 public class Arte {
-    private int codigo;
+    private int id;
     private String imagem; //url
 
-    public Arte(int codigo, String imagem) {
-        this.codigo = codigo;
+    public Arte(int id, String imagem) {
+        this.id = id;
         this.imagem = imagem;
     }
 
-    public int getCodigo() {
-        return codigo;
+    public int getId() {
+        return id;
     }
 
     public String getImagem() {
         return imagem;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setId(int codigo) {
+        this.id = codigo;
     }
 
     public void setImagem(String imagem) {

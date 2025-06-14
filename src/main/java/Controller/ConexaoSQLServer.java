@@ -8,7 +8,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class ConexaoSQLServer {
+public class ConexaoSQLServer{
     public static String driverJDBC = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
     public static String url = "jdbc:sqlserver://localhost:1433;databaseName=Tattool;encrypt=true;trustServerCertificate=true";
     public static String user = "sa";

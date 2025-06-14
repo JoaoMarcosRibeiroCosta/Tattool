@@ -20,8 +20,11 @@ public class ProdutoController  extends ConexaoSQLServer{
             PreparedStatement stmt = con.prepareStatement(sql)) {
             stmt.setString(1, produto.getDescricao());
             stmt.setDouble(2, produto.getValor());
-            stmt.setInt(3, produto.getQuantidade());
+            stmt.setInt(3, produto.getQuantidade());    
             stmt.executeUpdate();
+            stmt.close();
+            con.close();
+
             return true;
         } catch (Exception e) {
             System.out.println("Erro ao inserir produto: " + e.getMessage());
@@ -39,10 +42,14 @@ public class ProdutoController  extends ConexaoSQLServer{
                 Produto produto = new Produto();
                 produto.setId(rs.getInt("id"));
                 produto.setDescricao(rs.getString("descricao"));
-                produto.setQuantidade(rs.getInt("estoque"));
+                produto.setQuantidade(rs.getInt("quantidade"));
                 produto.setValor(rs.getFloat("valor"));
                 return produto;
             }
+            rs.close();
+            stmt.close();
+            con.close();
+
         } catch (Exception e) {
             System.out.println("Erro ao buscar produto: " + e.getMessage());
         }
@@ -50,7 +57,7 @@ public class ProdutoController  extends ConexaoSQLServer{
     }
 
     public boolean atualizarProduto(Produto produto) {
-        String sql = "UPDATE Produto SET descricao = ?, valor = ?, estoque = ? WHERE id = ?";
+        String sql = "UPDATE Produto SET descricao = ?, valor = ?, quantidade = ? WHERE id = ?";
         try (Connection con = conectar(); 
              PreparedStatement stmt = con.prepareStatement(sql)) {
             stmt.setString(1, produto.getDescricao());
@@ -58,6 +65,9 @@ public class ProdutoController  extends ConexaoSQLServer{
             stmt.setInt(3, produto.getQuantidade());
             stmt.setInt(4, produto.getId());
             stmt.executeUpdate();
+            stmt.close();
+            con.close();
+
             return true;
         } catch (Exception e) {
             System.out.println("Erro ao atualizar produto: " + e.getMessage());
@@ -72,6 +82,9 @@ public class ProdutoController  extends ConexaoSQLServer{
             PreparedStatement stmt = con.prepareStatement(sql)) {
             stmt.setInt(1, id);
             stmt.executeUpdate();
+            stmt.close();
+            con.close();
+
             return true;
         } catch (Exception e) {
             System.out.println("Erro ao excluir produto: " + e.getMessage());
@@ -83,11 +96,7 @@ public class ProdutoController  extends ConexaoSQLServer{
     public DefaultTableModel carregarTabela(String filtro) {
         DefaultTableModel model = new DefaultTableModel();
         String sql = "SELECT * FROM Produto"+filtro;
-        try (
-            Connection con = conectar();     
-            PreparedStatement stmt = con.prepareStatement(sql)) {
-             
-            ResultSet rs = stmt.executeQuery(sql);
+        try (Connection con = conectar(); PreparedStatement stmt = con.prepareStatement(sql); ResultSet rs = stmt.executeQuery()){
 
             ResultSetMetaData rsmd = rs.getMetaData();
             int colunas = rsmd.getColumnCount();
@@ -103,7 +112,6 @@ public class ProdutoController  extends ConexaoSQLServer{
                 }
                 model.addRow(linha);
             }
-
             rs.close();
             stmt.close();
             con.close();
