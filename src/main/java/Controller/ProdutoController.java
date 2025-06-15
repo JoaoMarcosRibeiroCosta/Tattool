@@ -12,7 +12,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import javax.swing.table.DefaultTableModel;
 
-public class ProdutoController  extends ConexaoSQLServer{
+public class ProdutoController extends ConexaoSQLServer{
 
     public boolean inserirProduto(Produto produto) {
         String sql = "INSERT INTO Produto (descricao, valor, quantidade) VALUES (?, ?, ?)";

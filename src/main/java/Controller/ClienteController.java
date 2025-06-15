@@ -34,7 +34,7 @@ public class ClienteController extends PessoaController{
         }
     }
     public boolean inserirCliente(Cliente cliente) {
-        String sql = "INSERT INTO cliente (pessoa_id, arte_anterior_id) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO Cliente (pessoa_id, arte_anterior_id) VALUES (?, ?, ?)";
         try (Connection con = conectar(); 
             PreparedStatement stmt = con.prepareStatement(sql)) {
             
@@ -56,7 +56,7 @@ public class ClienteController extends PessoaController{
     }
 
     public Cliente buscarCliente(int id) {
-        String sql = "SELECT * FROM cliente WHERE id = ?";
+        String sql = "SELECT * FROM Cliente WHERE id = ?";
         try (Connection con = conectar(); 
              PreparedStatement stmt = con.prepareStatement(sql)) {
             
@@ -83,7 +83,7 @@ public class ClienteController extends PessoaController{
     }
 
     public boolean atualizarCliente(Cliente cliente) {
-        String sql = "UPDATE cliente SET arte_anterior_id = ? WHERE id = ?";
+        String sql = "UPDATE Cliente SET arte_anterior_id = ? WHERE id = ?";
         try (Connection con = conectar(); 
              PreparedStatement stmt = con.prepareStatement(sql)) {
             stmt.setInt(1, cliente.getArteId());
@@ -100,7 +100,7 @@ public class ClienteController extends PessoaController{
     }
 
     public boolean excluirCliente(int id) {
-        String sql = "DELETE FROM cliente WHERE id = ?";
+        String sql = "DELETE FROM Cliente WHERE id = ?";
         try (
             Connection con = conectar();     
             PreparedStatement stmt = con.prepareStatement(sql)) {
@@ -119,7 +119,7 @@ public class ClienteController extends PessoaController{
     
     public DefaultTableModel carregarTabela(String filtro) {
         DefaultTableModel model = new DefaultTableModel();
-        String sql = "SELECT * FROM cliente"+filtro;
+        String sql = "SELECT * FROM Cliente"+filtro;
         try (Connection con = conectar(); PreparedStatement stmt = con.prepareStatement(sql); ResultSet rs = stmt.executeQuery()){
 
             ResultSetMetaData rsmd = rs.getMetaData();

@@ -33,6 +33,8 @@ View\CadTatuadorView$4.class
 Controller\ProdutoController.class
 View\CadClienteView$3.class
 com\mycompany\tattool\Tattool.class
+Controller\ContratoController.class
+Controller\OrcamentoController.class
 View\MainView.class
 View\ConsultaProdutoView$1.class
 View\MainView$5.class
