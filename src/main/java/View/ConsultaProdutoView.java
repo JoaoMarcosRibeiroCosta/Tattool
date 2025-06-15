@@ -4,6 +4,8 @@
  */
 package View;
 import Controller.ProdutoController;
+import Model.Produto;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -11,12 +13,14 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ConsultaProdutoView extends javax.swing.JFrame {
     ProdutoController controller = new ProdutoController();
+
     /**
      * Creates new form ConsultaProdutoView
      */
     public ConsultaProdutoView() {
         initComponents();
         carregarTabela();
+        
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
     public void mouseClicked(java.awt.event.MouseEvent evt) {
         int linhaSelecionada = jTable1.getSelectedRow();
@@ -186,7 +190,31 @@ public class ConsultaProdutoView extends javax.swing.JFrame {
     }//GEN-LAST:event_BtBuscarActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        //
+ 
+        if (evt.getClickCount() == 2) {
+        int linha = jTable1.getSelectedRow();
+        if (linha != -1) {
+            String idStr = jTable1.getValueAt(linha, 0).toString();
+            int id = Integer.parseInt(idStr);
+
+            ProdutoController controller = new ProdutoController();
+            Produto produto = controller.buscarProduto(id);
+
+            if (produto != null) {
+                //telaCadastro.preencherCampos(
+                  //  String.valueOf(produto.getId()),
+                    //produto.getDescricao(),
+                    //String.valueOf(produto.getValor()),
+                    //String.valueOf(produto.getQuantidade())
+                //);
+                this.dispose(); // Fecha a tela de consulta
+            } else {
+                JOptionPane.showMessageDialog(this, "Produto não encontrado.");
+            }
+        }
+    }
+    
+
     }//GEN-LAST:event_jTable1MouseClicked
 
     /**
@@ -219,7 +247,7 @@ public class ConsultaProdutoView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ConsultaProdutoView().setVisible(true);
+                //new ConsultaProdutoView().setVisible(true);
             }
         });
     }
@@ -231,6 +259,7 @@ public class ConsultaProdutoView extends javax.swing.JFrame {
         DefaultTableModel model = controller.carregarTabela(filtro);
         jTable1.setModel(model);
     }
+
     
     private void aplicarFiltro() {
     String textoBusca = TxtBuscar.getText().trim();
@@ -243,6 +272,7 @@ public class ConsultaProdutoView extends javax.swing.JFrame {
         case "Quantidade" -> "quantidade";
         default -> "descricao"; 
     };
+    
 
     String filtro = "";
     if (!textoBusca.isEmpty()) {
@@ -252,6 +282,7 @@ public class ConsultaProdutoView extends javax.swing.JFrame {
     DefaultTableModel model = controller.carregarTabela(filtro);
     jTable1.setModel(model);
 }
+    
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtBuscar;

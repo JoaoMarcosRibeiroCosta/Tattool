@@ -32,6 +32,8 @@ Model\Cliente.class
 Model\Produto.class
 View\CadClienteView$2.class
 View\ConsultaProdutoView$2.class
+View\CadClienteView$6.class
+View\CadProView$3.class
 View\CadArteView.class
 View\CadTatuadorView$4.class
 Controller\ProdutoController.class
