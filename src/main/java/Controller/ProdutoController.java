@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class ProdutoController  extends ConexaoSQLServer{
 
-    public boolean inserir(Produto produto) {
+    public boolean inserirProduto(Produto produto) {
         String sql = "INSERT INTO Produto (descricao, valor, quantidade) VALUES (?, ?, ?)";
         try (Connection con = conectar(); 
             PreparedStatement stmt = con.prepareStatement(sql)) {
