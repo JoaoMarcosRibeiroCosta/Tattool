@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
 public class OrcamentoController extends ConexaoSQLServer{
 
     public boolean inserirOrcamento(Orcamento orcamento) {
-        String sql = "INSERT INTO Orcamento (cliente_id, tatuador_id, produto_id, arte_id, contrato_id, mao_de_obra, total) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Orcamento (cliente_id, tatuador_id, produto_id, arte_id, contrato_id, mao_de_obra, total, aprovado) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try (Connection con = conectar(); 
             PreparedStatement stmt = con.prepareStatement(sql)) {
             stmt.setInt(1, orcamento.getCliente());
@@ -29,6 +29,7 @@ public class OrcamentoController extends ConexaoSQLServer{
             stmt.setInt(5, orcamento.getContratoId());   
             stmt.setFloat(6, orcamento.getMaoDeObra());
             stmt.setFloat(7, orcamento.getTotal());
+            stmt.setBoolean(8, orcamento.getAprovado());
             stmt.executeUpdate();
             stmt.close();
             con.close();
@@ -56,6 +57,7 @@ public class OrcamentoController extends ConexaoSQLServer{
                 orcamento.setContratoId(rs.getInt("contrato_id"));
                 orcamento.setMaoDeObra(rs.getFloat("mao_de_obra"));
                 orcamento.setTotal(rs.getFloat("total"));
+                orcamento.setAprovado(rs.getBoolean("aprovado"));
                 return orcamento;
             }
             rs.close();
@@ -69,7 +71,8 @@ public class OrcamentoController extends ConexaoSQLServer{
     }
 
     public boolean atualizarOrcamento(Orcamento orcamento) {
-        String sql = "UPDATE Orcamento SET cliente_id = ?, tatuador_id = ?, produto_id = ?, arte_id = ?, contrato_id = ?, mao_de_obra = ?, total = ? WHERE id = ?";
+        String sql = "UPDATE Orcamento SET cliente_id = ?, tatuador_id = ?, produto_id = ?, arte_id = ?, "
+                + "contrato_id = ?, mao_de_obra = ?, total = ?, aprovado = ? WHERE id = ?";
         try (Connection con = conectar(); 
              PreparedStatement stmt = con.prepareStatement(sql)) {
             stmt.setInt(1, orcamento.getCliente());
@@ -79,7 +82,8 @@ public class OrcamentoController extends ConexaoSQLServer{
             stmt.setInt(5, orcamento.getContratoId());
             stmt.setFloat(6, orcamento.getMaoDeObra());
             stmt.setFloat(7, orcamento.getTotal());
-            stmt.setInt(8, orcamento.getId());
+            stmt.setBoolean(8, orcamento.getAprovado());
+            stmt.setInt(9, orcamento.getId());
             stmt.executeUpdate();
             stmt.close();
             con.close();

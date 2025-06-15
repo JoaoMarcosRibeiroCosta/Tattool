@@ -17,8 +17,9 @@ public class Orcamento {
     private float maoDeObra;
     private float total;
     private int arte_id;
+    private boolean aprovado;
 
-    public Orcamento(int id, int cliente_id, int tatuador_id, int produto_id, float maoDeObra, float total,int contrato_id ,int arte_id) {
+    public Orcamento(int id, int cliente_id, int tatuador_id, int produto_id, float maoDeObra, float total,int contrato_id ,int arte_id, boolean aprovado) {
         this.id = id;
         this.cliente_id = cliente_id;
         this.tatuador_id = tatuador_id;
@@ -27,6 +28,7 @@ public class Orcamento {
         this.total = total;
         this.contrato_id = contrato_id;
         this.arte_id = arte_id;
+        this.aprovado = aprovado;
     }   
 
     public Orcamento() {
@@ -93,5 +95,12 @@ public class Orcamento {
 
     public void setContratoId(int contrato_id) {
         this.contrato_id = contrato_id;
+    }
+    public boolean getAprovado() {
+        return aprovado;
+    }
+
+    public void setAprovado(boolean aprovado) {
+        this.aprovado = aprovado;
     }
 }
