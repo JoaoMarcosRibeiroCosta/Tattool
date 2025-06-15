@@ -10,7 +10,6 @@ package Controller;
  */
 
 import static Controller.ConexaoSQLServer.conectar;
-import Model.Arte;
 import Model.Cliente;
 import Model.Pessoa;
 import java.io.IOException;
@@ -34,7 +33,7 @@ public class ClienteController extends PessoaController{
         }
     }
     public boolean inserirCliente(Cliente cliente) {
-        String sql = "INSERT INTO Cliente (pessoa_id, arte_anterior_id) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO Cliente (pessoa_id, arte_anterior_id) VALUES (?, ?)";
         try (Connection con = conectar(); 
             PreparedStatement stmt = con.prepareStatement(sql)) {
             
