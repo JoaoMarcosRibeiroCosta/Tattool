@@ -76,8 +76,13 @@ public class CadProView extends javax.swing.JFrame {
         BtNovo.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         BtNovo.setText("Novo");
 
-        BtConsultar.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        BtConsultar.setText("Consultar");
+        BtConsultar.setFont(new java.awt.Font("Segoe UI Emoji", 3, 12)); // NOI18N
+        BtConsultar.setText("🔍");
+        BtConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtConsultarActionPerformed(evt);
+            }
+        });
 
         BtExcluir.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         BtExcluir.setText("Excluir");
@@ -97,7 +102,9 @@ public class CadProView extends javax.swing.JFrame {
                                 .addGap(53, 53, 53)
                                 .addComponent(LbIdPro)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(TxtIdPro, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(TxtIdPro, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(6, 6, 6)
+                                .addComponent(BtConsultar)))
                         .addGap(0, 174, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -105,8 +112,6 @@ public class CadProView extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(BtNovo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(BtConsultar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(BtGravar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -131,11 +136,13 @@ public class CadProView extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(LbCadProTitulo)
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LbIdPro)
-                    .addComponent(TxtIdPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(47, 47, 47)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(LbIdPro)
+                        .addComponent(TxtIdPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BtConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LbDescricaoPro)
                     .addComponent(TxtDescricaoPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -147,14 +154,13 @@ public class CadProView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LbEstoquePro)
                     .addComponent(TxtEstoquePro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 188, Short.MAX_VALUE)
+                .addGap(191, 191, 191)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtExcluir)
                     .addComponent(BtAlterar)
                     .addComponent(BtGravar)
-                    .addComponent(BtConsultar)
                     .addComponent(BtNovo))
-                .addGap(19, 19, 19))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
@@ -172,6 +178,16 @@ public class CadProView extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Produto Cadastrado!", "Cadastro", JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_BtGravarActionPerformed
 
+    private void BtConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtConsultarActionPerformed
+        ConsultaProdutoView consulta = new ConsultaProdutoView();
+        consulta.setVisible(true);
+    }//GEN-LAST:event_BtConsultarActionPerformed
+    public void preencherCampos(String id, String descricao, String valor, String estoque) {
+        TxtIdPro.setText(id);
+        TxtDescricaoPro.setText(descricao);
+        TxtValorPro.setText(valor);
+        TxtEstoquePro.setText(estoque);
+    }
     /**
      * @param args the command line arguments
      */
