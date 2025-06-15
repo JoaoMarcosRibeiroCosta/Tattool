@@ -1,5 +1,4 @@
 View\CadClienteView.class
-Model\Pedido.class
 View\CadTatuadorView$2.class
 View\TelaCadContrato$2.class
 Model\Orcamento.class
@@ -18,6 +17,7 @@ View\ConsultaProdutoView.class
 Model\Arte.class
 View\ConsultaProdutoView$3.class
 View\TelaCadContrato.class
+Controller\TatuadorController.class
 View\MainView$6.class
 View\CadTatuadorView$3.class
 Controller\ConexaoSQLServer.class
