@@ -119,7 +119,6 @@ public class ProdutoController extends ConexaoSQLServer{
         } catch (Exception e) {
             System.out.println("Erro ao carregar dados: " + e.getMessage());
         }
-
         return model;
     }
 
