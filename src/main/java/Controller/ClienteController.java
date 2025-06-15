@@ -82,11 +82,12 @@ public class ClienteController extends PessoaController{
         return null;
     }
 
-    public boolean atualizarCliente(Arte cliente) {
-        String sql = "UPDATE cliente SET imagem = ? WHERE id = ?";
+    public boolean atualizarCliente(Cliente cliente) {
+        String sql = "UPDATE cliente SET arte_anterior_id = ? WHERE id = ?";
         try (Connection con = conectar(); 
              PreparedStatement stmt = con.prepareStatement(sql)) {
-            stmt.setString(1, cliente.getImagem());
+            stmt.setInt(1, cliente.getArteId());
+            stmt.setInt(2, cliente.getId());
             stmt.executeUpdate();
             stmt.close();
             con.close();

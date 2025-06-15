@@ -9,54 +9,59 @@ package Model;
  * @author Aluno
  */
 public class Orcamento {
-    private int numero;
-    private Cliente cliente;
-    private Tatuador tatuador;
-    private Produto produto;
+    private int id;
+    private int cliente_id;
+    private int tatuador_id;
+    private int produto_id;
+    private int contrato_id;
     private float maoDeObra;
     private float total;
-    private Arte arte;
+    private int arte_id;
 
-    public Orcamento(int numero, Cliente cliente, Tatuador tatuador, Produto produto, float maoDeObra, float total, Arte arte) {
-        this.numero = numero;
-        this.cliente = cliente;
-        this.tatuador = tatuador;
-        this.produto = produto;
+    public Orcamento(int id, int cliente_id, int tatuador_id, int produto_id, float maoDeObra, float total,int contrato_id ,int arte_id) {
+        this.id = id;
+        this.cliente_id = cliente_id;
+        this.tatuador_id = tatuador_id;
+        this.produto_id = produto_id;
         this.maoDeObra = maoDeObra;
         this.total = total;
-        this.arte = arte;
+        this.contrato_id = contrato_id;
+        this.arte_id = arte_id;
+    }   
+
+    public Orcamento() {
     }
 
-    public int getNumero() {
-        return numero;
+    public int getId() {
+        return id;
     }
 
-    public void setNumero(int numero) {
-        this.numero = numero;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public int getCliente() {
+        return cliente_id;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setCliente(int cliente) {
+        this.cliente_id = cliente;
     }
 
-    public Tatuador getTatuador() {
-        return tatuador;
+    public int getTatuador() {
+        return tatuador_id;
     }
 
-    public void setTatuador(Tatuador tatuador) {
-        this.tatuador = tatuador;
+    public void setTatuador(int tatuador) {
+        this.tatuador_id = tatuador;
     }
 
-    public Produto getProduto() {
-        return produto;
+    public int getProduto() {
+        return produto_id;
     }
 
-    public void setProduto(Produto produto) {
-        this.produto = produto;
+    public void setProduto(int produto) {
+        this.produto_id = produto;
     }
 
     public float getMaoDeObra() {
@@ -75,14 +80,18 @@ public class Orcamento {
         this.total = total;
     }
 
-    public Arte getArte() {
-        return arte;
+    public int getArte() {
+        return arte_id;
     }
 
-    public void setArte(Arte arte) {
-        this.arte = arte;
+    public void setArte(int arte) {
+        this.arte_id = arte;
     }
-    
-    
-    
+    public int getContratoId() {
+        return contrato_id;
+    }
+
+    public void setContratoId(int contrato_id) {
+        this.contrato_id = contrato_id;
+    }
 }
