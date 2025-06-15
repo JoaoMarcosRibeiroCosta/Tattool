@@ -17,6 +17,22 @@ public class ConsultaProdutoView extends javax.swing.JFrame {
     public ConsultaProdutoView() {
         initComponents();
         carregarTabela();
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+    public void mouseClicked(java.awt.event.MouseEvent evt) {
+        int linhaSelecionada = jTable1.getSelectedRow();
+        if (linhaSelecionada != -1) {
+            String id = jTable1.getValueAt(linhaSelecionada, 0).toString();
+            String descricao = jTable1.getValueAt(linhaSelecionada, 1).toString();
+            String valor = jTable1.getValueAt(linhaSelecionada, 2).toString();
+            String quantidade = jTable1.getValueAt(linhaSelecionada, 3).toString();
+
+            LbId.setText(id);
+            LbDescricao.setText(descricao);
+            LbValor.setText(valor);
+            LbQuantidade.setText(quantidade);
+        }
+    }
+});
     }
 
     /**
@@ -34,6 +50,11 @@ public class ConsultaProdutoView extends javax.swing.JFrame {
         TxtBuscar = new javax.swing.JTextField();
         ComboFiltro = new javax.swing.JComboBox<>();
         BtBuscar = new javax.swing.JButton();
+        LbTituto = new javax.swing.JLabel();
+        LbId = new javax.swing.JLabel();
+        LbDescricao = new javax.swing.JLabel();
+        LbValor = new javax.swing.JLabel();
+        LbQuantidade = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -48,6 +69,11 @@ public class ConsultaProdutoView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         LbBuscar.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
@@ -73,30 +99,69 @@ public class ConsultaProdutoView extends javax.swing.JFrame {
             }
         });
 
+        LbTituto.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        LbTituto.setText("Consulta de Produtos");
+
+        LbId.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        LbId.setText("ID");
+
+        LbDescricao.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        LbDescricao.setText("Descricao");
+
+        LbValor.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        LbValor.setText("Valor");
+
+        LbQuantidade.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        LbQuantidade.setText("Quantidade");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(342, 342, 342)
+                .addComponent(LbTituto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(357, 357, 357))
             .addGroup(layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(LbBuscar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TxtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ComboFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BtBuscar))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(15, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(LbBuscar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TxtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ComboFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(BtBuscar))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(15, 15, 15))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(LbId)
+                        .addGap(169, 169, 169)
+                        .addComponent(LbDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(LbValor)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LbQuantidade)
+                        .addGap(72, 72, 72))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(91, 91, 91)
+                .addContainerGap()
+                .addComponent(LbTituto)
+                .addGap(55, 55, 55)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LbId)
+                    .addComponent(LbDescricao)
+                    .addComponent(LbValor)
+                    .addComponent(LbQuantidade))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LbBuscar)
                     .addComponent(TxtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -119,6 +184,10 @@ public class ConsultaProdutoView extends javax.swing.JFrame {
     private void BtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtBuscarActionPerformed
         aplicarFiltro();
     }//GEN-LAST:event_BtBuscarActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        //
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -162,6 +231,7 @@ public class ConsultaProdutoView extends javax.swing.JFrame {
         DefaultTableModel model = controller.carregarTabela(filtro);
         jTable1.setModel(model);
     }
+    
     private void aplicarFiltro() {
     String textoBusca = TxtBuscar.getText().trim();
     String coluna = ComboFiltro.getSelectedItem().toString();
@@ -182,10 +252,16 @@ public class ConsultaProdutoView extends javax.swing.JFrame {
     DefaultTableModel model = controller.carregarTabela(filtro);
     jTable1.setModel(model);
 }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtBuscar;
     private javax.swing.JComboBox<String> ComboFiltro;
     private javax.swing.JLabel LbBuscar;
+    private javax.swing.JLabel LbDescricao;
+    private javax.swing.JLabel LbId;
+    private javax.swing.JLabel LbQuantidade;
+    private javax.swing.JLabel LbTituto;
+    private javax.swing.JLabel LbValor;
     private javax.swing.JTextField TxtBuscar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

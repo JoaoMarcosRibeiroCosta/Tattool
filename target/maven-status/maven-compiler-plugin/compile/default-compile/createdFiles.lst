@@ -17,6 +17,10 @@ View\ConsultaProdutoView.class
 Model\Arte.class
 View\ConsultaProdutoView$3.class
 View\TelaCadContrato.class
+<<<<<<< HEAD
+=======
+View\ConsultaProdutoView$6.class
+>>>>>>> c9fa8048469864217f2827a872728c331d4914e5
 Controller\TatuadorController.class
 View\MainView$6.class
 View\CadTatuadorView$3.class
@@ -44,6 +48,7 @@ View\MainView$5.class
 View\CadProView.class
 Model\Tatuador.class
 View\MainView$1.class
+View\ConsultaProdutoView$5.class
 View\CadArteView$2.class
 View\TelaCadContrato$1.class
 View\CadProView$2.class
