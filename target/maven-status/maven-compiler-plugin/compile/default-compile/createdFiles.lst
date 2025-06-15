@@ -6,6 +6,7 @@ Model\Orcamento.class
 Controller\ArteController.class
 View\CadTatuadorView.class
 View\CadTatuadorView$1.class
+View\ConsultaProdutoView$4.class
 View\CadClienteView$1.class
 View\MainView$4.class
 View\CadProView$1.class
@@ -15,6 +16,7 @@ View\CadArteView$1.class
 Model\Contrato.class
 View\ConsultaProdutoView.class
 Model\Arte.class
+View\ConsultaProdutoView$3.class
 View\TelaCadContrato.class
 View\MainView$6.class
 View\CadTatuadorView$3.class
@@ -28,11 +30,14 @@ View\MainView$2.class
 Model\Cliente.class
 Model\Produto.class
 View\CadClienteView$2.class
+View\ConsultaProdutoView$2.class
 View\CadArteView.class
 View\CadTatuadorView$4.class
 Controller\ProdutoController.class
 View\CadClienteView$3.class
 com\mycompany\tattool\Tattool.class
+Controller\ContratoController.class
+Controller\OrcamentoController.class
 View\MainView.class
 View\ConsultaProdutoView$1.class
 View\MainView$5.class

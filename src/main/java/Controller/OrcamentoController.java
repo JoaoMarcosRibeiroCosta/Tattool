@@ -4,79 +4,95 @@
  */
 package Controller;
 
-import Model.Produto;
+/**
+ *
+ * @author samue
+ */
+
+import Model.Orcamento;
 import Controller.ConexaoSQLServer;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import javax.swing.table.DefaultTableModel;
+public class OrcamentoController extends ConexaoSQLServer{
 
-public class ProdutoController extends ConexaoSQLServer{
-
-    public boolean inserirProduto(Produto produto) {
-        String sql = "INSERT INTO Produto (descricao, valor, quantidade) VALUES (?, ?, ?)";
+    public boolean inserirOrcamento(Orcamento orcamento) {
+        String sql = "INSERT INTO Orcamento (cliente_id, tatuador_id, produto_id, arte_id, contrato_id, mao_de_obra, total) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (Connection con = conectar(); 
             PreparedStatement stmt = con.prepareStatement(sql)) {
-            stmt.setString(1, produto.getDescricao());
-            stmt.setDouble(2, produto.getValor());
-            stmt.setInt(3, produto.getQuantidade());    
+            stmt.setInt(1, orcamento.getCliente());
+            stmt.setInt(2, orcamento.getTatuador());   
+            stmt.setInt(3, orcamento.getProduto());   
+            stmt.setInt(4, orcamento.getArte());
+            stmt.setInt(5, orcamento.getContratoId());   
+            stmt.setFloat(6, orcamento.getMaoDeObra());
+            stmt.setFloat(7, orcamento.getTotal());
             stmt.executeUpdate();
             stmt.close();
             con.close();
 
             return true;
         } catch (Exception e) {
-            System.out.println("Erro ao inserir produto: " + e.getMessage());
+            System.out.println("Erro ao inserir Orcamento: " + e.getMessage());
             return false;
         }
     }
 
-    public Produto buscarProduto(int id) {
-        String sql = "SELECT * FROM Produto WHERE id = ?";
+    public Orcamento buscarOrcamento(int id) {
+        String sql = "SELECT * FROM Orcamento WHERE id = ?";
         try (Connection con = conectar(); 
              PreparedStatement stmt = con.prepareStatement(sql)) {
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                Produto produto = new Produto();
-                produto.setId(rs.getInt("id"));
-                produto.setDescricao(rs.getString("descricao"));
-                produto.setQuantidade(rs.getInt("quantidade"));
-                produto.setValor(rs.getFloat("valor"));
-                return produto;
+                Orcamento orcamento = new Orcamento();
+                orcamento.setId(rs.getInt("id"));
+                orcamento.setCliente(rs.getInt("cliente_id"));
+                orcamento.setTatuador(rs.getInt("tatuador_id"));
+                orcamento.setProduto(rs.getInt("produto_id"));
+                orcamento.setArte(rs.getInt("arte_id"));
+                orcamento.setContratoId(rs.getInt("contrato_id"));
+                orcamento.setMaoDeObra(rs.getFloat("mao_de_obra"));
+                orcamento.setTotal(rs.getFloat("total"));
+                return orcamento;
             }
             rs.close();
             stmt.close();
             con.close();
 
         } catch (Exception e) {
-            System.out.println("Erro ao buscar produto: " + e.getMessage());
+            System.out.println("Erro ao buscar Orcamento: " + e.getMessage());
         }
         return null;
     }
 
-    public boolean atualizarProduto(Produto produto) {
-        String sql = "UPDATE Produto SET descricao = ?, valor = ?, quantidade = ? WHERE id = ?";
+    public boolean atualizarOrcamento(Orcamento orcamento) {
+        String sql = "UPDATE Orcamento SET cliente_id = ?, tatuador_id = ?, produto_id = ?, arte_id = ?, contrato_id = ?, mao_de_obra = ?, total = ? WHERE id = ?";
         try (Connection con = conectar(); 
              PreparedStatement stmt = con.prepareStatement(sql)) {
-            stmt.setString(1, produto.getDescricao());
-            stmt.setDouble(2, produto.getValor());
-            stmt.setInt(3, produto.getQuantidade());
-            stmt.setInt(4, produto.getId());
+            stmt.setInt(1, orcamento.getCliente());
+            stmt.setInt(2, orcamento.getTatuador());
+            stmt.setInt(3, orcamento.getProduto());
+            stmt.setInt(4, orcamento.getArte());
+            stmt.setInt(5, orcamento.getContratoId());
+            stmt.setFloat(6, orcamento.getMaoDeObra());
+            stmt.setFloat(7, orcamento.getTotal());
+            stmt.setInt(8, orcamento.getId());
             stmt.executeUpdate();
             stmt.close();
             con.close();
 
             return true;
         } catch (Exception e) {
-            System.out.println("Erro ao atualizar produto: " + e.getMessage());
+            System.out.println("Erro ao atualizar Orcamento: " + e.getMessage());
             return false;
         }
     }
 
-    public boolean excluirProduto(int id) {
-        String sql = "DELETE FROM Produto WHERE id = ?";
+    public boolean excluirOrcamento(int id) {
+        String sql = "DELETE FROM Orcamento WHERE id = ?";
         try (
             Connection con = conectar();     
             PreparedStatement stmt = con.prepareStatement(sql)) {
@@ -87,7 +103,7 @@ public class ProdutoController extends ConexaoSQLServer{
 
             return true;
         } catch (Exception e) {
-            System.out.println("Erro ao excluir produto: " + e.getMessage());
+            System.out.println("Erro ao excluir Orcamento: " + e.getMessage());
             return false;
         }
     }
@@ -95,7 +111,7 @@ public class ProdutoController extends ConexaoSQLServer{
     
     public DefaultTableModel carregarTabela(String filtro) {
         DefaultTableModel model = new DefaultTableModel();
-        String sql = "SELECT * FROM Produto"+filtro;
+        String sql = "SELECT * FROM Orcamento"+filtro;
         try (Connection con = conectar(); PreparedStatement stmt = con.prepareStatement(sql); ResultSet rs = stmt.executeQuery()){
 
             ResultSetMetaData rsmd = rs.getMetaData();
@@ -120,6 +136,7 @@ public class ProdutoController extends ConexaoSQLServer{
             System.out.println("Erro ao carregar dados: " + e.getMessage());
         }
 
+        
         return model;
     }
 

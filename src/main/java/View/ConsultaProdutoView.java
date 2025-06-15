@@ -30,8 +30,12 @@ public class ConsultaProdutoView extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        LbBuscar = new javax.swing.JLabel();
+        TxtBuscar = new javax.swing.JTextField();
+        ComboFiltro = new javax.swing.JComboBox<>();
+        BtBuscar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -46,25 +50,75 @@ public class ConsultaProdutoView extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        LbBuscar.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        LbBuscar.setText("Buscar:");
+
+        TxtBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtBuscarActionPerformed(evt);
+            }
+        });
+
+        ComboFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Descrição", "Valor", "Quantidade" }));
+        ComboFiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboFiltroActionPerformed(evt);
+            }
+        });
+
+        BtBuscar.setText("Buscar");
+        BtBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtBuscarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(LbBuscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TxtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ComboFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BtBuscar))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(127, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(91, 91, 91)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LbBuscar)
+                    .addComponent(TxtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ComboFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtBuscar))
+                .addGap(37, 37, 37))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ComboFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboFiltroActionPerformed
+        
+    }//GEN-LAST:event_ComboFiltroActionPerformed
+
+    private void TxtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtBuscarActionPerformed
+
+    private void BtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtBuscarActionPerformed
+        aplicarFiltro();
+    }//GEN-LAST:event_BtBuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -101,13 +155,38 @@ public class ConsultaProdutoView extends javax.swing.JFrame {
         });
     }
 
-    public void carregarTabela() {
-        String filtro = " WHERE descricao LIKE '%tinta%';";
+    public void carregarTabela() { 
+        String pesquisa = "";
+        String filtro = " WHERE descricao LIKE '%"+pesquisa+"%' or valor LIKE '%"+pesquisa+"%' or quantidade LIKE '%"+pesquisa+"%';";
         //  if(tem filtro){ muda o filtro) else( filtro = "") :)
         DefaultTableModel model = controller.carregarTabela(filtro);
         jTable1.setModel(model);
     }
+    private void aplicarFiltro() {
+    String textoBusca = TxtBuscar.getText().trim();
+    String coluna = ComboFiltro.getSelectedItem().toString();
+
+    String colunaBD = switch (coluna) {
+        case "ID" -> "id";
+        case "Descrição" -> "descricao";
+        case "Valor" -> "valor";
+        case "Quantidade" -> "quantidade";
+        default -> "descricao"; 
+    };
+
+    String filtro = "";
+    if (!textoBusca.isEmpty()) {
+        filtro = " WHERE " + colunaBD + " LIKE '%" + textoBusca + "%'";
+    }
+
+    DefaultTableModel model = controller.carregarTabela(filtro);
+    jTable1.setModel(model);
+}
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtBuscar;
+    private javax.swing.JComboBox<String> ComboFiltro;
+    private javax.swing.JLabel LbBuscar;
+    private javax.swing.JTextField TxtBuscar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

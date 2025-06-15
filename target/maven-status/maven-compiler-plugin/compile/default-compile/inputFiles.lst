@@ -1,6 +1,7 @@
 C:\Users\usuario\Downloads\Tattool\src\main\java\Model\Pedido.java
 C:\Users\usuario\Downloads\Tattool\src\main\java\View\CadTatuadorView.java
 C:\Users\usuario\Downloads\Tattool\src\main\java\Controller\ConexaoSQLServer.java
+C:\Users\usuario\Downloads\Tattool\src\main\java\Controller\ContratoController.java
 C:\Users\usuario\Downloads\Tattool\src\main\java\View\ConsultaProdutoView.java
 C:\Users\usuario\Downloads\Tattool\src\main\java\Model\Produto.java
 C:\Users\usuario\Downloads\Tattool\src\main\java\View\CadClienteView.java
@@ -19,3 +20,4 @@ C:\Users\usuario\Downloads\Tattool\src\main\java\Model\Tatuador.java
 C:\Users\usuario\Downloads\Tattool\src\main\java\Model\Contrato.java
 C:\Users\usuario\Downloads\Tattool\src\main\java\Controller\ArteController.java
 C:\Users\usuario\Downloads\Tattool\src\main\java\Model\Arte.java
+C:\Users\usuario\Downloads\Tattool\src\main\java\Controller\OrcamentoController.java

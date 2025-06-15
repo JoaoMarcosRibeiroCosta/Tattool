@@ -9,34 +9,37 @@ package Model;
  * @author Aluno
  */
 public class Contrato {
-    private int numero;
-    private Cliente cliente;
-    private String dados; // dados a serem escritos pelo usuario
+    private int id;
+    private int cliente_id;
+    private String dados;
 
-    public Contrato(int numero, Cliente cliente, String dados) {
-        this.numero = numero;
-        this.cliente = cliente;
+    public Contrato(int id, int cliente_id, String dados) {
+        this.id = id;
+        this.cliente_id = cliente_id;
         this.dados = dados;
     }
 
-    public int getNumero() {
-        return numero;
+    public Contrato() {
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public int getId() {
+        return id;
+    }
+
+    public int getClienteId() {
+        return cliente_id;
     }
 
     public String getDados() {
         return dados;
     }
 
-    public void setNumero(int numero) {
-        this.numero = numero;
+    public void setId(int numero) {
+        this.id = id;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setClienteId(int cliente_id) {
+        this.cliente_id = cliente_id;
     }
 
     public void setDados(String dados) {

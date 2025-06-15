@@ -48,7 +48,7 @@ public class ArteController extends ConexaoSQLServer{
     }
 
     public Arte buscar(int id) {
-        String sql = "SELECT * FROM arte WHERE id = ?";
+        String sql = "SELECT * FROM Arte WHERE id = ?";
         try (Connection con = conectar(); 
              PreparedStatement stmt = con.prepareStatement(sql)) {
             stmt.setInt(1, id);
@@ -70,7 +70,7 @@ public class ArteController extends ConexaoSQLServer{
     }
 
     public boolean atualizar(Arte arte) {
-        String sql = "UPDATE arte SET imagem = ? WHERE id = ?";
+        String sql = "UPDATE Arte SET imagem = ? WHERE id = ?";
         try (Connection con = conectar(); 
              PreparedStatement stmt = con.prepareStatement(sql)) {
             stmt.setString(1, arte.getImagem());
@@ -80,13 +80,13 @@ public class ArteController extends ConexaoSQLServer{
 
             return true;
         } catch (Exception e) {
-            System.out.println("Erro ao atualizar arte: " + e.getMessage());
+            System.out.println("Erro ao atualizar Arte: " + e.getMessage());
             return false;
         }
     }
 
     public boolean excluir(int id) {
-        String sql = "DELETE FROM arte WHERE id = ?";
+        String sql = "DELETE FROM Arte WHERE id = ?";
         try (
             Connection con = conectar();     
             PreparedStatement stmt = con.prepareStatement(sql)) {
@@ -105,7 +105,7 @@ public class ArteController extends ConexaoSQLServer{
     
     public DefaultTableModel carregarTabela(String filtro) {
         DefaultTableModel model = new DefaultTableModel();
-        String sql = "SELECT * FROM arte"+filtro;
+        String sql = "SELECT * FROM Arte"+filtro;
         try (Connection con = conectar(); PreparedStatement stmt = con.prepareStatement(sql); ResultSet rs = stmt.executeQuery()){
 
             ResultSetMetaData rsmd = rs.getMetaData();

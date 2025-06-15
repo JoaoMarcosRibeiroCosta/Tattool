@@ -4,7 +4,12 @@
  */
 package Controller;
 
-import Model.Produto;
+/**
+ *
+ * @author samue
+ */
+
+import Model.Contrato;
 import Controller.ConexaoSQLServer;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,71 +17,67 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import javax.swing.table.DefaultTableModel;
 
-public class ProdutoController extends ConexaoSQLServer{
-
-    public boolean inserirProduto(Produto produto) {
-        String sql = "INSERT INTO Produto (descricao, valor, quantidade) VALUES (?, ?, ?)";
+public class ContratoController extends ConexaoSQLServer{
+    
+public boolean inserirContrato(Contrato contrato) {
+        String sql = "INSERT INTO Contrato (cliente_id, dados) VALUES (?, ?)";
         try (Connection con = conectar(); 
             PreparedStatement stmt = con.prepareStatement(sql)) {
-            stmt.setString(1, produto.getDescricao());
-            stmt.setDouble(2, produto.getValor());
-            stmt.setInt(3, produto.getQuantidade());    
+            stmt.setInt(1, contrato.getClienteId());
+            stmt.setString(2, contrato.getDados());   
             stmt.executeUpdate();
             stmt.close();
             con.close();
-
             return true;
         } catch (Exception e) {
-            System.out.println("Erro ao inserir produto: " + e.getMessage());
+            System.out.println("Erro ao inserir Contrato: " + e.getMessage());
             return false;
         }
     }
 
-    public Produto buscarProduto(int id) {
-        String sql = "SELECT * FROM Produto WHERE id = ?";
+    public Contrato buscarContrato(int id) {
+        String sql = "SELECT * FROM Contrato WHERE id = ?";
         try (Connection con = conectar(); 
              PreparedStatement stmt = con.prepareStatement(sql)) {
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                Produto produto = new Produto();
-                produto.setId(rs.getInt("id"));
-                produto.setDescricao(rs.getString("descricao"));
-                produto.setQuantidade(rs.getInt("quantidade"));
-                produto.setValor(rs.getFloat("valor"));
-                return produto;
+                Contrato contrato = new Contrato();
+                contrato.setId(rs.getInt("id"));
+                contrato.setClienteId(rs.getInt("cliente_id"));
+                contrato.setDados(rs.getString("dados"));
+                return contrato;
             }
             rs.close();
             stmt.close();
             con.close();
 
         } catch (Exception e) {
-            System.out.println("Erro ao buscar produto: " + e.getMessage());
+            System.out.println("Erro ao buscar Contrato: " + e.getMessage());
         }
         return null;
     }
 
-    public boolean atualizarProduto(Produto produto) {
-        String sql = "UPDATE Produto SET descricao = ?, valor = ?, quantidade = ? WHERE id = ?";
+    public boolean atualizarContrato(Contrato contrato) {
+        String sql = "UPDATE Contrato SET cliente_id = ?, dados = ? WHERE id = ?";
         try (Connection con = conectar(); 
              PreparedStatement stmt = con.prepareStatement(sql)) {
-            stmt.setString(1, produto.getDescricao());
-            stmt.setDouble(2, produto.getValor());
-            stmt.setInt(3, produto.getQuantidade());
-            stmt.setInt(4, produto.getId());
+            stmt.setInt(1, contrato.getClienteId());
+            stmt.setString(2, contrato.getDados());
+            stmt.setInt(3, contrato.getId());
             stmt.executeUpdate();
             stmt.close();
             con.close();
 
             return true;
         } catch (Exception e) {
-            System.out.println("Erro ao atualizar produto: " + e.getMessage());
+            System.out.println("Erro ao atualizar Contrato: " + e.getMessage());
             return false;
         }
     }
 
-    public boolean excluirProduto(int id) {
-        String sql = "DELETE FROM Produto WHERE id = ?";
+    public boolean excluirContrato(int id) {
+        String sql = "DELETE FROM Contrato WHERE id = ?";
         try (
             Connection con = conectar();     
             PreparedStatement stmt = con.prepareStatement(sql)) {
@@ -87,7 +88,7 @@ public class ProdutoController extends ConexaoSQLServer{
 
             return true;
         } catch (Exception e) {
-            System.out.println("Erro ao excluir produto: " + e.getMessage());
+            System.out.println("Erro ao excluir Contrato: " + e.getMessage());
             return false;
         }
     }
@@ -95,7 +96,7 @@ public class ProdutoController extends ConexaoSQLServer{
     
     public DefaultTableModel carregarTabela(String filtro) {
         DefaultTableModel model = new DefaultTableModel();
-        String sql = "SELECT * FROM Produto"+filtro;
+        String sql = "SELECT * FROM Contrato"+filtro;
         try (Connection con = conectar(); PreparedStatement stmt = con.prepareStatement(sql); ResultSet rs = stmt.executeQuery()){
 
             ResultSetMetaData rsmd = rs.getMetaData();
