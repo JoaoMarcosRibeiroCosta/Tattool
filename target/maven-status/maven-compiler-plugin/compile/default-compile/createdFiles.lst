@@ -18,6 +18,7 @@ View\MainView$7.class
 View\CadArteView$1.class
 Model\Contrato.class
 View\ConsultaProdutoView.class
+View\CadClienteView$8.class
 Model\Arte.class
 View\ConsultaProdutoView$3.class
 View\TelaCadContrato.class
@@ -45,6 +46,7 @@ View\CadProView$3.class
 View\CadArteView.class
 View\ConsultaClienteView$3.class
 View\CadTatuadorView$4.class
+View\CadClienteView$9.class
 Controller\ProdutoController.class
 View\CadProView$6.class
 View\CadClienteView$3.class

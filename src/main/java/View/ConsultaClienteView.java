@@ -19,7 +19,7 @@ public class ConsultaClienteView extends javax.swing.JFrame {
     /**
      * Creates new form ConsultaClienteView
      */
-    public ConsultaClienteView() {
+    public ConsultaClienteView(CadClienteView telaCadastro) {
         initComponents();
         this.telaCadastro = telaCadastro;
         carregarTabela();
@@ -40,15 +40,11 @@ public class ConsultaClienteView extends javax.swing.JFrame {
         BtBuscar = new javax.swing.JButton();
         LbBuscar = new javax.swing.JLabel();
         LbTituto = new javax.swing.JLabel();
-        LbId = new javax.swing.JLabel();
-        LbDescricao = new javax.swing.JLabel();
-        LbValor = new javax.swing.JLabel();
-        LbQuantidade = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         BtSelecionar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         TxtBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,18 +73,6 @@ public class ConsultaClienteView extends javax.swing.JFrame {
 
         LbTituto.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         LbTituto.setText("Consulta de Clientes");
-
-        LbId.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        LbId.setText("ID");
-
-        LbDescricao.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        LbDescricao.setText("Descricao");
-
-        LbValor.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        LbValor.setText("Valor");
-
-        LbQuantidade.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        LbQuantidade.setText("Quantidade");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -128,42 +112,24 @@ public class ConsultaClienteView extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(LbBuscar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(TxtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ComboFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(BtBuscar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(BtSelecionar))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(15, 15, 15))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(101, 101, 101)
-                        .addComponent(LbId)
-                        .addGap(169, 169, 169)
-                        .addComponent(LbDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(LbValor)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(LbQuantidade)
-                        .addGap(72, 72, 72))))
+                        .addComponent(LbBuscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TxtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ComboFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BtBuscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BtSelecionar))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(LbTituto)
-                .addGap(55, 55, 55)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LbId)
-                    .addComponent(LbDescricao)
-                    .addComponent(LbValor)
-                    .addComponent(LbQuantidade))
-                .addGap(18, 18, 18)
+                .addGap(93, 93, 93)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -218,32 +184,33 @@ public class ConsultaClienteView extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void BtSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtSelecionarActionPerformed
-/*
+
         int linha = jTable1.getSelectedRow();
-        if (linha != -1) {
+            if (linha != -1) {
             String idStr = jTable1.getValueAt(linha, 0).toString();
             int id = Integer.parseInt(idStr);
 
-            ClienteController controller = new ClienteController();
-            Cliente cliente = controller.buscarCliente(id);
+        Cliente cliente = controller.buscarCliente(id);
 
-            if (cliente != null) {
+             if (cliente != null && telaCadastro != null) {
                 telaCadastro.preencherCampos(
-                    String.valueOf(cliente.getId()),
-                    cliente.getArteId(),
-                    cliente.getNome(),
-                    cliente.getNome(), 
-                    cliente.getRua(), 
-                    cliente.getNumero(), 
-                    cliente.getBairro(),
-                    cliente.getCidade()
-                );
-                this.dispose();
+                String.valueOf(cliente.getId()),         // ID
+                String.valueOf(cliente.getArteId()),                     // Arte anterior ID
+                String.valueOf(cliente.getNome()),                       // Nome
+                String.valueOf(cliente.getCpf()),                        // CPF
+                String.valueOf(cliente.getRua()),                        // Rua
+                String.valueOf(cliente.getNumero()),                     // Número
+                String.valueOf(cliente.getBairro()),                     // Bairro
+                String.valueOf(cliente.getCidade())                      // Cidade
+            );
+            this.dispose(); // Fecha a janela de consulta
             } else {
-                JOptionPane.showMessageDialog(this, "Cliente não encontrado.");
-            }
+            JOptionPane.showMessageDialog(this, "Cliente não encontrado ou tela de cadastro não disponível.");
         }
-*/
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecione uma linha da tabela.");
+        }
+
     }//GEN-LAST:event_BtSelecionarActionPerformed
 
     /**
@@ -276,13 +243,13 @@ public class ConsultaClienteView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ConsultaClienteView().setVisible(true);
+                //new ConsultaClienteView().setVisible(true);
             }
         });
     }
         public void carregarTabela() { 
         String pesquisa = "";
-        String filtro = " WHERE descricao LIKE '%"+pesquisa+"%' or valor LIKE '%"+pesquisa+"%' or quantidade LIKE '%"+pesquisa+"%';";
+        String filtro = " WHERE c.pessoa_id LIKE '%"+pesquisa+"%' ;";
         //  if(tem filtro){ muda o filtro) else( filtro = "") :)
         DefaultTableModel model = controller.carregarTabela(filtro);
         jTable1.setModel(model);
@@ -314,11 +281,7 @@ public class ConsultaClienteView extends javax.swing.JFrame {
     private javax.swing.JButton BtSelecionar;
     private javax.swing.JComboBox<String> ComboFiltro;
     private javax.swing.JLabel LbBuscar;
-    private javax.swing.JLabel LbDescricao;
-    private javax.swing.JLabel LbId;
-    private javax.swing.JLabel LbQuantidade;
     private javax.swing.JLabel LbTituto;
-    private javax.swing.JLabel LbValor;
     private javax.swing.JTextField TxtBuscar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.8" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
     <Menu class="javax.swing.JMenuBar" name="MenuCadCli">
       <SubComponents>
@@ -86,24 +86,31 @@
                                               <EmptySpace max="32767" attributes="0"/>
                                               <Component id="LbCidadeCLi" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <Component id="TxtRuaCLi" min="-2" pref="350" max="-2" attributes="0"/>
+                                          <Component id="TxtRuaCli" min="-2" pref="350" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="LbNumeroCli" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Component id="TxtNumeroCLi" min="-2" pref="50" max="-2" attributes="0"/>
+                                              <Component id="TxtNumeroCli" min="-2" pref="50" max="-2" attributes="0"/>
                                           </Group>
                                           <Component id="txtCidadeCli" min="-2" pref="230" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Component id="TxtNomeCLi" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
+                                  <Component id="TxtNomeCli" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                              <Component id="LbBairroCli" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="LbArteAnterior" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="TxtArteCli" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="LbBairroCli" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
@@ -130,7 +137,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="BtConsultar" min="-2" pref="22" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="TxtCpfCLi" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
+                          <Component id="TxtCpfCli" alignment="0" min="-2" pref="350" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -158,20 +165,20 @@
                       <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="TxtCpfCLi" min="-2" max="-2" attributes="0"/>
+                      <Component id="TxtCpfCli" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="LbNomeCli" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="TxtNomeCLi" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="TxtNomeCli" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="LbRuaCli" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                  <Component id="TxtRuaCLi" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="TxtRuaCli" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="LbNumeroCli" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="TxtNumeroCLi" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="TxtNumeroCli" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -180,7 +187,12 @@
                   <Component id="TxtBairroCli" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtCidadeCli" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="185" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="LbArteAnterior" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="TxtArteCli" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="151" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="BtNovo" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="BtGravar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -257,20 +269,28 @@
         <Property name="text" type="java.lang.String" value="Cidade:"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.JLabel" name="LbArteAnterior">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="14" style="3"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Arte Anterior:"/>
+      </Properties>
+    </Component>
     <Component class="javax.swing.JTextField" name="TxtIdCli">
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TxtIdCliActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="TxtCpfCLi">
+    <Component class="javax.swing.JTextField" name="TxtCpfCli">
     </Component>
-    <Component class="javax.swing.JTextField" name="TxtNomeCLi">
+    <Component class="javax.swing.JTextField" name="TxtNomeCli">
     </Component>
-    <Component class="javax.swing.JTextField" name="TxtRuaCLi">
+    <Component class="javax.swing.JTextField" name="TxtRuaCli">
     </Component>
-    <Component class="javax.swing.JTextField" name="TxtNumeroCLi">
+    <Component class="javax.swing.JTextField" name="TxtNumeroCli">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TxtNumeroCLiActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TxtNumeroCliActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="TxtBairroCli">
@@ -284,12 +304,16 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Novo"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtNovoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="BtConsultar">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="sansserif" size="12" style="3"/>
+          <Font name="Segoe UI Emoji" size="12" style="3"/>
         </Property>
+        <Property name="text" type="java.lang.String" value="\ud83d\udd0d" containsInvalidXMLChars="true"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
             <BevelBorder/>
@@ -326,6 +350,11 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Excluir"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="TxtArteCli">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TxtArteCliActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

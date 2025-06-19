@@ -39,11 +39,12 @@ public class CadClienteView extends javax.swing.JFrame {
         LbNumeroCli = new javax.swing.JLabel();
         LbBairroCli = new javax.swing.JLabel();
         LbCidadeCLi = new javax.swing.JLabel();
+        LbArteAnterior = new javax.swing.JLabel();
         TxtIdCli = new javax.swing.JTextField();
-        TxtCpfCLi = new javax.swing.JTextField();
-        TxtNomeCLi = new javax.swing.JTextField();
-        TxtRuaCLi = new javax.swing.JTextField();
-        TxtNumeroCLi = new javax.swing.JTextField();
+        TxtCpfCli = new javax.swing.JTextField();
+        TxtNomeCli = new javax.swing.JTextField();
+        TxtRuaCli = new javax.swing.JTextField();
+        TxtNumeroCli = new javax.swing.JTextField();
         TxtBairroCli = new javax.swing.JTextField();
         txtCidadeCli = new javax.swing.JTextField();
         BtNovo = new javax.swing.JButton();
@@ -51,6 +52,7 @@ public class CadClienteView extends javax.swing.JFrame {
         BtGravar = new javax.swing.JButton();
         BtAlterar = new javax.swing.JButton();
         BtExcluir = new javax.swing.JButton();
+        TxtArteCli = new javax.swing.JTextField();
         MenuCadCli = new javax.swing.JMenuBar();
         MenuContratos = new javax.swing.JMenu();
         MenuContratosCadastrados = new javax.swing.JMenuItem();
@@ -83,22 +85,31 @@ public class CadClienteView extends javax.swing.JFrame {
         LbCidadeCLi.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         LbCidadeCLi.setText("Cidade:");
 
+        LbArteAnterior.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        LbArteAnterior.setText("Arte Anterior:");
+
         TxtIdCli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TxtIdCliActionPerformed(evt);
             }
         });
 
-        TxtNumeroCLi.addActionListener(new java.awt.event.ActionListener() {
+        TxtNumeroCli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtNumeroCLiActionPerformed(evt);
+                TxtNumeroCliActionPerformed(evt);
             }
         });
 
         BtNovo.setFont(new java.awt.Font("sansserif", 3, 14)); // NOI18N
         BtNovo.setText("Novo");
+        BtNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtNovoActionPerformed(evt);
+            }
+        });
 
-        BtConsultar.setFont(new java.awt.Font("sansserif", 3, 12)); // NOI18N
+        BtConsultar.setFont(new java.awt.Font("Segoe UI Emoji", 3, 12)); // NOI18N
+        BtConsultar.setText("🔍");
         BtConsultar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         BtConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,6 +130,12 @@ public class CadClienteView extends javax.swing.JFrame {
 
         BtExcluir.setFont(new java.awt.Font("sansserif", 3, 14)); // NOI18N
         BtExcluir.setText("Excluir");
+
+        TxtArteCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtArteCliActionPerformed(evt);
+            }
+        });
 
         MenuContratos.setText("Contratos");
 
@@ -172,18 +189,23 @@ public class CadClienteView extends javax.swing.JFrame {
                                                 .addComponent(TxtBairroCli, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(LbCidadeCLi))
-                                            .addComponent(TxtRuaCLi, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(TxtRuaCli, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(LbNumeroCli)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(TxtNumeroCLi, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(TxtNumeroCli, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addComponent(txtCidadeCli, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(TxtNomeCLi, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(TxtNomeCli, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(8, 8, 8)
-                                .addComponent(LbBairroCli))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(LbArteAnterior)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(TxtArteCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(LbBairroCli)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -204,7 +226,7 @@ public class CadClienteView extends javax.swing.JFrame {
                                 .addComponent(TxtIdCli, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(BtConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(TxtCpfCLi, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(TxtCpfCli, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -224,24 +246,28 @@ public class CadClienteView extends javax.swing.JFrame {
                         .addComponent(LbCpfCli)
                         .addGap(3, 3, 3))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(TxtCpfCLi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(TxtCpfCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LbNomeCli)
-                    .addComponent(TxtNomeCLi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TxtNomeCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LbRuaCli, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TxtRuaCLi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TxtRuaCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LbNumeroCli)
-                    .addComponent(TxtNumeroCLi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TxtNumeroCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LbBairroCli)
                     .addComponent(LbCidadeCLi)
                     .addComponent(TxtBairroCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCidadeCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 185, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LbArteAnterior)
+                    .addComponent(TxtArteCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtNovo)
                     .addComponent(BtGravar)
@@ -253,9 +279,9 @@ public class CadClienteView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TxtNumeroCLiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtNumeroCLiActionPerformed
+    private void TxtNumeroCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtNumeroCliActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TxtNumeroCLiActionPerformed
+    }//GEN-LAST:event_TxtNumeroCliActionPerformed
 
     private void TxtIdCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtIdCliActionPerformed
         // TODO add your handling code here:
@@ -272,8 +298,10 @@ public class CadClienteView extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuArtesAnterioresActionPerformed
 
     private void BtConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtConsultarActionPerformed
-       
-       //
+        CadClienteView telaCadastro = new CadClienteView();
+        ConsultaClienteView consulta = new ConsultaClienteView(telaCadastro);
+        consulta.setVisible(true);
+      
     }//GEN-LAST:event_BtConsultarActionPerformed
 
     private void BtGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtGravarActionPerformed
@@ -281,14 +309,23 @@ public class CadClienteView extends javax.swing.JFrame {
         //cliente.setArteId(0);
         int num  = cliente.getCpf();
         
-        cliente.setCpf(Integer.parseInt(TxtCpfCLi.getText()));
-        cliente.setNome(TxtNomeCLi.getText());
-        cliente.setRua(TxtRuaCLi.getText());
+        cliente.setCpf(Integer.parseInt(TxtCpfCli.getText()));
+        cliente.setNome(TxtNomeCli.getText());
+        cliente.setRua(TxtRuaCli.getText());
         cliente.setBairro(TxtBairroCli.getText());
-        cliente.setNumero(Integer.parseInt(TxtNumeroCLi.getText()));
+        cliente.setNumero(Integer.parseInt(TxtNumeroCli.getText()));
         cliente.setCidade(txtCidadeCli.getText());
         controller.inserirCliente(cliente);
     }//GEN-LAST:event_BtGravarActionPerformed
+
+    private void TxtArteCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtArteCliActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtArteCliActionPerformed
+
+    private void BtNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtNovoActionPerformed
+        limparCampos();
+        TxtCpfCli.requestFocus();
+    }//GEN-LAST:event_BtNovoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -324,6 +361,27 @@ public class CadClienteView extends javax.swing.JFrame {
             }
         });
     }
+    public void preencherCampos(String id, String cpf, String nome, String rua, String numero, String bairro, String cidade, String arte) {
+        TxtIdCli.setText(id);
+        TxtCpfCli.setText(cpf);
+        TxtNomeCli.setText(nome);
+        TxtRuaCli.setText(rua);
+        TxtNumeroCli.setText(numero);
+        TxtBairroCli.setText(bairro);
+        txtCidadeCli.setText(cidade);
+        TxtArteCli.setText(arte);
+        
+    }
+    public void limparCampos() {
+        TxtIdCli.setText("");
+        TxtCpfCli.setText("");
+        TxtNomeCli.setText("");
+        TxtRuaCli.setText("");
+        TxtNumeroCli.setText("");
+        TxtBairroCli.setText("");
+        txtCidadeCli.setText("");
+        TxtArteCli.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtAlterar;
@@ -331,6 +389,7 @@ public class CadClienteView extends javax.swing.JFrame {
     private javax.swing.JButton BtExcluir;
     private javax.swing.JButton BtGravar;
     private javax.swing.JButton BtNovo;
+    private javax.swing.JLabel LbArteAnterior;
     private javax.swing.JLabel LbBairroCli;
     private javax.swing.JLabel LbCadCli;
     private javax.swing.JLabel LbCidadeCLi;
@@ -344,12 +403,13 @@ public class CadClienteView extends javax.swing.JFrame {
     private javax.swing.JMenuBar MenuCadCli;
     private javax.swing.JMenu MenuContratos;
     private javax.swing.JMenuItem MenuContratosCadastrados;
+    private javax.swing.JTextField TxtArteCli;
     private javax.swing.JTextField TxtBairroCli;
-    private javax.swing.JTextField TxtCpfCLi;
+    private javax.swing.JTextField TxtCpfCli;
     private javax.swing.JTextField TxtIdCli;
-    private javax.swing.JTextField TxtNomeCLi;
-    private javax.swing.JTextField TxtNumeroCLi;
-    private javax.swing.JTextField TxtRuaCLi;
+    private javax.swing.JTextField TxtNomeCli;
+    private javax.swing.JTextField TxtNumeroCli;
+    private javax.swing.JTextField TxtRuaCli;
     private javax.swing.JTextField txtCidadeCli;
     // End of variables declaration//GEN-END:variables
 }

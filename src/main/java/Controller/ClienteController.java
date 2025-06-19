@@ -110,7 +110,11 @@ public class ClienteController extends PessoaController{
     
     public DefaultTableModel carregarTabela(String filtro) {
         DefaultTableModel model = new DefaultTableModel();
-        String sql = "SELECT * FROM Cliente"+filtro;
+        String sql = """
+    SELECT c.pessoa_id, p.cpf, p.nome, p.rua, p.numero, p.bairro, p.cidade 
+    FROM Cliente c
+    INNER JOIN Pessoa p ON c.pessoa_id = p.id
+"""+filtro;
         try (Connection con = conectar(); PreparedStatement stmt = con.prepareStatement(sql); ResultSet rs = stmt.executeQuery()){
 
             ResultSetMetaData rsmd = rs.getMetaData();
