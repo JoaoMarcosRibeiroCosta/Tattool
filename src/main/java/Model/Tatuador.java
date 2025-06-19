@@ -9,8 +9,8 @@ package Model;
  * @author Aluno
  */
 public class Tatuador extends Pessoa {
-    private String estilo; // estilo do tatuador
-    private float TotalVenda; // o total de vendas
+    private String estilo;
+    private float TotalVenda;
 
     public Tatuador(String estilo, float TotalVenda, int id, int cpf, String nome, String rua,int numero,String bairro,String cidade) {
         super(id, cpf, nome,rua,numero,bairro,cidade);
@@ -33,6 +33,4 @@ public class Tatuador extends Pessoa {
     public void setTotalVenda(float TotalVenda) {
         this.TotalVenda = TotalVenda;
     }
-  
-    
 }
