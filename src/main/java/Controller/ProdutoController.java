@@ -5,7 +5,6 @@
 package Controller;
 
 import Model.Produto;
-import Controller.ConexaoSQLServer;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
