@@ -10,7 +10,7 @@ package Model;
  */
 public class Arte {
     private int id;
-    private String imagem; //url
+    private String imagem;
     private String nome;
 
     public Arte(int id, String imagem, String nome) {
