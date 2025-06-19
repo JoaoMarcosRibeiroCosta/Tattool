@@ -61,6 +61,7 @@ public class ConsultaProdutoView extends javax.swing.JFrame {
         LbDescricao = new javax.swing.JLabel();
         LbValor = new javax.swing.JLabel();
         LbQuantidade = new javax.swing.JLabel();
+        BtSelecionar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -91,6 +92,7 @@ public class ConsultaProdutoView extends javax.swing.JFrame {
             }
         });
 
+        ComboFiltro.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         ComboFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Descrição", "Valor", "Quantidade" }));
         ComboFiltro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,6 +100,7 @@ public class ConsultaProdutoView extends javax.swing.JFrame {
             }
         });
 
+        BtBuscar.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         BtBuscar.setText("Buscar");
         BtBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,6 +123,14 @@ public class ConsultaProdutoView extends javax.swing.JFrame {
         LbQuantidade.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         LbQuantidade.setText("Quantidade");
 
+        BtSelecionar.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        BtSelecionar.setText("Selecionar");
+        BtSelecionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtSelecionarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -140,7 +151,9 @@ public class ConsultaProdutoView extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(ComboFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(BtBuscar))
+                                .addComponent(BtBuscar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(BtSelecionar))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(15, 15, 15))
                     .addGroup(layout.createSequentialGroup()
@@ -172,7 +185,8 @@ public class ConsultaProdutoView extends javax.swing.JFrame {
                     .addComponent(LbBuscar)
                     .addComponent(TxtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ComboFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtBuscar))
+                    .addComponent(BtBuscar)
+                    .addComponent(BtSelecionar))
                 .addGap(37, 37, 37))
         );
 
@@ -192,7 +206,7 @@ public class ConsultaProdutoView extends javax.swing.JFrame {
     }//GEN-LAST:event_BtBuscarActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
- 
+        /*
         if (evt.getClickCount() == 2) {
         int linha = jTable1.getSelectedRow();
         if (linha != -1) {
@@ -215,9 +229,34 @@ public class ConsultaProdutoView extends javax.swing.JFrame {
         }
         }
     }
-    
+    */
 
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void BtSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtSelecionarActionPerformed
+
+        int linha = jTable1.getSelectedRow();
+        if (linha != -1) {
+            String idStr = jTable1.getValueAt(linha, 0).toString();
+            int id = Integer.parseInt(idStr);
+
+            ProdutoController controller = new ProdutoController();
+            Produto produto = controller.buscarProduto(id);
+
+            if (produto != null) {
+            telaCadastro.preencherCampos(
+                String.valueOf(produto.getId()),
+                produto.getDescricao(),
+                String.valueOf(produto.getValor()),
+                String.valueOf(produto.getQuantidade())
+            );
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Produto não encontrado.");
+        }
+        }
+    
+    }//GEN-LAST:event_BtSelecionarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -288,6 +327,7 @@ public class ConsultaProdutoView extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtBuscar;
+    private javax.swing.JButton BtSelecionar;
     private javax.swing.JComboBox<String> ComboFiltro;
     private javax.swing.JLabel LbBuscar;
     private javax.swing.JLabel LbDescricao;
