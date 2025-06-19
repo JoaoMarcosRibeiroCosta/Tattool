@@ -41,6 +41,8 @@
                               <Component id="ComboFiltro" min="-2" pref="116" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="BtBuscar" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="BtSelecionar" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane1" min="-2" pref="850" max="-2" attributes="0"/>
                       </Group>
@@ -81,6 +83,7 @@
                   <Component id="TxtBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="ComboFiltro" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="BtBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="BtSelecionar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
           </Group>
@@ -127,6 +130,9 @@
     </Component>
     <Component class="javax.swing.JComboBox" name="ComboFiltro">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="3"/>
+        </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
             <StringItem index="0" value="ID"/>
@@ -145,6 +151,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="BtBuscar">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="3"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Buscar"/>
       </Properties>
       <Events>
@@ -190,6 +199,17 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Quantidade"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="BtSelecionar">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI" size="12" style="3"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Selecionar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtSelecionarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
