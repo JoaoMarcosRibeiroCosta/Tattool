@@ -2,6 +2,7 @@ View\CadClienteView.class
 View\CadProView$5.class
 View\CadClienteView$7.class
 View\ConsultaProdutoView$7.class
+View\ConsultaClienteView$1.class
 View\CadTatuadorView$2.class
 View\TelaCadContrato$2.class
 Model\Orcamento.class
@@ -26,12 +27,15 @@ Controller\TatuadorController.class
 View\MainView$6.class
 View\CadTatuadorView$3.class
 Controller\ConexaoSQLServer.class
+View\ConsultaClienteView$4.class
 Controller\ClienteController.class
+View\ConsultaClienteView.class
 Model\Pessoa.class
 View\CadClienteView$5.class
 View\MainView$3.class
 Controller\PessoaController.class
 View\MainView$2.class
+View\ConsultaClienteView$6.class
 Model\Cliente.class
 Model\Produto.class
 View\CadClienteView$2.class
@@ -39,6 +43,7 @@ View\ConsultaProdutoView$2.class
 View\CadClienteView$6.class
 View\CadProView$3.class
 View\CadArteView.class
+View\ConsultaClienteView$3.class
 View\CadTatuadorView$4.class
 Controller\ProdutoController.class
 View\CadProView$6.class
@@ -47,10 +52,12 @@ com\mycompany\tattool\Tattool.class
 Controller\ContratoController.class
 Controller\OrcamentoController.class
 View\MainView.class
+View\ConsultaClienteView$2.class
 View\ConsultaProdutoView$1.class
 View\MainView$5.class
 View\CadProView.class
 Model\Tatuador.class
+View\ConsultaClienteView$5.class
 View\MainView$1.class
 View\ConsultaProdutoView$5.class
 View\CadArteView$2.class
