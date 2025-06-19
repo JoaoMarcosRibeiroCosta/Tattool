@@ -13,12 +13,14 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ConsultaProdutoView extends javax.swing.JFrame {
     ProdutoController controller = new ProdutoController();
+    private CadProView telaCadastro;
 
     /**
      * Creates new form ConsultaProdutoView
      */
-    public ConsultaProdutoView() {
+    public ConsultaProdutoView(CadProView telaCadastro) {
         initComponents();
+        this.telaCadastro = telaCadastro;
         carregarTabela();
         
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -201,16 +203,16 @@ public class ConsultaProdutoView extends javax.swing.JFrame {
             Produto produto = controller.buscarProduto(id);
 
             if (produto != null) {
-                //telaCadastro.preencherCampos(
-                  //  String.valueOf(produto.getId()),
-                    //produto.getDescricao(),
-                    //String.valueOf(produto.getValor()),
-                    //String.valueOf(produto.getQuantidade())
-                //);
-                this.dispose(); // Fecha a tela de consulta
-            } else {
-                JOptionPane.showMessageDialog(this, "Produto não encontrado.");
-            }
+            telaCadastro.preencherCampos(
+                String.valueOf(produto.getId()),
+                produto.getDescricao(),
+                String.valueOf(produto.getValor()),
+                String.valueOf(produto.getQuantidade())
+            );
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Produto não encontrado.");
+        }
         }
     }
     

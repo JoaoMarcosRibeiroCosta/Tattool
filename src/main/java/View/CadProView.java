@@ -179,7 +179,7 @@ public class CadProView extends javax.swing.JFrame {
     }//GEN-LAST:event_BtGravarActionPerformed
 
     private void BtConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtConsultarActionPerformed
-        ConsultaProdutoView consulta = new ConsultaProdutoView();
+        ConsultaProdutoView consulta = new ConsultaProdutoView(this);
         consulta.setVisible(true);
     }//GEN-LAST:event_BtConsultarActionPerformed
     public void preencherCampos(String id, String descricao, String valor, String estoque) {
