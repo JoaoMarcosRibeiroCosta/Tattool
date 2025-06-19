@@ -32,8 +32,13 @@ public class ClienteController extends PessoaController{
             if (!pessoaInserida) {
                 return false;
             }
-            stmt.setInt(1, cliente.getId());
-            stmt.setInt(2,cliente.getArteId());
+            stmt.setInt(1,cliente.getId());
+            
+            if (cliente.getArteId() != 0) {
+                stmt.setInt(2, cliente.getArteId());
+            } else {
+                stmt.setNull(2, java.sql.Types.INTEGER);
+            }
             stmt.executeUpdate();
             stmt.close();
             con.close();

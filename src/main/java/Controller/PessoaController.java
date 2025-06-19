@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
+import java.sql.Statement;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -22,7 +23,7 @@ public class PessoaController extends ConexaoSQLServer{
     public boolean inserirPessoa(Pessoa pessoa) {
         String sql = "INSERT INTO Pessoa (cpf, nome, rua, numero, bairro, cidade) VALUES (?, ?, ?, ?, ?, ?)";
         try (Connection con = conectar(); 
-            PreparedStatement stmt = con.prepareStatement(sql)) {
+            PreparedStatement stmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 
             stmt.setInt(1, pessoa.getCpf());
             stmt.setString(2, pessoa.getNome());
@@ -31,15 +32,18 @@ public class PessoaController extends ConexaoSQLServer{
             stmt.setString(5, pessoa.getBairro());
             stmt.setString(6, pessoa.getCidade());
             stmt.executeUpdate();
-            stmt.close();
-            con.close();
-
-            ResultSet rs = stmt.executeQuery();
-            return true;
+            
+            ResultSet rs = stmt.getGeneratedKeys();
+            if (rs.next()) {
+                int pessoaId = rs.getInt(1);
+                pessoa.setId(pessoaId);
+                return true;
+            }
+            return false;
         } catch (Exception e) {
             System.out.println("Erro ao inserir pessoa: " + e.getMessage());
+            return false;
         }
-        return false;
     }
 
     public Pessoa buscarPessoa(int id) {
