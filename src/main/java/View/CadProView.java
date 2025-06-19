@@ -18,6 +18,7 @@ public class CadProView extends javax.swing.JFrame {
      */
     public CadProView() {
         initComponents();
+        TxtIdPro.setEditable(false);
        
     }
 
@@ -167,15 +168,44 @@ public class CadProView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtGravarActionPerformed
-        Produto produto = new Produto();
-        produto.setDescricao(TxtDescricaoPro.getText());
-        produto.setQuantidade( Integer.parseInt(TxtEstoquePro.getText()));
-        produto.setValor(Float.parseFloat(TxtValorPro.getText()));
-        controller.inserirProduto(produto);
-        TxtDescricaoPro.setText("");
-        TxtEstoquePro.setText("");
-        TxtValorPro.setText("");
-        JOptionPane.showMessageDialog(null, "Produto Cadastrado!", "Cadastro", JOptionPane.WARNING_MESSAGE);
+ Produto produto = new Produto();
+    
+
+    int id = 0;
+    if (!TxtIdPro.getText().trim().isEmpty()) {
+        try {
+            id = Integer.parseInt(TxtIdPro.getText());
+            produto.setId(id);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "ID inválido.", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+    }
+
+    produto.setDescricao(TxtDescricaoPro.getText());
+    produto.setValor(Float.parseFloat(TxtValorPro.getText()));
+    produto.setQuantidade(Integer.parseInt(TxtEstoquePro.getText()));
+
+    boolean sucesso;
+
+    if (id > 0 && controller.buscarProduto(id) != null) {
+        // Produto existe → Atualizar
+        sucesso = controller.atualizarProduto(produto);
+        if (sucesso) {
+            JOptionPane.showMessageDialog(this, "Produto atualizado com sucesso!", "Atualização", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Erro ao atualizar o produto.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    } else {
+        // Produto não existe → Inserir
+        sucesso = controller.inserirProduto(produto);
+        if (sucesso) {
+            JOptionPane.showMessageDialog(this, "Produto cadastrado com sucesso!", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Erro ao cadastrar o produto.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
     }//GEN-LAST:event_BtGravarActionPerformed
 
     private void BtConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtConsultarActionPerformed
