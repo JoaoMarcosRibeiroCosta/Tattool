@@ -15,6 +15,8 @@ public class CadTatuadorView extends javax.swing.JFrame {
      */
     public CadTatuadorView() {
         initComponents();
+        TxtIdTatu.setEditable(false);
+        TxtIdTatu.setEnabled(false);
     }
 
     /**

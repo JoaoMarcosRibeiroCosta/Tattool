@@ -73,9 +73,19 @@ public class CadProView extends javax.swing.JFrame {
 
         BtAlterar.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         BtAlterar.setText("Alterar");
+        BtAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtAlterarActionPerformed(evt);
+            }
+        });
 
         BtNovo.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         BtNovo.setText("Novo");
+        BtNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtNovoActionPerformed(evt);
+            }
+        });
 
         BtConsultar.setFont(new java.awt.Font("Segoe UI Emoji", 3, 12)); // NOI18N
         BtConsultar.setText("🔍");
@@ -87,6 +97,11 @@ public class CadProView extends javax.swing.JFrame {
 
         BtExcluir.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         BtExcluir.setText("Excluir");
+        BtExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtExcluirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -189,7 +204,7 @@ public class CadProView extends javax.swing.JFrame {
     boolean sucesso;
 
     if (id > 0 && controller.buscarProduto(id) != null) {
-        // Produto existe → Atualizar
+        
         sucesso = controller.atualizarProduto(produto);
         if (sucesso) {
             JOptionPane.showMessageDialog(this, "Produto atualizado com sucesso!", "Atualização", JOptionPane.INFORMATION_MESSAGE);
@@ -197,7 +212,7 @@ public class CadProView extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Erro ao atualizar o produto.", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     } else {
-        // Produto não existe → Inserir
+       
         sucesso = controller.inserirProduto(produto);
         if (sucesso) {
             JOptionPane.showMessageDialog(this, "Produto cadastrado com sucesso!", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
@@ -212,11 +227,81 @@ public class CadProView extends javax.swing.JFrame {
         ConsultaProdutoView consulta = new ConsultaProdutoView(this);
         consulta.setVisible(true);
     }//GEN-LAST:event_BtConsultarActionPerformed
+
+    private void BtNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtNovoActionPerformed
+        limparCampos();
+        TxtDescricaoPro.requestFocus();
+    }//GEN-LAST:event_BtNovoActionPerformed
+
+    private void BtAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtAlterarActionPerformed
+            try {
+        
+        Produto produto = new Produto();
+        produto.setId(Integer.parseInt(TxtIdPro.getText()));
+        produto.setDescricao(TxtDescricaoPro.getText());
+        produto.setValor((float) Double.parseDouble(TxtValorPro.getText()));
+        produto.setQuantidade(Integer.parseInt(TxtEstoquePro.getText()));
+
+        
+        ProdutoController controller = new ProdutoController();
+        boolean atualizado = controller.atualizarProduto(produto);
+
+        
+        if (atualizado) {
+            JOptionPane.showMessageDialog(this, "Produto atualizado com sucesso!", "Atualização", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Erro ao atualizar produto!", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Verifique os valores numéricos!", "Erro de entrada", JOptionPane.WARNING_MESSAGE);
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Erro inesperado: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+    }
+    }//GEN-LAST:event_BtAlterarActionPerformed
+
+    private void BtExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtExcluirActionPerformed
+        try {
+        
+        if (TxtIdPro.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Informe o ID do produto para excluir.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        int confirmacao = JOptionPane.showConfirmDialog(this, 
+            "Tem certeza que deseja excluir este produto?", 
+            "Confirmação", 
+            JOptionPane.YES_NO_OPTION);
+
+        if (confirmacao == JOptionPane.YES_OPTION) {
+            int id = Integer.parseInt(TxtIdPro.getText());
+
+            ProdutoController controller = new ProdutoController();
+            boolean excluido = controller.excluirProduto(id);
+
+            if (excluido) {
+                JOptionPane.showMessageDialog(this, "Produto excluído com sucesso.", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                limparCampos();
+            } else {
+                JOptionPane.showMessageDialog(this, "Erro ao excluir produto.", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "ID inválido!", "Erro", JOptionPane.WARNING_MESSAGE);
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Erro inesperado: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+    }
+    }//GEN-LAST:event_BtExcluirActionPerformed
     public void preencherCampos(String id, String descricao, String valor, String estoque) {
         TxtIdPro.setText(id);
         TxtDescricaoPro.setText(descricao);
         TxtValorPro.setText(valor);
         TxtEstoquePro.setText(estoque);
+    }
+    public void limparCampos() {
+    TxtIdPro.setText("");
+    TxtDescricaoPro.setText("");
+    TxtValorPro.setText("");
+    TxtEstoquePro.setText("");
     }
     /**
      * @param args the command line arguments

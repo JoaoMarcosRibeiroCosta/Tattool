@@ -15,6 +15,8 @@ public class TelaCadContrato extends javax.swing.JFrame {
      */
     public TelaCadContrato() {
         initComponents();
+        TxtContratoId.setEditable(false);
+        TxtContratoId.setEnabled(false);
     }
 
     /**

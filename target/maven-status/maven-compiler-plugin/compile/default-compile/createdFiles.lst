@@ -1,4 +1,5 @@
 View\CadClienteView.class
+View\CadProView$5.class
 View\CadClienteView$7.class
 View\ConsultaProdutoView$7.class
 View\CadTatuadorView$2.class
@@ -19,6 +20,7 @@ View\ConsultaProdutoView.class
 Model\Arte.class
 View\ConsultaProdutoView$3.class
 View\TelaCadContrato.class
+View\CadProView$4.class
 View\ConsultaProdutoView$6.class
 Controller\TatuadorController.class
 View\MainView$6.class
@@ -39,6 +41,7 @@ View\CadProView$3.class
 View\CadArteView.class
 View\CadTatuadorView$4.class
 Controller\ProdutoController.class
+View\CadProView$6.class
 View\CadClienteView$3.class
 com\mycompany\tattool\Tattool.class
 Controller\ContratoController.class

@@ -19,6 +19,8 @@ public class CadArteView extends javax.swing.JFrame {
      */
     public CadArteView() {
         initComponents();
+        TxtArteId.setEditable(false);
+        TxtArteId.setEnabled(false);
     }
 
     /**

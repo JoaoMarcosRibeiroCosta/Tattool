@@ -17,6 +17,8 @@ public class CadClienteView extends javax.swing.JFrame {
     ClienteController controller = new ClienteController();
     public CadClienteView() {
         initComponents();
+        TxtIdCli.setEditable(false);
+        TxtIdCli.setEnabled(false);
         
     }
 
@@ -37,7 +39,7 @@ public class CadClienteView extends javax.swing.JFrame {
         LbNumeroCli = new javax.swing.JLabel();
         LbBairroCli = new javax.swing.JLabel();
         LbCidadeCLi = new javax.swing.JLabel();
-        TxtIdCLi = new javax.swing.JTextField();
+        TxtIdCli = new javax.swing.JTextField();
         TxtCpfCLi = new javax.swing.JTextField();
         TxtNomeCLi = new javax.swing.JTextField();
         TxtRuaCLi = new javax.swing.JTextField();
@@ -81,9 +83,9 @@ public class CadClienteView extends javax.swing.JFrame {
         LbCidadeCLi.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         LbCidadeCLi.setText("Cidade:");
 
-        TxtIdCLi.addActionListener(new java.awt.event.ActionListener() {
+        TxtIdCli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtIdCLiActionPerformed(evt);
+                TxtIdCliActionPerformed(evt);
             }
         });
 
@@ -199,7 +201,7 @@ public class CadClienteView extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(BtExcluir))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(TxtIdCLi, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(TxtIdCli, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(BtConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(TxtCpfCLi, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -215,7 +217,7 @@ public class CadClienteView extends javax.swing.JFrame {
                     .addComponent(BtConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(LbIdCli, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(TxtIdCLi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(TxtIdCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -255,9 +257,9 @@ public class CadClienteView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtNumeroCLiActionPerformed
 
-    private void TxtIdCLiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtIdCLiActionPerformed
+    private void TxtIdCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtIdCliActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TxtIdCLiActionPerformed
+    }//GEN-LAST:event_TxtIdCliActionPerformed
 
     private void MenuContratosCadastradosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuContratosCadastradosActionPerformed
         TelaCadContrato novaTela = new TelaCadContrato();
@@ -344,7 +346,7 @@ public class CadClienteView extends javax.swing.JFrame {
     private javax.swing.JMenuItem MenuContratosCadastrados;
     private javax.swing.JTextField TxtBairroCli;
     private javax.swing.JTextField TxtCpfCLi;
-    private javax.swing.JTextField TxtIdCLi;
+    private javax.swing.JTextField TxtIdCli;
     private javax.swing.JTextField TxtNomeCLi;
     private javax.swing.JTextField TxtNumeroCLi;
     private javax.swing.JTextField TxtRuaCLi;
