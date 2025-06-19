@@ -32,10 +32,11 @@ public class ArteController extends ConexaoSQLServer{
         }
     }
     public boolean inserir(Arte arte) {
-        String sql = "INSERT INTO Arte (imagem) VALUES (?)";
+        String sql = "INSERT INTO Arte (imagem, nome) VALUES (?, ?)";
         try (Connection con = conectar(); 
             PreparedStatement stmt = con.prepareStatement(sql)) {
             stmt.setString(1, arte.getImagem());
+            stmt.setString(2, arte.getNome());
             stmt.executeUpdate();
             stmt.close();
             con.close();
@@ -57,6 +58,7 @@ public class ArteController extends ConexaoSQLServer{
                 Arte arte = new Arte();
                 arte.setId(rs.getInt("id"));
                 arte.setImagem(rs.getString("imagem"));
+                arte.setNome(rs.getString("nome"));
                 return arte;
             }
             rs.close();
@@ -70,10 +72,11 @@ public class ArteController extends ConexaoSQLServer{
     }
 
     public boolean atualizar(Arte arte) {
-        String sql = "UPDATE Arte SET imagem = ? WHERE id = ?";
+        String sql = "UPDATE Arte SET imagem = ?, nome = ? WHERE id = ?";
         try (Connection con = conectar(); 
              PreparedStatement stmt = con.prepareStatement(sql)) {
             stmt.setString(1, arte.getImagem());
+            stmt.setString(2,arte.getNome());
             stmt.executeUpdate();
             stmt.close();
             con.close();

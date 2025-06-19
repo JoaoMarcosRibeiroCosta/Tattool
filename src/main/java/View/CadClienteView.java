@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package View;
-
+import Controller.ClienteController;
+import Model.Cliente;
 /**
  *
  * @author Aluno
@@ -13,6 +14,7 @@ public class CadClienteView extends javax.swing.JFrame {
     /**
      * Creates new form CadClienteView
      */
+    ClienteController controller = new ClienteController();
     public CadClienteView() {
         initComponents();
         
@@ -104,6 +106,11 @@ public class CadClienteView extends javax.swing.JFrame {
 
         BtGravar.setFont(new java.awt.Font("sansserif", 3, 14)); // NOI18N
         BtGravar.setText("Gravar");
+        BtGravar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtGravarActionPerformed(evt);
+            }
+        });
 
         BtAlterar.setFont(new java.awt.Font("sansserif", 3, 14)); // NOI18N
         BtAlterar.setText("Alterar");
@@ -204,10 +211,11 @@ public class CadClienteView extends javax.swing.JFrame {
                 .addGap(53, 53, 53)
                 .addComponent(LbCadCli)
                 .addGap(55, 55, 55)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LbIdCli, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TxtIdCLi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BtConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(LbIdCli, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(TxtIdCLi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -265,6 +273,20 @@ public class CadClienteView extends javax.swing.JFrame {
        
        //
     }//GEN-LAST:event_BtConsultarActionPerformed
+
+    private void BtGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtGravarActionPerformed
+        Cliente cliente = new Cliente(); 
+        //cliente.setArteId(0);
+        int num  = cliente.getCpf();
+        
+        cliente.setCpf(Integer.parseInt(TxtCpfCLi.getText()));
+        cliente.setNome(TxtNomeCLi.getText());
+        cliente.setRua(TxtRuaCLi.getText());
+        cliente.setBairro(TxtBairroCli.getText());
+        cliente.setNumero(Integer.parseInt(TxtNumeroCLi.getText()));
+        cliente.setCidade(txtCidadeCli.getText());
+        controller.inserirCliente(cliente);
+    }//GEN-LAST:event_BtGravarActionPerformed
 
     /**
      * @param args the command line arguments

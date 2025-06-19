@@ -11,10 +11,12 @@ package Model;
 public class Arte {
     private int id;
     private String imagem; //url
+    private String nome;
 
-    public Arte(int id, String imagem) {
+    public Arte(int id, String imagem, String nome) {
         this.id = id;
         this.imagem = imagem;
+        this.nome = nome;
     }
 
     public Arte(){
@@ -25,6 +27,13 @@ public class Arte {
 
     public String getImagem() {
         return imagem;
+    }
+    
+    public String getNome(){
+        return nome;
+    }
+    public void setNome(String nome){
+        this.nome = nome;
     }
 
     public void setId(int codigo) {

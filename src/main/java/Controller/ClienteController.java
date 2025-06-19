@@ -23,15 +23,6 @@ import java.sql.ResultSetMetaData;
 import javax.swing.table.DefaultTableModel;
 
 public class ClienteController extends PessoaController{
-    public BufferedImage carregarImagemDeURL(String urlString) {
-        try {
-            URL url = new URL(urlString);
-            return ImageIO.read(url);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
     public boolean inserirCliente(Cliente cliente) {
         String sql = "INSERT INTO Cliente (pessoa_id, arte_anterior_id) VALUES (?, ?)";
         try (Connection con = conectar(); 
