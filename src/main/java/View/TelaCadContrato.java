@@ -32,8 +32,9 @@ public class TelaCadContrato extends javax.swing.JFrame {
         LbContratoId = new javax.swing.JLabel();
         LbContratoCli = new javax.swing.JLabel();
         LbContatoTexto = new javax.swing.JLabel();
+        LbCliNome = new javax.swing.JLabel();
         TxtContratoId = new javax.swing.JTextField();
-        TxtControtoCli = new javax.swing.JTextField();
+        TxtContratoCli = new javax.swing.JTextField();
         TxbContratoTexto = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         BtContratoNovo = new javax.swing.JButton();
@@ -56,6 +57,8 @@ public class TelaCadContrato extends javax.swing.JFrame {
         LbContatoTexto.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         LbContatoTexto.setText("Texto:");
 
+        LbCliNome.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         TxbContratoTexto.setViewportView(jTextArea1);
@@ -68,8 +71,13 @@ public class TelaCadContrato extends javax.swing.JFrame {
             }
         });
 
-        BtContratoConsultar.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        BtContratoConsultar.setText("Consultar");
+        BtContratoConsultar.setFont(new java.awt.Font("Segoe UI Emoji", 3, 12)); // NOI18N
+        BtContratoConsultar.setText("🔍");
+        BtContratoConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtContratoConsultarActionPerformed(evt);
+            }
+        });
 
         BtContratoGravar.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         BtContratoGravar.setText("Gravar");
@@ -86,37 +94,40 @@ public class TelaCadContrato extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(200, 200, 200)
-                            .addComponent(LbTitutoCadContrato))
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(LbContatoTexto)
-                            .addGap(18, 18, 18)
-                            .addComponent(TxbContratoTexto))
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(LbContratoCli)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(20, 20, 20)
-                                    .addComponent(LbContratoId)))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(TxtControtoCli, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(TxtContratoId, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(147, 147, 147)
+                        .addGap(200, 200, 200)
+                        .addComponent(LbTitutoCadContrato))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(245, 245, 245)
                         .addComponent(BtContratoNovo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BtContratoConsultar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BtContratoGravar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BtContratoAlterar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BtContratoExcluir)))
+                        .addComponent(BtContratoExcluir))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(LbContatoTexto)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TxbContratoTexto))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(LbContratoCli)
+                                    .addComponent(LbContratoId, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(TxtContratoId, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(TxtContratoCli, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                                .addGap(6, 6, 6)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(BtContratoConsultar)
+                                        .addGap(352, 352, 352))
+                                    .addComponent(LbCliNome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -124,26 +135,27 @@ public class TelaCadContrato extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(LbTitutoCadContrato)
-                .addGap(24, 24, 24)
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LbContratoId)
-                    .addComponent(TxtContratoId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(BtContratoConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TxtContratoId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LbContratoId))
+                .addGap(6, 6, 6)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LbContratoCli)
-                    .addComponent(TxtControtoCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TxtContratoCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LbCliNome))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(LbContatoTexto)
                     .addComponent(TxbContratoTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtContratoConsultar)
                     .addComponent(BtContratoGravar)
                     .addComponent(BtContratoAlterar)
                     .addComponent(BtContratoExcluir)
                     .addComponent(BtContratoNovo))
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -152,6 +164,11 @@ public class TelaCadContrato extends javax.swing.JFrame {
     private void BtContratoNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtContratoNovoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BtContratoNovoActionPerformed
+
+    private void BtContratoConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtContratoConsultarActionPerformed
+        ConsultaContratoView consulta = new ConsultaContratoView(this);
+        consulta.setVisible(true);
+    }//GEN-LAST:event_BtContratoConsultarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -187,6 +204,17 @@ public class TelaCadContrato extends javax.swing.JFrame {
             }
         });
     }
+        public void preencherCampos(String id, String cliente_id, String dados) {
+        TxtContratoId.setText(id);
+        TxtContratoCli.setText(cliente_id);
+        jTextArea1.setText(dados);
+        
+    }
+    public void limparCampos() {
+    TxtContratoId.setText("");
+    TxtContratoCli.setText("");
+    jTextArea1.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtContratoAlterar;
@@ -194,13 +222,14 @@ public class TelaCadContrato extends javax.swing.JFrame {
     private javax.swing.JButton BtContratoExcluir;
     private javax.swing.JButton BtContratoGravar;
     private javax.swing.JButton BtContratoNovo;
+    private javax.swing.JLabel LbCliNome;
     private javax.swing.JLabel LbContatoTexto;
     private javax.swing.JLabel LbContratoCli;
     private javax.swing.JLabel LbContratoId;
     private javax.swing.JLabel LbTitutoCadContrato;
     private javax.swing.JScrollPane TxbContratoTexto;
+    private javax.swing.JTextField TxtContratoCli;
     private javax.swing.JTextField TxtContratoId;
-    private javax.swing.JTextField TxtControtoCli;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }
