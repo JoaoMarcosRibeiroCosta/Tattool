@@ -42,7 +42,7 @@ public class TatuadorController extends PessoaController{
     }
 
     public Tatuador buscarTatuador(int id) {
-        String sql = "SELECT * FROM Tatuador WHERE id = ?";
+        String sql = "SELECT * FROM Tatuador WHERE pessoa_id = ?";
         try (Connection con = conectar(); 
              PreparedStatement stmt = con.prepareStatement(sql)) {
             
@@ -72,7 +72,7 @@ public class TatuadorController extends PessoaController{
     }
 
     public boolean atualizarTatuador(Tatuador tatuador) {
-        String sql = "UPDATE Tatuador SET estilo = ?, total_vendas = ? WHERE id = ?";
+        String sql = "UPDATE Tatuador SET estilo = ?, total_vendas = ? WHERE pessoa_id = ?";
         try (Connection con = conectar(); 
              PreparedStatement stmt = con.prepareStatement(sql)) {
             stmt.setString(1, tatuador.getEstilo());
@@ -84,13 +84,13 @@ public class TatuadorController extends PessoaController{
 
             return true;
         } catch (Exception e) {
-            System.out.println("Erro ao atualizar cliente: " + e.getMessage());
+            System.out.println("Erro ao atualizar tatuador: " + e.getMessage());
             return false;
         }
     }
 
-    public boolean excluirCliente(int id) {
-        String sql = "DELETE FROM Cliente WHERE id = ?";
+    public boolean excluirTatuador(int id) {
+        String sql = "DELETE FROM Tatuador WHERE pessoa_id = ?";
         try (
             Connection con = conectar();     
             PreparedStatement stmt = con.prepareStatement(sql)) {
@@ -101,7 +101,7 @@ public class TatuadorController extends PessoaController{
 
             return true;
         } catch (Exception e) {
-            System.out.println("Erro ao excluir cliente: " + e.getMessage());
+            System.out.println("Erro ao excluir tatuador: " + e.getMessage());
             return false;
         }
     }
@@ -109,7 +109,11 @@ public class TatuadorController extends PessoaController{
     
     public DefaultTableModel carregarTabela(String filtro) {
         DefaultTableModel model = new DefaultTableModel();
-        String sql = "SELECT * FROM Cliente"+filtro;
+        String sql ="""
+            SELECT t.pessoa_id, p.cpf, p.nome, p.rua, p.numero, p.bairro, p.cidade, t.estilo, t.total_vendas
+            FROM Tatuador t
+            INNER JOIN Pessoa p ON t.pessoa_id = p.id
+        """+filtro;
         try (Connection con = conectar(); PreparedStatement stmt = con.prepareStatement(sql); ResultSet rs = stmt.executeQuery()){
 
             ResultSetMetaData rsmd = rs.getMetaData();
@@ -131,7 +135,7 @@ public class TatuadorController extends PessoaController{
             con.close();
 
         } catch (Exception e) {
-            System.out.println("Erro ao carregar dados de cliente: " + e.getMessage());
+            System.out.println("Erro ao carregar dados de tatuador: " + e.getMessage());
         }
 
         return model;

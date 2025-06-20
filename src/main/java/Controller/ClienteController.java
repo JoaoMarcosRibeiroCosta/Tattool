@@ -47,7 +47,7 @@ public class ClienteController extends PessoaController{
     }
 
     public Cliente buscarCliente(int id) {
-        String sql = "SELECT * FROM Cliente WHERE id = ?";
+        String sql = "SELECT * FROM Cliente WHERE pessoa_id = ?";
         try (Connection con = conectar(); 
              PreparedStatement stmt = con.prepareStatement(sql)) {
             
@@ -74,7 +74,7 @@ public class ClienteController extends PessoaController{
     }
 
     public boolean atualizarCliente(Cliente cliente) {
-        String sql = "UPDATE Cliente SET arte_anterior_id = ? WHERE id = ?";
+        String sql = "UPDATE Cliente SET arte_anterior_id = ? WHERE pessoa_id = ?";
         try (Connection con = conectar(); 
              PreparedStatement stmt = con.prepareStatement(sql)) {
             stmt.setInt(1, cliente.getArteId());
@@ -91,7 +91,7 @@ public class ClienteController extends PessoaController{
     }
 
     public boolean excluirCliente(int id) {
-        String sql = "DELETE FROM Cliente WHERE id = ?";
+        String sql = "DELETE FROM Cliente WHERE pessoa_id = ?";
         try (
             Connection con = conectar();     
             PreparedStatement stmt = con.prepareStatement(sql)) {

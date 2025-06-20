@@ -251,9 +251,9 @@ public class ConsultaProdutoView extends javax.swing.JFrame {
                 String.valueOf(produto.getQuantidade())
             );
             this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(this, "Produto não encontrado.");
-        }
+            } else {
+                JOptionPane.showMessageDialog(this, "Produto não encontrado.");
+            }
         }
     
     }//GEN-LAST:event_BtSelecionarActionPerformed

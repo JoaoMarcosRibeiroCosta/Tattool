@@ -186,24 +186,34 @@ public class ConsultaClienteView extends javax.swing.JFrame {
     private void BtSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtSelecionarActionPerformed
 
         int linha = jTable1.getSelectedRow();
-            if (linha != -1) {
+        if (linha != -1) {
             String idStr = jTable1.getValueAt(linha, 0).toString();
             int id = Integer.parseInt(idStr);
+            
+            ClienteController controller = new ClienteController();
+            Cliente cliente = controller.buscarCliente(id);
 
-        Cliente cliente = controller.buscarCliente(id);
-
-             if (cliente != null && telaCadastro != null) {
+            
+            if(cliente != null && telaCadastro != null){
+                    System.out.println(cliente.getId());
+                    System.out.println(cliente.getCpf())   ;                    
+                    System.out.println(cliente.getNome())  ;                   
+                    System.out.println(cliente.getRua())   ;                     
+                    System.out.println(cliente.getNumero())  ;                  
+                    System.out.println(cliente.getBairro())  ;                  
+                    System.out.println(cliente.getCidade())    ;                 
+                    System.out.println(cliente.getArteId());
                 telaCadastro.preencherCampos(
-                String.valueOf(cliente.getId()),         // ID
-                String.valueOf(cliente.getArteId()),                     // Arte anterior ID
-                String.valueOf(cliente.getNome()),                       // Nome
-                String.valueOf(cliente.getCpf()),                        // CPF
-                String.valueOf(cliente.getRua()),                        // Rua
-                String.valueOf(cliente.getNumero()),                     // Número
-                String.valueOf(cliente.getBairro()),                     // Bairro
-                String.valueOf(cliente.getCidade())                      // Cidade
-            );
-            this.dispose(); // Fecha a janela de consulta
+                    String.valueOf(cliente.getId()),
+                    String.valueOf(cliente.getCpf()),                       
+                    String.valueOf(cliente.getNome()),                      
+                    String.valueOf(cliente.getRua()),                        
+                    String.valueOf(cliente.getNumero()),                     
+                    String.valueOf(cliente.getBairro()),                     
+                    String.valueOf(cliente.getCidade()),                     
+                    String.valueOf(cliente.getArteId())
+                );
+                this.dispose(); // Fecha a janela de consulta
             } else {
             JOptionPane.showMessageDialog(this, "Cliente não encontrado ou tela de cadastro não disponível.");
         }
@@ -250,7 +260,6 @@ public class ConsultaClienteView extends javax.swing.JFrame {
         public void carregarTabela() { 
         String pesquisa = "";
         String filtro = " WHERE c.pessoa_id LIKE '%"+pesquisa+"%' ;";
-        //  if(tem filtro){ muda o filtro) else( filtro = "") :)
         DefaultTableModel model = controller.carregarTabela(filtro);
         jTable1.setModel(model);
     }
