@@ -34,8 +34,6 @@ public class ConsultaContratoView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        LbValor = new javax.swing.JLabel();
-        LbQuantidade = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         BtSelecionar = new javax.swing.JButton();
@@ -44,16 +42,8 @@ public class ConsultaContratoView extends javax.swing.JFrame {
         ComboFiltro = new javax.swing.JComboBox<>();
         BtBuscar = new javax.swing.JButton();
         LbTituto = new javax.swing.JLabel();
-        LbId = new javax.swing.JLabel();
-        LbDescricao = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        LbValor.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        LbValor.setText("Valor");
-
-        LbQuantidade.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        LbQuantidade.setText("Quantidade");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -91,7 +81,7 @@ public class ConsultaContratoView extends javax.swing.JFrame {
         });
 
         ComboFiltro.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        ComboFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Descrição", "Valor", "Quantidade" }));
+        ComboFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID Contrato", "Cliente contrato" }));
         ComboFiltro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboFiltroActionPerformed(evt);
@@ -109,12 +99,6 @@ public class ConsultaContratoView extends javax.swing.JFrame {
         LbTituto.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         LbTituto.setText("Consulta de Contrato");
 
-        LbId.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        LbId.setText("ID");
-
-        LbDescricao.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        LbDescricao.setText("Descricao");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -127,42 +111,24 @@ public class ConsultaContratoView extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(LbBuscar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(TxtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ComboFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(BtBuscar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(BtSelecionar))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(15, 15, 15))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(101, 101, 101)
-                        .addComponent(LbId)
-                        .addGap(169, 169, 169)
-                        .addComponent(LbDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(LbValor)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(LbQuantidade)
-                        .addGap(72, 72, 72))))
+                        .addComponent(LbBuscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TxtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ComboFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BtBuscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BtSelecionar))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(LbTituto)
-                .addGap(55, 55, 55)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LbId)
-                    .addComponent(LbDescricao)
-                    .addComponent(LbValor)
-                    .addComponent(LbQuantidade))
-                .addGap(18, 18, 18)
+                .addGap(93, 93, 93)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -297,11 +263,7 @@ public class ConsultaContratoView extends javax.swing.JFrame {
     private javax.swing.JButton BtSelecionar;
     private javax.swing.JComboBox<String> ComboFiltro;
     private javax.swing.JLabel LbBuscar;
-    private javax.swing.JLabel LbDescricao;
-    private javax.swing.JLabel LbId;
-    private javax.swing.JLabel LbQuantidade;
     private javax.swing.JLabel LbTituto;
-    private javax.swing.JLabel LbValor;
     private javax.swing.JTextField TxtBuscar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

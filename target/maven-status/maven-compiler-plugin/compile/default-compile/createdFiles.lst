@@ -1,6 +1,7 @@
 View\CadClienteView.class
 View\CadProView$5.class
 View\ConsultaContratoView$1.class
+View\TelaCadContrato$6.class
 View\CadClienteView$7.class
 View\ConsultaProdutoView$7.class
 View\ConsultaClienteView$1.class
@@ -19,6 +20,7 @@ View\CadClienteView$4.class
 View\MainView$7.class
 View\CadArteView$1.class
 Model\Contrato.class
+View\TelaCadContrato$5.class
 View\ConsultaProdutoView.class
 View\CadClienteView$8.class
 Model\Arte.class
@@ -40,6 +42,7 @@ View\CadClienteView$5.class
 View\MainView$3.class
 Controller\PessoaController.class
 View\MainView$2.class
+View\TelaCadContrato$4.class
 View\ConsultaClienteView$6.class
 View\ConsultaContratoView$3.class
 Model\Cliente.class

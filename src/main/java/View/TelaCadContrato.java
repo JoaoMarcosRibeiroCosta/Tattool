@@ -4,12 +4,16 @@
  */
 package View;
 
+import Controller.ContratoController;
+import Model.Contrato;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author usuario
  */
 public class TelaCadContrato extends javax.swing.JFrame {
-
+ContratoController controller = new ContratoController();
     /**
      * Creates new form TelaCadContrato
      */
@@ -81,12 +85,27 @@ public class TelaCadContrato extends javax.swing.JFrame {
 
         BtContratoGravar.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         BtContratoGravar.setText("Gravar");
+        BtContratoGravar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtContratoGravarActionPerformed(evt);
+            }
+        });
 
         BtContratoAlterar.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         BtContratoAlterar.setText("Alterar");
+        BtContratoAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtContratoAlterarActionPerformed(evt);
+            }
+        });
 
         BtContratoExcluir.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         BtContratoExcluir.setText("Excluir");
+        BtContratoExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtContratoExcluirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -162,13 +181,112 @@ public class TelaCadContrato extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtContratoNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtContratoNovoActionPerformed
-        // TODO add your handling code here:
+    limparCampos();
+    TxtContratoCli.requestFocus();
     }//GEN-LAST:event_BtContratoNovoActionPerformed
 
     private void BtContratoConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtContratoConsultarActionPerformed
         ConsultaContratoView consulta = new ConsultaContratoView(this);
         consulta.setVisible(true);
     }//GEN-LAST:event_BtContratoConsultarActionPerformed
+
+    private void BtContratoGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtContratoGravarActionPerformed
+    Contrato contrato = new Contrato();
+    
+
+    int id = 0;
+    if (!TxtContratoId.getText().trim().isEmpty()) {
+        try {
+            id = Integer.parseInt(TxtContratoId.getText());
+            contrato.setId(id);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "ID inválido.", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+    }
+
+    contrato.setClienteId(Integer.parseInt(TxtContratoCli.getText()));
+    contrato.setDados((jTextArea1.getText()));
+    
+
+    boolean sucesso;
+
+    if (id > 0 && controller.buscarContrato(id) != null) {
+        
+        sucesso = controller.atualizarContrato(contrato);
+        if (sucesso) {
+            JOptionPane.showMessageDialog(this, "Contrato atualizado com sucesso!", "Atualização", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Erro ao atualizar o Contrato.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    } else {
+       
+        sucesso = controller.inserirContrato(contrato);
+        if (sucesso) {
+            JOptionPane.showMessageDialog(this, "Contrato cadastrado com sucesso!", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Erro ao cadastrar o Contrato.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    }//GEN-LAST:event_BtContratoGravarActionPerformed
+
+    private void BtContratoAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtContratoAlterarActionPerformed
+        try {
+        
+        Contrato contrato = new Contrato();
+        contrato.setId(Integer.parseInt(TxtContratoId.getText()));
+        contrato.setClienteId(Integer.parseInt(TxtContratoCli.getText()));
+        contrato.setDados((jTextArea1.getText()));
+
+        
+        ContratoController controller = new ContratoController();
+        boolean atualizado = controller.atualizarContrato(contrato);
+
+        
+        if (atualizado) {
+            JOptionPane.showMessageDialog(this, "contrato atualizado com sucesso!", "Atualização", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Erro ao atualizar contrato!", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Verifique os valores numéricos!", "Erro de entrada", JOptionPane.WARNING_MESSAGE);
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Erro inesperado: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+    }
+    }//GEN-LAST:event_BtContratoAlterarActionPerformed
+
+    private void BtContratoExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtContratoExcluirActionPerformed
+        try {
+        
+        if (TxtContratoId.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Informe o ID do contrato para excluir.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        int confirmacao = JOptionPane.showConfirmDialog(this, 
+            "Tem certeza que deseja excluir este contrato?", 
+            "Confirmação", 
+            JOptionPane.YES_NO_OPTION);
+
+        if (confirmacao == JOptionPane.YES_OPTION) {
+            int id = Integer.parseInt(TxtContratoId.getText());
+
+            ContratoController controller = new ContratoController();
+            boolean excluido = controller.excluirContrato(id);
+
+            if (excluido) {
+                JOptionPane.showMessageDialog(this, "contrato excluído com sucesso.", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                limparCampos();
+            } else {
+                JOptionPane.showMessageDialog(this, "Erro ao excluir contrato.", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "ID inválido!", "Erro", JOptionPane.WARNING_MESSAGE);
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Erro inesperado: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+    }
+    }//GEN-LAST:event_BtContratoExcluirActionPerformed
 
     /**
      * @param args the command line arguments
