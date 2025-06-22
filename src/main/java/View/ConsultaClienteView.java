@@ -194,7 +194,6 @@ public class ConsultaClienteView extends javax.swing.JFrame {
             Cliente cliente = controller.buscarCliente(id);
 
             
-            if(cliente != null && telaCadastro != null){
                 telaCadastro.preencherCampos(
                     String.valueOf(cliente.getId()),
                     String.valueOf(cliente.getCpf()),                       
@@ -206,9 +205,6 @@ public class ConsultaClienteView extends javax.swing.JFrame {
                     String.valueOf(cliente.getArteId())
                 );
                 this.dispose(); // Fecha a janela de consulta
-            } else {
-            JOptionPane.showMessageDialog(this, "Cliente não encontrado ou tela de cadastro não disponível.");
-        }
         } else {
             JOptionPane.showMessageDialog(this, "Selecione uma linha da tabela.");
         }

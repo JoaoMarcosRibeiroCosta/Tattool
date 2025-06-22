@@ -41,12 +41,12 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                               <Component id="LbContatoTexto" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="TxbContratoTexto" max="32767" attributes="0"/>
+                              <Component id="TxbContratoTexto" min="-2" pref="482" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -56,16 +56,15 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="TxtContratoId" min="-2" pref="45" max="-2" attributes="0"/>
-                                  <Component id="TxtContratoCli" pref="0" max="32767" attributes="0"/>
+                                  <Component id="TxtContratoCli" min="-2" pref="45" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="BtContratoConsultar" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="352" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="LbCliNome" max="32767" attributes="0"/>
+                                  <Component id="BtConsultarCliente" min="-2" max="-2" attributes="0"/>
+                                  <Component id="BtContratoConsultar" min="-2" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="LbCliNome" min="-2" pref="125" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -85,23 +84,31 @@
                   <Component id="TxtContratoId" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="LbContratoId" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="LbContratoCli" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="TxtContratoCli" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="LbCliNome" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="LbContatoTexto" min="-2" max="-2" attributes="0"/>
-                  <Component id="TxbContratoTexto" min="-2" pref="314" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="BtContratoGravar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="BtContratoAlterar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="BtContratoExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="BtContratoNovo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="LbContratoCli" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="TxtContratoCli" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="LbCliNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="LbContatoTexto" min="-2" max="-2" attributes="0"/>
+                          <Component id="TxbContratoTexto" min="-2" pref="314" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="BtContratoGravar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="BtContratoAlterar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="BtContratoExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="BtContratoNovo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="BtConsultarCliente" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -220,6 +227,22 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtContratoExcluirActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="BtConsultarCliente">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Segoe UI Emoji" size="12" style="3"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="\ud83d\udd0d" containsInvalidXMLChars="true"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
+            <BevelBorder/>
+          </Border>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtConsultarClienteActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

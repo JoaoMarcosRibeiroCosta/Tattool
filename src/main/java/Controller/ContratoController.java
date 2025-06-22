@@ -97,10 +97,9 @@ public boolean inserirContrato(Contrato contrato) {
     public DefaultTableModel carregarTabela(String filtro) {
         DefaultTableModel model = new DefaultTableModel();
         String sql = """
-            SELECT con.id, con.cliente_id, p.nome, p.cpf, con.dados
+            SELECT *
             FROM Contrato con
-            INNER JOIN Cliente cli ON con.cliente_id = cli.pessoa_id
-            INNER JOIN Pessoa p ON cli.pessoa_id = p.id
+            
         """ + filtro;
 
         try (Connection con = conectar(); PreparedStatement stmt = con.prepareStatement(sql); ResultSet rs = stmt.executeQuery()){

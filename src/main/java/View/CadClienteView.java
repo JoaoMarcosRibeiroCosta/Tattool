@@ -298,8 +298,8 @@ public class CadClienteView extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuArtesAnterioresActionPerformed
 
     private void BtConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtConsultarActionPerformed
-        CadClienteView telaCadastro = new CadClienteView();
-        ConsultaClienteView consulta = new ConsultaClienteView(telaCadastro);
+
+        ConsultaClienteView consulta = new ConsultaClienteView(this);
         consulta.setVisible(true);
       
     }//GEN-LAST:event_BtConsultarActionPerformed
@@ -370,7 +370,6 @@ public class CadClienteView extends javax.swing.JFrame {
         TxtBairroCli.setText(bairro);
         txtCidadeCli.setText(cidade);
         TxtArteCli.setText(arte);
-        
     }
     public void limparCampos() {
         TxtIdCli.setText("");

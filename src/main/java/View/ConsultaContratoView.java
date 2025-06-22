@@ -6,6 +6,7 @@ package View;
 
 import Controller.ContratoController;
 import Model.Contrato;
+import View.TelaCadContrato;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -174,23 +175,15 @@ public class ConsultaContratoView extends javax.swing.JFrame {
 
         int linha = jTable1.getSelectedRow();
         if (linha != -1) {
-            String idStr = jTable1.getValueAt(linha, 0).toString();
-            int id = Integer.parseInt(idStr);
-
-            ContratoController controller = new ContratoController();
-            Contrato contrato = controller.buscarContrato(id);
-
-            if (contrato != null) {
                 telaCadastro.preencherCampos(
-                    String.valueOf(contrato.getId()),
-                    String.valueOf(contrato.getClienteId()),
-                    contrato.getDados()
-                  );
+                    jTable1.getValueAt(linha, 0).toString(),
+                    jTable1.getValueAt(linha, 1).toString(),
+                    jTable1.getValueAt(linha, 2).toString()
+                   );
                 this.dispose();
             } else {
                 JOptionPane.showMessageDialog(this, "Contrato não encontrado.");
             }
-        }
 
     }//GEN-LAST:event_BtSelecionarActionPerformed
 
@@ -240,7 +233,7 @@ public class ConsultaContratoView extends javax.swing.JFrame {
             }
         });
     }
-        public void carregarTabela() { 
+    public void carregarTabela() { 
         String pesquisa = "";
         String filtro = " WHERE id LIKE '%"+pesquisa+"%' or cliente_id LIKE '%"+pesquisa+"%';";
         //  if(tem filtro){ muda o filtro) else( filtro = "") :)
@@ -248,14 +241,14 @@ public class ConsultaContratoView extends javax.swing.JFrame {
         jTable1.setModel(model);
     }
     private void aplicarFiltro() {
-    String textoBusca = TxtBuscar.getText().trim();
-    String coluna = ComboFiltro.getSelectedItem().toString();
+        String textoBusca = TxtBuscar.getText().trim();
+        String coluna = ComboFiltro.getSelectedItem().toString();
 
-    String colunaBD = switch (coluna) {
-        case "ID" -> "id";
-        case "Id cliente" -> "Cli_id";
-        default -> "id"; 
-    };
+        String colunaBD = switch (coluna) {
+            case "ID" -> "id";
+            case "Id cliente" -> "Cli_id";
+            default -> "id"; 
+        };
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
