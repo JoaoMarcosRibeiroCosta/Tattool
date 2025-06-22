@@ -5,6 +5,8 @@
 package View;
 
 import Controller.ContratoController;
+import Interfaces.ClienteSelecionadoListener;
+import Model.Cliente;
 import Model.Contrato;
 import javax.swing.JOptionPane;
 
@@ -12,7 +14,7 @@ import javax.swing.JOptionPane;
  *
  * @author usuario
  */
-public class TelaCadContrato extends javax.swing.JFrame {
+public class TelaCadContrato extends javax.swing.JFrame implements ClienteSelecionadoListener{
 ContratoController controller = new ContratoController();
     /**
      * Creates new form TelaCadContrato
@@ -302,9 +304,8 @@ ContratoController controller = new ContratoController();
     }//GEN-LAST:event_BtContratoExcluirActionPerformed
 
     private void BtConsultarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtConsultarClienteActionPerformed
-        CadClienteView telaCadastro = new CadClienteView();
-        ConsultaClienteView consulta = new ConsultaClienteView(telaCadastro);
-        consulta.setVisible(true);
+    ConsultaClienteView consulta = new ConsultaClienteView(this);
+    consulta.setVisible(true);
     }//GEN-LAST:event_BtConsultarClienteActionPerformed
 
     /**
@@ -352,6 +353,11 @@ ContratoController controller = new ContratoController();
     TxtContratoCli.setText("");
     jTextArea1.setText("");
     }
+    @Override
+public void onClienteSelecionado(Cliente cliente) {
+    TxtContratoCli.setText(String.valueOf(cliente.getId()));
+    LbCliNome.setText(cliente.getNome());
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtConsultarCliente;

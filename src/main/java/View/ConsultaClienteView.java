@@ -4,6 +4,7 @@
  */
 package View;
 import Controller.ClienteController;
+import Interfaces.ClienteSelecionadoListener;
 import Model.Cliente;   
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -14,15 +15,15 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ConsultaClienteView extends javax.swing.JFrame {
     ClienteController controller = new ClienteController();
-    private CadClienteView telaCadastro;
+    private ClienteSelecionadoListener listener;
 
     /**
      * Creates new form ConsultaClienteView
      */
-    public ConsultaClienteView(CadClienteView telaCadastro) {
-        initComponents();
-        this.telaCadastro = telaCadastro;
-        carregarTabela();
+    public ConsultaClienteView(ClienteSelecionadoListener listener) {
+    initComponents();
+    this.listener = listener;
+    carregarTabela();
         
     }
 
@@ -186,28 +187,19 @@ public class ConsultaClienteView extends javax.swing.JFrame {
     private void BtSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtSelecionarActionPerformed
 
         int linha = jTable1.getSelectedRow();
-        if (linha != -1) {
-            String idStr = jTable1.getValueAt(linha, 0).toString();
-            int id = Integer.parseInt(idStr);
-            
-            ClienteController controller = new ClienteController();
-            Cliente cliente = controller.buscarCliente(id);
+    if (linha >= 0) {
+        int id = Integer.parseInt(jTable1.getValueAt(linha, 0).toString());
+        ClienteController controller = new ClienteController();
+        Cliente cliente = controller.buscarCliente(id);
 
-            
-                telaCadastro.preencherCampos(
-                    String.valueOf(cliente.getId()),
-                    String.valueOf(cliente.getCpf()),                       
-                    String.valueOf(cliente.getNome()),                      
-                    String.valueOf(cliente.getRua()),                        
-                    String.valueOf(cliente.getNumero()),                     
-                    String.valueOf(cliente.getBairro()),                     
-                    String.valueOf(cliente.getCidade()),                     
-                    String.valueOf(cliente.getArteId())
-                );
-                this.dispose(); // Fecha a janela de consulta
-        } else {
-            JOptionPane.showMessageDialog(this, "Selecione uma linha da tabela.");
+        if (listener != null && cliente != null) {
+            listener.onClienteSelecionado(cliente);
         }
+
+        this.dispose(); // fecha a tela
+    } else {
+        JOptionPane.showMessageDialog(this, "Selecione um cliente.");
+    }
 
     }//GEN-LAST:event_BtSelecionarActionPerformed
 

@@ -4,12 +4,13 @@
  */
 package View;
 import Controller.ClienteController;
+import Interfaces.ClienteSelecionadoListener;
 import Model.Cliente;
 /**
  *
  * @author Aluno
  */
-public class CadClienteView extends javax.swing.JFrame {
+public class CadClienteView extends javax.swing.JFrame implements ClienteSelecionadoListener {
 
     /**
      * Creates new form CadClienteView
@@ -381,6 +382,17 @@ public class CadClienteView extends javax.swing.JFrame {
         txtCidadeCli.setText("");
         TxtArteCli.setText("");
     }
+    @Override
+public void onClienteSelecionado(Cliente cliente) {
+    TxtIdCli.setText(String.valueOf(cliente.getId()));
+    TxtCpfCli.setText(String.valueOf(cliente.getCpf()));
+    TxtNomeCli.setText(cliente.getNome());
+    TxtRuaCli.setText(cliente.getRua());
+    TxtNumeroCli.setText(String.valueOf(cliente.getNumero()));
+    TxtBairroCli.setText(cliente.getBairro());
+    txtCidadeCli.setText(cliente.getCidade());
+}
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtAlterar;
