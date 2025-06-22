@@ -183,7 +183,7 @@ public class CadProView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtGravarActionPerformed
- Produto produto = new Produto();
+    Produto produto = new Produto();
     
 
     int id = 0;

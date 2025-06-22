@@ -195,14 +195,6 @@ public class ConsultaClienteView extends javax.swing.JFrame {
 
             
             if(cliente != null && telaCadastro != null){
-                    System.out.println(cliente.getId());
-                    System.out.println(cliente.getCpf())   ;                    
-                    System.out.println(cliente.getNome())  ;                   
-                    System.out.println(cliente.getRua())   ;                     
-                    System.out.println(cliente.getNumero())  ;                  
-                    System.out.println(cliente.getBairro())  ;                  
-                    System.out.println(cliente.getCidade())    ;                 
-                    System.out.println(cliente.getArteId());
                 telaCadastro.preencherCampos(
                     String.valueOf(cliente.getId()),
                     String.valueOf(cliente.getCpf()),                       

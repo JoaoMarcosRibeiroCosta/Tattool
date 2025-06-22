@@ -242,7 +242,7 @@ public class ConsultaContratoView extends javax.swing.JFrame {
     }
         public void carregarTabela() { 
         String pesquisa = "";
-        String filtro = " WHERE descricao LIKE '%"+pesquisa+"%' or valor LIKE '%"+pesquisa+"%' or quantidade LIKE '%"+pesquisa+"%';";
+        String filtro = " WHERE id LIKE '%"+pesquisa+"%' or cliente_id LIKE '%"+pesquisa+"%';";
         //  if(tem filtro){ muda o filtro) else( filtro = "") :)
         DefaultTableModel model = controller.carregarTabela(filtro);
         jTable1.setModel(model);
