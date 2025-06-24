@@ -41,6 +41,7 @@ Model\Pessoa.class
 View\CadClienteView$5.class
 View\MainView$3.class
 Controller\PessoaController.class
+Interfaces\ClienteSelecionadoListener.class
 View\MainView$2.class
 View\TelaCadContrato$4.class
 View\ConsultaClienteView$6.class

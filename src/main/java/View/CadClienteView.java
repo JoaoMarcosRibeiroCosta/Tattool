@@ -128,9 +128,19 @@ public class CadClienteView extends javax.swing.JFrame implements ClienteSelecio
 
         BtAlterar.setFont(new java.awt.Font("sansserif", 3, 14)); // NOI18N
         BtAlterar.setText("Alterar");
+        BtAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtAlterarActionPerformed(evt);
+            }
+        });
 
         BtExcluir.setFont(new java.awt.Font("sansserif", 3, 14)); // NOI18N
         BtExcluir.setText("Excluir");
+        BtExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtExcluirActionPerformed(evt);
+            }
+        });
 
         TxtArteCli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -327,6 +337,14 @@ public class CadClienteView extends javax.swing.JFrame implements ClienteSelecio
         limparCampos();
         TxtCpfCli.requestFocus();
     }//GEN-LAST:event_BtNovoActionPerformed
+
+    private void BtAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtAlterarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtAlterarActionPerformed
+
+    private void BtExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtExcluirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtExcluirActionPerformed
 
     /**
      * @param args the command line arguments
