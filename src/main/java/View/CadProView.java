@@ -4,6 +4,7 @@
  */
 package View;
 import Controller.ProdutoController;
+import Interfaces.ProdutoSelecionadoListener;
 import Model.Produto;
 import javax.swing.JOptionPane;
 
@@ -224,7 +225,7 @@ public class CadProView extends javax.swing.JFrame {
     }//GEN-LAST:event_BtGravarActionPerformed
 
     private void BtConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtConsultarActionPerformed
-        ConsultaProdutoView consulta = new ConsultaProdutoView(this);
+        ConsultaProdutoView consulta = new ConsultaProdutoView((ProdutoSelecionadoListener) this); // 'this' implementa ProdutoSelecionadoListener
         consulta.setVisible(true);
     }//GEN-LAST:event_BtConsultarActionPerformed
 

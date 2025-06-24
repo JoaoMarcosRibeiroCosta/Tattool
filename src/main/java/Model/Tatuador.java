@@ -18,6 +18,10 @@ public class Tatuador extends Pessoa {
         this.TotalVenda = TotalVenda;
     }
 
+    public Tatuador() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     public String getEstilo() {
         return estilo;
     }
