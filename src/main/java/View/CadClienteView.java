@@ -6,6 +6,7 @@ package View;
 import Controller.ClienteController;
 import Interfaces.ClienteSelecionadoListener;
 import Model.Cliente;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Aluno
@@ -143,6 +144,7 @@ public class CadClienteView extends javax.swing.JFrame implements ClienteSelecio
             }
         });
 
+        TxtArteCli.setText("0");
         TxtArteCli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TxtArteCliActionPerformed(evt);
@@ -216,7 +218,7 @@ public class CadClienteView extends javax.swing.JFrame implements ClienteSelecio
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(LbArteAnterior)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(TxtArteCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(TxtArteCli, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(LbBairroCli)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
@@ -318,16 +320,19 @@ public class CadClienteView extends javax.swing.JFrame implements ClienteSelecio
 
     private void BtGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtGravarActionPerformed
         Cliente cliente = new Cliente(); 
-        //cliente.setArteId(0);
-        int num  = cliente.getCpf();
-        
+        cliente.setArteId(Integer.parseInt(TxtArteCli.getText()));
         cliente.setCpf(Integer.parseInt(TxtCpfCli.getText()));
         cliente.setNome(TxtNomeCli.getText());
         cliente.setRua(TxtRuaCli.getText());
         cliente.setBairro(TxtBairroCli.getText());
         cliente.setNumero(Integer.parseInt(TxtNumeroCli.getText()));
         cliente.setCidade(txtCidadeCli.getText());
-        controller.inserirCliente(cliente);
+        if(controller.inserirCliente(cliente)){
+            JOptionPane.showMessageDialog(this, "Cliente Cadastrado", "Erro", JOptionPane.ERROR_MESSAGE);
+            limparCampos();
+        } else {
+            JOptionPane.showMessageDialog(this, "Erro ao inserir Produto", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_BtGravarActionPerformed
 
     private void TxtArteCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtArteCliActionPerformed
@@ -340,11 +345,32 @@ public class CadClienteView extends javax.swing.JFrame implements ClienteSelecio
     }//GEN-LAST:event_BtNovoActionPerformed
 
     private void BtAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtAlterarActionPerformed
-        // TODO add your handling code here:
+        Cliente cliente = new Cliente();
+        if(TxtArteCli.getText() != null){
+        cliente.setArteId(Integer.parseInt(TxtArteCli.getText()));
+        }
+        cliente.setId(Integer.parseInt(TxtIdCli.getText()));
+        cliente.setCpf(Integer.parseInt(TxtCpfCli.getText()));
+        cliente.setNome(TxtNomeCli.getText());
+        cliente.setRua(TxtRuaCli.getText());
+        cliente.setBairro(TxtBairroCli.getText());
+        cliente.setNumero(Integer.parseInt(TxtNumeroCli.getText()));
+        cliente.setCidade(txtCidadeCli.getText());
+        if(controller.atualizarCliente(cliente)){
+            JOptionPane.showMessageDialog(this, "Cliente alterado");
+            limparCampos();
+        } else {
+            JOptionPane.showMessageDialog(this, "Erro ao Alterar Cliente", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_BtAlterarActionPerformed
 
     private void BtExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtExcluirActionPerformed
-        // TODO add your handling code here:
+        if(controller.excluirCliente(Integer.parseInt(TxtIdCli.getText()))){
+            JOptionPane.showMessageDialog(this, "Cliente Excluido", "Erro", JOptionPane.ERROR_MESSAGE);
+            limparCampos();
+        } else {
+            JOptionPane.showMessageDialog(this, "Erro ao excluir Produto", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_BtExcluirActionPerformed
 
     /**
@@ -410,6 +436,7 @@ public void onClienteSelecionado(Cliente cliente) {
     TxtNumeroCli.setText(String.valueOf(cliente.getNumero()));
     TxtBairroCli.setText(cliente.getBairro());
     txtCidadeCli.setText(cliente.getCidade());
+    TxtArteCli.setText(String.valueOf(cliente.getArteId()));
 }
     
 
