@@ -4,11 +4,18 @@
  */
 package View;
 
+import Controller.TatuadorController;
+import Interfaces.TatuadorSelecionadoListener;
+import Model.Tatuador;
+import javax.swing.JOptionPane;
+
+
 /**
  *
  * @author usuario
  */
-public class CadTatuadorView extends javax.swing.JFrame {
+public class CadTatuadorView extends javax.swing.JFrame implements 
+    TatuadorSelecionadoListener{
 
     /**
      * Creates new form CadTatuadorView
@@ -105,18 +112,44 @@ public class CadTatuadorView extends javax.swing.JFrame {
 
         BtNovo.setFont(new java.awt.Font("sansserif", 3, 14)); // NOI18N
         BtNovo.setText("Novo");
+        BtNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtNovoActionPerformed(evt);
+            }
+        });
 
-        BtConsultar.setFont(new java.awt.Font("sansserif", 3, 14)); // NOI18N
-        BtConsultar.setText("Consultar");
+        BtConsultar.setFont(new java.awt.Font("Segoe UI Emoji", 0, 12)); // NOI18N
+        BtConsultar.setText("🔍");
+        BtConsultar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        BtConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtConsultarActionPerformed(evt);
+            }
+        });
 
         BtGravar.setFont(new java.awt.Font("sansserif", 3, 14)); // NOI18N
         BtGravar.setText("Gravar");
+        BtGravar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtGravarActionPerformed(evt);
+            }
+        });
 
         BtAlterar.setFont(new java.awt.Font("sansserif", 3, 14)); // NOI18N
         BtAlterar.setText("Alterar");
+        BtAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtAlterarActionPerformed(evt);
+            }
+        });
 
         BtExcluir.setFont(new java.awt.Font("sansserif", 3, 14)); // NOI18N
         BtExcluir.setText("Excluir");
+        BtExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtExcluirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -136,20 +169,21 @@ public class CadTatuadorView extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addComponent(LbEstiloTatu)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(TxtNomeTatu)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(TxtIdTatu, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(LbCpfTatu)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(TxtCpfTatu, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(220, 220, 220)
-                                .addComponent(BtNovo)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(TxtNomeTatu, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(TxtIdTatu, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(BtConsultar)))
+                                .addGap(30, 30, 30)
+                                .addComponent(LbCpfTatu)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(BtConsultar)
+                                .addComponent(TxtCpfTatu, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(322, 322, 322)
+                                .addComponent(BtNovo)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(BtGravar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -161,44 +195,45 @@ public class CadTatuadorView extends javax.swing.JFrame {
                                     .addComponent(TxtEstiloTatu, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(TxtRuaTatu, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
                                     .addComponent(TxtBairroTatu, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addComponent(LbTotalVendasTatu)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(TxtTotalVendaTatu, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(132, 132, 132))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(LbNumeroTatu)
                                             .addComponent(LbCidadeTatu))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtCidadeTatu, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(TxtNumeroTatu, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(6, 6, 6)
-                                        .addComponent(LbTotalVendasTatu)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(TxtTotalVendaTatu, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                            .addComponent(TxtNumeroTatu, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtCidadeTatu)))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(250, 250, 250)
                         .addComponent(LbCadTatuador))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(LbBairroTatu)))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(53, 53, 53)
                 .addComponent(LbCadTatuador)
-                .addGap(57, 57, 57)
+                .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LbCpfTatu)
                     .addComponent(LbIdTatu, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TxtIdTatu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TxtCpfTatu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
+                    .addComponent(BtConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(4, 4, 4)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LbNomeTatu)
-                    .addComponent(TxtNomeTatu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TxtNomeTatu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LbCpfTatu)
+                    .addComponent(TxtCpfTatu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LbRuaTatu, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -217,13 +252,12 @@ public class CadTatuadorView extends javax.swing.JFrame {
                     .addComponent(LbEstiloTatu)
                     .addComponent(LbTotalVendasTatu)
                     .addComponent(TxtTotalVendaTatu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 206, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 207, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtNovo)
                     .addComponent(BtGravar)
                     .addComponent(BtAlterar)
-                    .addComponent(BtExcluir)
-                    .addComponent(BtConsultar))
+                    .addComponent(BtExcluir))
                 .addGap(19, 19, 19))
         );
 
@@ -241,6 +275,104 @@ public class CadTatuadorView extends javax.swing.JFrame {
     private void TxtNumeroTatuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtNumeroTatuActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtNumeroTatuActionPerformed
+
+    private void BtConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtConsultarActionPerformed
+        ConsultaTatuadorView consulta = new ConsultaTatuadorView(this);
+        consulta.setVisible(true);
+    }//GEN-LAST:event_BtConsultarActionPerformed
+
+    private void BtNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtNovoActionPerformed
+        limparCampos();
+        TxtNomeTatu.requestFocus();
+    }//GEN-LAST:event_BtNovoActionPerformed
+
+    private void BtGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtGravarActionPerformed
+        try {
+        Tatuador tatuador = new Tatuador();
+        tatuador.setNome(TxtNomeTatu.getText());
+        tatuador.setCpf(Integer.parseInt(TxtCpfTatu.getText()));
+        tatuador.setRua(TxtRuaTatu.getText());
+        tatuador.setNumero(Integer.parseInt(TxtNumeroTatu.getText()));
+        tatuador.setBairro(TxtBairroTatu.getText());
+        tatuador.setCidade(txtCidadeTatu.getText());
+        tatuador.setEstilo(TxtEstiloTatu.getText());
+        tatuador.setTotalVenda(Float.parseFloat(TxtTotalVendaTatu.getText()));
+
+        TatuadorController controller = new TatuadorController();
+        boolean sucesso = controller.inserirTatuador(tatuador);
+
+        if (sucesso) {
+            JOptionPane.showMessageDialog(this, "Tatuador gravado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            limparCampos();
+        } else {
+            JOptionPane.showMessageDialog(this, "Erro ao gravar tatuador.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Verifique os valores numéricos!", "Erro de entrada", JOptionPane.WARNING_MESSAGE);
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Erro inesperado: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+    }
+    }//GEN-LAST:event_BtGravarActionPerformed
+
+    private void BtAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtAlterarActionPerformed
+            try {
+        Tatuador tatuador = new Tatuador();
+        tatuador.setId(Integer.parseInt(TxtIdTatu.getText()));
+        tatuador.setNome(TxtNomeTatu.getText());
+        tatuador.setCpf(Integer.parseInt(TxtCpfTatu.getText()));
+        tatuador.setRua(TxtRuaTatu.getText());
+        tatuador.setNumero(Integer.parseInt(TxtNumeroTatu.getText()));
+        tatuador.setBairro(TxtBairroTatu.getText());
+        tatuador.setCidade(txtCidadeTatu.getText());
+        tatuador.setEstilo(TxtEstiloTatu.getText());
+        tatuador.setTotalVenda(Float.parseFloat(TxtTotalVendaTatu.getText()));
+
+        TatuadorController controller = new TatuadorController();
+        boolean atualizado = controller.atualizarTatuador(tatuador);
+
+        if (atualizado) {
+            JOptionPane.showMessageDialog(this, "Tatuador atualizado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Erro ao atualizar tatuador.", "Erro", JOptionPane.ERROR_MESSAGE);
+        }
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Verifique os valores numéricos!", "Erro de entrada", JOptionPane.WARNING_MESSAGE);
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Erro inesperado: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+    }
+    }//GEN-LAST:event_BtAlterarActionPerformed
+
+    private void BtExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtExcluirActionPerformed
+        try {
+        if (TxtIdTatu.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Informe o ID do tatuador para excluir.", "Aviso", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        int confirmacao = JOptionPane.showConfirmDialog(this,
+            "Tem certeza que deseja excluir este tatuador?",
+            "Confirmação",
+            JOptionPane.YES_NO_OPTION);
+
+        if (confirmacao == JOptionPane.YES_OPTION) {
+            int id = Integer.parseInt(TxtIdTatu.getText());
+
+            TatuadorController controller = new TatuadorController();
+            boolean excluido = controller.excluirTatuador(id);
+
+            if (excluido) {
+                JOptionPane.showMessageDialog(this, "Tatuador excluído com sucesso.", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+                limparCampos();
+            } else {
+                JOptionPane.showMessageDialog(this, "Erro ao excluir tatuador.", "Erro", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "ID inválido!", "Erro", JOptionPane.WARNING_MESSAGE);
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Erro inesperado: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+    }
+    }//GEN-LAST:event_BtExcluirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -276,6 +408,31 @@ public class CadTatuadorView extends javax.swing.JFrame {
             }
         });
     }
+    public void onTatuadorSelecionado(Model.Tatuador tatuador) {
+    if (tatuador != null) {
+        TxtIdTatu.setText(String.valueOf(tatuador.getId()));
+        TxtNomeTatu.setText(tatuador.getNome());
+        TxtCpfTatu.setText(String.valueOf(tatuador.getCpf()));
+        TxtRuaTatu.setText(tatuador.getRua());
+        TxtNumeroTatu.setText(String.valueOf(tatuador.getNumero()));
+        TxtBairroTatu.setText(tatuador.getBairro());
+        txtCidadeTatu.setText(tatuador.getCidade());
+        TxtEstiloTatu.setText(tatuador.getEstilo());
+        TxtTotalVendaTatu.setText(String.valueOf(tatuador.getTotalVenda()));
+    }
+}
+    public void limparCampos() {
+    TxtIdTatu.setText("");
+    TxtNomeTatu.setText("");
+    TxtCpfTatu.setText("");
+    TxtRuaTatu.setText("");
+    TxtNumeroTatu.setText("");
+    TxtBairroTatu.setText("");
+    txtCidadeTatu.setText("");
+    TxtEstiloTatu.setText("");
+    TxtTotalVendaTatu.setText("");
+}
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtAlterar;

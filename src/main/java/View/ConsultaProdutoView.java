@@ -4,6 +4,7 @@
  */
 package View;
 import Controller.ProdutoController;
+import Interfaces.ProdutoSelecionadoListener;
 import Model.Produto;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -12,15 +13,16 @@ import javax.swing.table.DefaultTableModel;
  * @author usuario
  */
 public class ConsultaProdutoView extends javax.swing.JFrame {
-    ProdutoController controller = new ProdutoController();
+    private ProdutoSelecionadoListener listener;
+    private ProdutoController controller = new ProdutoController();
     private CadProView telaCadastro;
 
     /**
      * Creates new form ConsultaProdutoView
      */
-    public ConsultaProdutoView(CadProView telaCadastro) {
+    public ConsultaProdutoView(ProdutoSelecionadoListener listener) {
         initComponents();
-        this.telaCadastro = telaCadastro;
+        this.listener = listener;
         carregarTabela();
         
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -206,55 +208,29 @@ public class ConsultaProdutoView extends javax.swing.JFrame {
     }//GEN-LAST:event_BtBuscarActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        /*
-        if (evt.getClickCount() == 2) {
-        int linha = jTable1.getSelectedRow();
-        if (linha != -1) {
-            String idStr = jTable1.getValueAt(linha, 0).toString();
-            int id = Integer.parseInt(idStr);
-
-            ProdutoController controller = new ProdutoController();
-            Produto produto = controller.buscarProduto(id);
-
-            if (produto != null) {
-            telaCadastro.preencherCampos(
-                String.valueOf(produto.getId()),
-                produto.getDescricao(),
-                String.valueOf(produto.getValor()),
-                String.valueOf(produto.getQuantidade())
-            );
-            this.dispose();
-        } else {
-            JOptionPane.showMessageDialog(this, "Produto não encontrado.");
-        }
-        }
-    }
-    */
+//
 
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void BtSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtSelecionarActionPerformed
+    int linha = jTable1.getSelectedRow();
+    if (linha != -1) {
+        String idStr = jTable1.getValueAt(linha, 0).toString();
+        int id = Integer.parseInt(idStr);
 
-        int linha = jTable1.getSelectedRow();
-        if (linha != -1) {
-            String idStr = jTable1.getValueAt(linha, 0).toString();
-            int id = Integer.parseInt(idStr);
+        Produto produto = controller.buscarProduto(id);
 
-            ProdutoController controller = new ProdutoController();
-            Produto produto = controller.buscarProduto(id);
-
-            if (produto != null) {
-            telaCadastro.preencherCampos(
-                String.valueOf(produto.getId()),
-                produto.getDescricao(),
-                String.valueOf(produto.getValor()),
-                String.valueOf(produto.getQuantidade())
-            );
-            this.dispose();
-            } else {
-                JOptionPane.showMessageDialog(this, "Produto não encontrado.");
+        if (produto != null) {
+            if (listener != null) {
+                listener.onProdutoSelecionado(produto);
             }
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Produto não encontrado.");
         }
+    } else {
+        JOptionPane.showMessageDialog(this, "Nenhum produto selecionado.");
+    }
     
     }//GEN-LAST:event_BtSelecionarActionPerformed
 
