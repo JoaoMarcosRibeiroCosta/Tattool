@@ -7,11 +7,13 @@ package View;
 import Interfaces.ArteSelecionadoListener;
 import Interfaces.ClienteSelecionadoListener;
 import Interfaces.ContratoSelecionadoListener;
+import Interfaces.OrcamentoSelecionadoListener;
 import Interfaces.ProdutoSelecionadoListener;
 import Interfaces.TatuadorSelecionadoListener;
 import Model.Arte;
 import Model.Cliente;
 import Model.Contrato;
+import Model.Orcamento;
 import Model.Produto;
 import Model.Tatuador;
 
@@ -24,7 +26,8 @@ public class OrcamentoView extends javax.swing.JFrame implements
     TatuadorSelecionadoListener,
     ProdutoSelecionadoListener,
     ContratoSelecionadoListener,
-    ArteSelecionadoListener {
+    ArteSelecionadoListener,
+    OrcamentoSelecionadoListener{
 
     /**
      * Creates new form CadastroView
@@ -237,12 +240,7 @@ public class OrcamentoView extends javax.swing.JFrame implements
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(44, 44, 44)
-                                .addComponent(LbIdOrc)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(TxtIdOrc))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(LbCliId)
@@ -250,10 +248,15 @@ public class OrcamentoView extends javax.swing.JFrame implements
                                     .addComponent(LbProduto))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(TxtIdCli)
                                     .addComponent(TxtIDTatu)
-                                    .addComponent(jTextField4))))
-                        .addGap(6, 6, 6)
+                                    .addComponent(jTextField4)
+                                    .addComponent(TxtIdCli, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(44, 44, 44)
+                                .addComponent(LbIdOrc)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TxtIdOrc, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(BtConsultarOrc)
@@ -276,15 +279,14 @@ public class OrcamentoView extends javax.swing.JFrame implements
                         .addComponent(LbTituto)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(TxtIdContrato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(BtConsultarContrato))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(TxtIdArte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(BtConsultarArte)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(TxtIdArte, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                            .addComponent(TxtIdContrato))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BtConsultarContrato)
+                            .addComponent(BtConsultarArte, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addComponent(CheckBoxAprovado))
                 .addGap(190, 190, 190))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -397,17 +399,18 @@ public class OrcamentoView extends javax.swing.JFrame implements
     }//GEN-LAST:event_BtConsultarProActionPerformed
 
     private void BtConsultarOrcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtConsultarOrcActionPerformed
-        // TODO add your handling code here:
+        ConsultaOrcamentoView consulta = new ConsultaOrcamentoView(this);
+        consulta.setVisible(true);
     }//GEN-LAST:event_BtConsultarOrcActionPerformed
 
     private void BtConsultarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtConsultarContratoActionPerformed
         //ConsultaContratoView consulta = new ConsultaContratoView(this);
-       // consulta.setVisible(true);
+        //consulta.setVisible(true);
     }//GEN-LAST:event_BtConsultarContratoActionPerformed
 
     private void BtConsultarArteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtConsultarArteActionPerformed
-        //ConsultaArteView consulta = new ConsultaArteView(this); tela de consulta sendo construida XD
-        //consulta.setVisible(true);
+        ConsultaArteView consulta = new ConsultaArteView(this);
+        consulta.setVisible(true);
     }//GEN-LAST:event_BtConsultarArteActionPerformed
 
     private void TxtIdOrcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtIdOrcActionPerformed
@@ -498,6 +501,10 @@ public void onArteSelecionada(Arte arte) {
     TxtIdArte.setText(String.valueOf(arte.getId()));
 }
 
+public void onOrcametoSelecionado(Orcamento orcamento){
+    TxtIdOrc.setText(String.valueOf(orcamento.getId()));
+}
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtAlterar;
     private javax.swing.JButton BtConsultarArte;
@@ -531,4 +538,5 @@ public void onArteSelecionada(Arte arte) {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
+
 }

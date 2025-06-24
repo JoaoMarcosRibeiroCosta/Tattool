@@ -4,17 +4,26 @@
  */
 package View;
 
+import Controller.ArteController;
+import Interfaces.ArteSelecionadoListener;
+import Model.Arte;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author usuario
  */
 public class ConsultaArteView extends javax.swing.JFrame {
-
+    ArteController controller = new ArteController();
+    private ArteSelecionadoListener listener;
     /**
      * Creates new form ConsultaArteView
      */
-    public ConsultaArteView() {
+    public ConsultaArteView(ArteSelecionadoListener listener) {
         initComponents();
+        carregarTabela();
+        this.listener = listener;
     }
 
     /**
@@ -26,21 +35,174 @@ public class ConsultaArteView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        LbTituto = new javax.swing.JLabel();
+        ComboFiltro = new javax.swing.JComboBox<>();
+        TxtBuscar = new javax.swing.JTextField();
+        BtBuscar = new javax.swing.JButton();
+        BtSelecionar = new javax.swing.JButton();
+        LbBuscar = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        LbTituto.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        LbTituto.setText("Consulta de Artes");
+
+        ComboFiltro.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        ComboFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Descrição", "Valor", "Quantidade" }));
+        ComboFiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboFiltroActionPerformed(evt);
+            }
+        });
+
+        TxtBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtBuscarActionPerformed(evt);
+            }
+        });
+
+        BtBuscar.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        BtBuscar.setText("Buscar");
+        BtBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtBuscarActionPerformed(evt);
+            }
+        });
+
+        BtSelecionar.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        BtSelecionar.setText("Selecionar");
+        BtSelecionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtSelecionarActionPerformed(evt);
+            }
+        });
+
+        LbBuscar.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        LbBuscar.setText("Buscar:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(342, 342, 342)
+                .addComponent(LbTituto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(357, 357, 357))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(LbBuscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TxtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ComboFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BtBuscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BtSelecionar))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(LbTituto)
+                .addGap(93, 93, 93)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LbBuscar)
+                    .addComponent(TxtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ComboFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtBuscar)
+                    .addComponent(BtSelecionar))
+                .addGap(37, 37, 37))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        /*
+        if (evt.getClickCount() == 2) {
+            int linha = jTable1.getSelectedRow();
+            if (linha != -1) {
+                String idStr = jTable1.getValueAt(linha, 0).toString();
+                int id = Integer.parseInt(idStr);
+
+                ProdutoController controller = new ProdutoController();
+                Produto produto = controller.buscarProduto(id);
+
+                if (produto != null) {
+                    telaCadastro.preencherCampos(
+                        String.valueOf(produto.getId()),
+                        produto.getDescricao(),
+                        String.valueOf(produto.getValor()),
+                        String.valueOf(produto.getQuantidade())
+                    );
+                    this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Produto não encontrado.");
+                }
+            }
+        }
+        */
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void ComboFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboFiltroActionPerformed
+
+    }//GEN-LAST:event_ComboFiltroActionPerformed
+
+    private void TxtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtBuscarActionPerformed
+
+    private void BtBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtBuscarActionPerformed
+        aplicarFiltro();
+    }//GEN-LAST:event_BtBuscarActionPerformed
+
+    private void BtSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtSelecionarActionPerformed
+        int linha = jTable1.getSelectedRow();
+        if (linha != -1) {
+            String idStr = jTable1.getValueAt(linha, 0).toString();
+            int id = Integer.parseInt(idStr);
+
+            Arte arte = controller.buscar(id);
+
+            if (arte != null) {
+               if (listener != null) {
+                   listener.onArteSelecionada(arte);
+               }
+               this.dispose();
+            } else {
+               JOptionPane.showMessageDialog(this, "Arte não encontrada.");
+            }
+        } else {
+           JOptionPane.showMessageDialog(this, "Nenhuma arte selecionada.");
+        }
+    }//GEN-LAST:event_BtSelecionarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -72,11 +234,48 @@ public class ConsultaArteView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ConsultaArteView().setVisible(true);
+               // new ConsultaArteView().setVisible(true);
             }
         });
     }
+    
+    public void carregarTabela() { 
+       // String pesquisa = "";
+       // String filtro = " WHERE id LIKE '%"+pesquisa+"%' ;";
+        String filtro = "";
+        DefaultTableModel model = controller.carregarTabela(filtro);
+        jTable1.setModel(model);
+    }
+            
+    private void aplicarFiltro() {
+        String textoBusca = TxtBuscar.getText().trim();
+        String coluna = ComboFiltro.getSelectedItem().toString();
+
+        String colunaBD = switch (coluna) {
+            case "ID" -> "id";
+            case "CPF" -> "cpf";
+            case "Nome" -> "nome";
+            default -> "nome"; 
+        };
+
+
+        String filtro = "";
+        if (!textoBusca.isEmpty()) {
+            filtro = " WHERE " + colunaBD + " LIKE '%" + textoBusca + "%'";
+        }
+
+        DefaultTableModel model = controller.carregarTabela(filtro);
+        jTable1.setModel(model);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtBuscar;
+    private javax.swing.JButton BtSelecionar;
+    private javax.swing.JComboBox<String> ComboFiltro;
+    private javax.swing.JLabel LbBuscar;
+    private javax.swing.JLabel LbTituto;
+    private javax.swing.JTextField TxtBuscar;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

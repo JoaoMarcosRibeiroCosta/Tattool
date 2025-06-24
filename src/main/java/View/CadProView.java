@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  *
  * @author usuario
  */
-public class CadProView extends javax.swing.JFrame {
+public class CadProView extends javax.swing.JFrame implements ProdutoSelecionadoListener{
  ProdutoController controller = new ProdutoController();
     /**
      * Creates new form CadProView
@@ -225,8 +225,9 @@ public class CadProView extends javax.swing.JFrame {
     }//GEN-LAST:event_BtGravarActionPerformed
 
     private void BtConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtConsultarActionPerformed
-        ConsultaProdutoView consulta = new ConsultaProdutoView((ProdutoSelecionadoListener) this); // 'this' implementa ProdutoSelecionadoListener
-        consulta.setVisible(true);
+
+       ConsultaProdutoView consulta = new ConsultaProdutoView((ProdutoSelecionadoListener) this); // 'this' implementa ProdutoSelecionadoListener
+       consulta.setVisible(true);
     }//GEN-LAST:event_BtConsultarActionPerformed
 
     private void BtNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtNovoActionPerformed
@@ -355,4 +356,12 @@ public class CadProView extends javax.swing.JFrame {
     private javax.swing.JTextField TxtIdPro;
     private javax.swing.JTextField TxtValorPro;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void onProdutoSelecionado(Produto produto) {
+        TxtDescricaoPro.setText(String.valueOf(produto.getDescricao()));
+        TxtEstoquePro.setText(String.valueOf(produto.getQuantidade()));
+        TxtIdPro.setText(String.valueOf(produto.getId()));
+        TxtValorPro.setText(String.valueOf(produto.getValor()));
+    }
 }

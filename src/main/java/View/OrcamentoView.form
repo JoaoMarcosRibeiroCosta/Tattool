@@ -27,13 +27,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                              <Component id="LbIdOrc" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="TxtIdOrc" max="32767" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="LbCliId" min="-2" max="-2" attributes="0"/>
@@ -42,13 +36,19 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="TxtIdCli" max="32767" attributes="0"/>
                                   <Component id="TxtIDTatu" max="32767" attributes="0"/>
                                   <Component id="jTextField4" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="TxtIdCli" alignment="0" pref="100" max="32767" attributes="0"/>
                               </Group>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                              <Component id="LbIdOrc" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="TxtIdOrc" min="-2" pref="100" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="BtConsultarOrc" min="-2" max="-2" attributes="0"/>
@@ -81,16 +81,15 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="TxtIdContrato" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="BtConsultarContrato" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="TxtIdArte" pref="100" max="32767" attributes="0"/>
+                          <Component id="TxtIdContrato" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="TxtIdArte" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="BtConsultarArte" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="BtConsultarContrato" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="BtConsultarArte" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Component id="CheckBoxAprovado" min="-2" max="-2" attributes="0"/>

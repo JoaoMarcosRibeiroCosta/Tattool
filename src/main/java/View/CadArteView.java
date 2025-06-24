@@ -4,6 +4,9 @@
  */
 package View;
 
+import Controller.ArteController;
+import Interfaces.ArteSelecionadoListener;
+import Model.Arte;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -12,8 +15,8 @@ import javax.swing.JOptionPane;
  *
  * @author Aluno
  */
-public class CadArteView extends javax.swing.JFrame {
-
+public class CadArteView extends javax.swing.JFrame  implements ArteSelecionadoListener{
+    ArteController controller = new ArteController();
     /**
      * Creates new form CadArteView
      */
@@ -21,6 +24,7 @@ public class CadArteView extends javax.swing.JFrame {
         initComponents();
         TxtArteId.setEditable(false);
         TxtArteId.setEnabled(false);
+        
     }
 
     /**
@@ -42,6 +46,9 @@ public class CadArteView extends javax.swing.JFrame {
         BtGravar = new javax.swing.JButton();
         BtExcluir = new javax.swing.JButton();
         LbImagem = new javax.swing.JLabel();
+        TxtArteNome = new javax.swing.JTextField();
+        LbArteUrl1 = new javax.swing.JLabel();
+        BtConsultar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -54,8 +61,19 @@ public class CadArteView extends javax.swing.JFrame {
         LbArteUrl.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         LbArteUrl.setText("URL:");
 
+        TxtArteId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtArteIdActionPerformed(evt);
+            }
+        });
+
         BtNovo.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         BtNovo.setText("Novo");
+        BtNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtNovoActionPerformed(evt);
+            }
+        });
 
         BtCarregarImagem.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         BtCarregarImagem.setText("Carregar Imagem");
@@ -67,9 +85,30 @@ public class CadArteView extends javax.swing.JFrame {
 
         BtGravar.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         BtGravar.setText("Gravar");
+        BtGravar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtGravarActionPerformed(evt);
+            }
+        });
 
         BtExcluir.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         BtExcluir.setText("Excluir");
+        BtExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtExcluirActionPerformed(evt);
+            }
+        });
+
+        LbArteUrl1.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
+        LbArteUrl1.setText("Nome:");
+
+        BtConsultar.setFont(new java.awt.Font("Segoe UI Emoji", 3, 12)); // NOI18N
+        BtConsultar.setText("🔍");
+        BtConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtConsultarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -82,11 +121,6 @@ public class CadArteView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(LbArteId)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(TxtArteId, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(68, 68, 68)
                         .addComponent(BtNovo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -96,13 +130,27 @@ public class CadArteView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BtExcluir))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(LbArteUrl)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(LbArteUrl)
+                                    .addComponent(LbArteUrl1)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(LbArteId)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(TxtArteUrl, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
-                            .addComponent(LbImagem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(80, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(LbImagem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(28, 28, 28))
+                            .addComponent(TxtArteNome, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(TxtArteId, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(BtConsultar)))))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,16 +158,22 @@ public class CadArteView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(LbArteTitulo)
                 .addGap(51, 51, 51)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LbArteId)
-                    .addComponent(TxtArteId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(LbArteId)
+                        .addComponent(TxtArteId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BtConsultar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LbArteUrl)
                     .addComponent(TxtArteUrl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(7, 7, 7)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TxtArteNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LbArteUrl1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(LbImagem, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BtCarregarImagem)
                     .addComponent(BtNovo)
@@ -146,6 +200,44 @@ public class CadArteView extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Caminho da imagem inválido.");
     }
     }//GEN-LAST:event_BtCarregarImagemActionPerformed
+
+    private void BtNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtNovoActionPerformed
+        limparCampos();
+    }//GEN-LAST:event_BtNovoActionPerformed
+
+    private void BtGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtGravarActionPerformed
+        Arte arte = new Arte(); 
+        
+        arte.setImagem(TxtArteUrl.getText());
+        arte.setNome(TxtArteNome.getText());
+        
+        if(controller.inserir(arte)){
+            JOptionPane.showMessageDialog(this, "Arte Cadastrada");
+        }else{
+            JOptionPane.showMessageDialog(this, "Erro ao cadastrar arte.");
+        }
+        limparCampos();
+    }//GEN-LAST:event_BtGravarActionPerformed
+
+    private void TxtArteIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtArteIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtArteIdActionPerformed
+
+    private void BtExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtExcluirActionPerformed
+        if(controller.excluir(Integer.parseInt(TxtArteId.getText()))){
+            limparCampos();
+            JOptionPane.showMessageDialog(this, "Arte Excluida");
+        }else{
+            JOptionPane.showMessageDialog(this, "Erro ao excluir arte.");
+        }
+    }//GEN-LAST:event_BtExcluirActionPerformed
+
+    private void BtConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtConsultarActionPerformed
+        
+        ConsultaArteView consulta = new ConsultaArteView(this);
+        consulta.setVisible(true);
+   
+    }//GEN-LAST:event_BtConsultarActionPerformed
 
     /**
      * Connection conn = // sua conexão com o banco
@@ -189,17 +281,34 @@ if (rs.next()) {
             }
         });
     }
+    
+    public void limparCampos() {
+        TxtArteId.setText("");
+        TxtArteUrl.setText("");
+        TxtArteNome.setText("");
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton BtCarregarImagem;
+    private javax.swing.JButton BtConsultar;
     private javax.swing.JButton BtExcluir;
     private javax.swing.JButton BtGravar;
     private javax.swing.JButton BtNovo;
     private javax.swing.JLabel LbArteId;
     private javax.swing.JLabel LbArteTitulo;
     private javax.swing.JLabel LbArteUrl;
+    private javax.swing.JLabel LbArteUrl1;
     private javax.swing.JLabel LbImagem;
     private javax.swing.JTextField TxtArteId;
+    private javax.swing.JTextField TxtArteNome;
     private javax.swing.JTextField TxtArteUrl;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void onArteSelecionada(Arte arte) {
+        TxtArteId.setText(String.valueOf(arte.getId()));
+        TxtArteUrl.setText(String.valueOf(arte.getImagem()));
+        TxtArteNome.setText(String.valueOf(arte.getNome()));
+    }
 }

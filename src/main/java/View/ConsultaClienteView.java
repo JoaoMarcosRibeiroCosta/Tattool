@@ -21,10 +21,9 @@ public class ConsultaClienteView extends javax.swing.JFrame {
      * Creates new form ConsultaClienteView
      */
     public ConsultaClienteView(ClienteSelecionadoListener listener) {
-    initComponents();
-    this.listener = listener;
-    carregarTabela();
-        
+        initComponents();
+        carregarTabela();
+        this.listener = listener;
     }
 
     /**
@@ -187,19 +186,19 @@ public class ConsultaClienteView extends javax.swing.JFrame {
     private void BtSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtSelecionarActionPerformed
 
         int linha = jTable1.getSelectedRow();
-    if (linha >= 0) {
-        int id = Integer.parseInt(jTable1.getValueAt(linha, 0).toString());
-        ClienteController controller = new ClienteController();
-        Cliente cliente = controller.buscarCliente(id);
+        if (linha >= 0) {
+            int id = Integer.parseInt(jTable1.getValueAt(linha, 0).toString());
+            ClienteController controller = new ClienteController();
+            Cliente cliente = controller.buscarCliente(id);
 
-        if (listener != null && cliente != null) {
-            listener.onClienteSelecionado(cliente);
+            if (listener != null && cliente != null) {
+                listener.onClienteSelecionado(cliente);
+            }
+
+            this.dispose(); // fecha a tela
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecione um cliente.");
         }
-
-        this.dispose(); // fecha a tela
-    } else {
-        JOptionPane.showMessageDialog(this, "Selecione um cliente.");
-    }
 
     }//GEN-LAST:event_BtSelecionarActionPerformed
 

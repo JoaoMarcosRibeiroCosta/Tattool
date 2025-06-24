@@ -7,5 +7,5 @@ package Interfaces;
 import Model.Produto;
 
 public interface ProdutoSelecionadoListener {
-    void onProdutoSelecionado(Produto produto);
+    public void onProdutoSelecionado(Produto produto);
 }

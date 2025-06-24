@@ -16,6 +16,7 @@ public class CadClienteView extends javax.swing.JFrame implements ClienteSelecio
      * Creates new form CadClienteView
      */
     ClienteController controller = new ClienteController();
+    
     public CadClienteView() {
         initComponents();
         TxtIdCli.setEditable(false);

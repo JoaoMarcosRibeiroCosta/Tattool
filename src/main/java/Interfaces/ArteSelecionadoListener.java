@@ -7,5 +7,5 @@ package Interfaces;
 import Model.Arte;
 
 public interface ArteSelecionadoListener {
-    void onArteSelecionada(Arte arte);
+    public void onArteSelecionada(Arte arte);
 }
