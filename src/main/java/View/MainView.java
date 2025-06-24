@@ -37,7 +37,6 @@ public class MainView extends javax.swing.JFrame {
         MenuCadContrato = new javax.swing.JMenuItem();
         MenuMovimentos = new javax.swing.JMenu();
         MenuMovOrc = new javax.swing.JMenuItem();
-        MenuMovPed = new javax.swing.JMenuItem();
         MenuRelatorio = new javax.swing.JMenu();
         MenuRelProd = new javax.swing.JMenuItem();
         MenuRelCli = new javax.swing.JMenuItem();
@@ -126,10 +125,6 @@ public class MainView extends javax.swing.JFrame {
         });
         MenuMovimentos.add(MenuMovOrc);
 
-        MenuMovPed.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F7, 0));
-        MenuMovPed.setText("Pedido");
-        MenuMovimentos.add(MenuMovPed);
-
         BarraDeMenu.add(MenuMovimentos);
 
         MenuRelatorio.setText("Relatórios");
@@ -186,7 +181,8 @@ public class MainView extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuCadContratoActionPerformed
 
     private void MenuMovOrcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuMovOrcActionPerformed
-        // TODO add your handling code here:
+        OrcamentoView novoOrcamento = new OrcamentoView();
+        novoOrcamento.setVisible(true);
     }//GEN-LAST:event_MenuMovOrcActionPerformed
 
     /**
@@ -234,7 +230,6 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JMenuItem MenuCadTat;
     private javax.swing.JMenu MenuCadastros;
     private javax.swing.JMenuItem MenuMovOrc;
-    private javax.swing.JMenuItem MenuMovPed;
     private javax.swing.JMenu MenuMovimentos;
     private javax.swing.JMenuItem MenuRelCli;
     private javax.swing.JMenuItem MenuRelProd;

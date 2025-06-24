@@ -4,6 +4,7 @@
  */
 package View;
 
+import Controller.ProdutoController;
 import Interfaces.ArteSelecionadoListener;
 import Interfaces.ClienteSelecionadoListener;
 import Interfaces.ContratoSelecionadoListener;
@@ -16,6 +17,8 @@ import Model.Contrato;
 import Model.Orcamento;
 import Model.Produto;
 import Model.Tatuador;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -33,8 +36,14 @@ public class OrcamentoView extends javax.swing.JFrame implements
      * Creates new form CadastroView
      */
     public OrcamentoView() {
-        initComponents();
+    initComponents();
+    DefaultTableModel model = new DefaultTableModel(
+        new Object[]{"ID", "Descrição", "Valor", "Quantidade", "Subtotal"}, 0
+    );
+    jTable1.setModel(model);
     }
+     
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -443,7 +452,33 @@ public class OrcamentoView extends javax.swing.JFrame implements
     }//GEN-LAST:event_BtExcluirActionPerformed
 
     private void BtadicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtadicionarProdutoActionPerformed
-        // TODO add your handling code here:
+        try {
+        int id = Integer.parseInt(TxtIdProduto.getText());
+
+        ProdutoController controller = new ProdutoController();
+        Produto produto = controller.buscarProduto(id); // método que retorna Produto por ID
+
+        if (produto != null) {
+            int quantidade = 1; // ou peça para o usuário escolher
+            float subtotal = produto.getValor() * quantidade;
+
+            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+            model.addRow(new Object[]{
+                produto.getId(),
+                produto.getDescricao(),
+                produto.getValor(),
+                quantidade,
+                subtotal
+            });
+
+            // Atualiza o total
+            atualizarTotal();
+        } else {
+            JOptionPane.showMessageDialog(this, "Produto não encontrado.");
+        }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Erro ao adicionar produto: " + e.getMessage());
+    }
     }//GEN-LAST:event_BtadicionarProdutoActionPerformed
 
     private void TxtTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtTotalActionPerformed
@@ -522,6 +557,23 @@ public void limparCampos() {
     TxtMaodeObra.setText("");
     TxtTotal.setText("");
     TxtIdProduto.setText("");
+}
+private void atualizarTotal() {
+    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+    float total = 0f;
+
+    for (int i = 0; i < model.getRowCount(); i++) {
+        total += (float) model.getValueAt(i, 4); // coluna "Subtotal"
+    }
+
+    try {
+        float maoDeObra = Float.parseFloat(TxtMaodeObra.getText());
+        total += maoDeObra;
+    } catch (NumberFormatException e) {
+        // Se estiver vazio ou inválido, ignora
+    }
+
+    TxtTotal.setText(String.format("%.2f", total));
 }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
