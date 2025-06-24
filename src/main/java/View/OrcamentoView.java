@@ -59,7 +59,7 @@ public class OrcamentoView extends javax.swing.JFrame implements
         TxtIdOrc = new javax.swing.JTextField();
         TxtIdCli = new javax.swing.JTextField();
         TxtIDTatu = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        TxtIdProduto = new javax.swing.JTextField();
         TxtIdContrato = new javax.swing.JTextField();
         TxtIdArte = new javax.swing.JTextField();
         BtConsultarOrc = new javax.swing.JButton();
@@ -231,6 +231,11 @@ public class OrcamentoView extends javax.swing.JFrame implements
         TxtMaodeObra.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
 
         TxtTotal.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        TxtTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TxtTotalActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -249,7 +254,7 @@ public class OrcamentoView extends javax.swing.JFrame implements
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(TxtIDTatu)
-                                    .addComponent(jTextField4)
+                                    .addComponent(TxtIdProduto)
                                     .addComponent(TxtIdCli, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(44, 44, 44)
@@ -305,11 +310,11 @@ public class OrcamentoView extends javax.swing.JFrame implements
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(LbMaoDeObra)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TxtMaodeObra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(TxtMaodeObra, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(LbTotal)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TxtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(TxtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 856, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -356,14 +361,14 @@ public class OrcamentoView extends javax.swing.JFrame implements
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(LbProduto)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TxtIdProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(BtConsultarPro, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(10, 10, 10)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(LbMaoDeObra)
-                            .addComponent(TxtMaodeObra, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TxtMaodeObra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(LbTotal)
                             .addComponent(TxtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(19, 19, 19)
@@ -422,7 +427,7 @@ public class OrcamentoView extends javax.swing.JFrame implements
     }//GEN-LAST:event_CheckBoxAprovadoActionPerformed
 
     private void BtNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtNovoActionPerformed
-        // TODO add your handling code here:
+        limparCampos();
     }//GEN-LAST:event_BtNovoActionPerformed
 
     private void BtGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtGravarActionPerformed
@@ -440,6 +445,10 @@ public class OrcamentoView extends javax.swing.JFrame implements
     private void BtadicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtadicionarProdutoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BtadicionarProdutoActionPerformed
+
+    private void TxtTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtTotalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TxtTotalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -488,7 +497,7 @@ public void onTatuadorSelecionado(Tatuador tatuador) {
 
 @Override
 public void onProdutoSelecionado(Produto produto) {
-    jTextField4.setText(String.valueOf(produto.getId()));
+    TxtIdProduto.setText(String.valueOf(produto.getId()));
 }
 
 @Override
@@ -503,6 +512,16 @@ public void onArteSelecionada(Arte arte) {
 
 public void onOrcametoSelecionado(Orcamento orcamento){
     TxtIdOrc.setText(String.valueOf(orcamento.getId()));
+}
+public void limparCampos() {
+    TxtIDTatu.setText("");
+    TxtIdArte.setText("");
+    TxtIdCli.setText("");
+    TxtIdContrato.setText("");
+    TxtIdOrc.setText("");
+    TxtMaodeObra.setText("");
+    TxtTotal.setText("");
+    TxtIdProduto.setText("");
 }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -532,11 +551,11 @@ public void onOrcametoSelecionado(Orcamento orcamento){
     private javax.swing.JTextField TxtIdCli;
     private javax.swing.JTextField TxtIdContrato;
     private javax.swing.JTextField TxtIdOrc;
+    private javax.swing.JTextField TxtIdProduto;
     private javax.swing.JTextField TxtMaodeObra;
     private javax.swing.JTextField TxtTotal;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 
 }

@@ -422,7 +422,7 @@ public class CadTatuadorView extends javax.swing.JFrame implements
         TxtTotalVendaTatu.setText(String.valueOf(tatuador.getTotalVenda()));
     }
 }
-    public void limparCampos() {
+public void limparCampos() {
     TxtIdTatu.setText("");
     TxtNomeTatu.setText("");
     TxtCpfTatu.setText("");
