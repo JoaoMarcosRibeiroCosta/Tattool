@@ -346,9 +346,7 @@ public class CadClienteView extends javax.swing.JFrame implements ClienteSelecio
 
     private void BtAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtAlterarActionPerformed
         Cliente cliente = new Cliente();
-        if(TxtArteCli.getText() != null){
         cliente.setArteId(Integer.parseInt(TxtArteCli.getText()));
-        }
         cliente.setId(Integer.parseInt(TxtIdCli.getText()));
         cliente.setCpf(Integer.parseInt(TxtCpfCli.getText()));
         cliente.setNome(TxtNomeCli.getText());

@@ -74,14 +74,30 @@ public class ClienteController extends PessoaController{
     }
 
     public boolean atualizarCliente(Cliente cliente) {
-        String sql = "UPDATE Cliente SET arte_anterior_id = ? WHERE pessoa_id = ?";
-        try (Connection con = conectar(); 
-             PreparedStatement stmt = con.prepareStatement(sql)) {
-            stmt.setInt(1, cliente.getArteId());
-            stmt.setInt(2, cliente.getId());
-            stmt.executeUpdate();
-            stmt.close();
-            con.close();
+        String sqlCliente = "UPDATE Cliente SET arte_anterior_id = ? WHERE pessoa_id = ?";
+        String sqlPessoa = """
+            UPDATE Pessoa SET nome = ?, cpf = ?, rua = ?, numero = ?, bairro = ?, cidade = ?
+            WHERE id = ?
+        """;
+
+        try (Connection con = conectar();
+             PreparedStatement stmtCliente = con.prepareStatement(sqlCliente);
+             PreparedStatement stmtPessoa = con.prepareStatement(sqlPessoa)) {
+
+            // Atualiza Cliente
+            stmtCliente.setInt(1, cliente.getArteId());
+            stmtCliente.setInt(2, cliente.getId());
+            stmtCliente.executeUpdate();
+
+            // Atualiza Pessoa
+            stmtPessoa.setString(1, cliente.getNome());
+            stmtPessoa.setInt(2, cliente.getCpf());
+            stmtPessoa.setString(3, cliente.getRua());
+            stmtPessoa.setInt(4, cliente.getNumero());
+            stmtPessoa.setString(5, cliente.getBairro());
+            stmtPessoa.setString(6, cliente.getCidade());
+            stmtPessoa.setInt(7, cliente.getId());
+            stmtPessoa.executeUpdate();
 
             return true;
         } catch (Exception e) {
@@ -111,10 +127,10 @@ public class ClienteController extends PessoaController{
     public DefaultTableModel carregarTabela(String filtro) {
         DefaultTableModel model = new DefaultTableModel();
         String sql = """
-    SELECT c.pessoa_id, p.cpf, p.nome, p.rua, p.numero, p.bairro, p.cidade 
-    FROM Cliente c
-    INNER JOIN Pessoa p ON c.pessoa_id = p.id
-"""+filtro;
+            SELECT c.pessoa_id, p.cpf, p.nome, p.rua, p.numero, p.bairro, p.cidade 
+            FROM Cliente c
+            INNER JOIN Pessoa p ON c.pessoa_id = p.id
+        """+filtro;
         try (Connection con = conectar(); PreparedStatement stmt = con.prepareStatement(sql); ResultSet rs = stmt.executeQuery()){
 
             ResultSetMetaData rsmd = rs.getMetaData();
@@ -141,6 +157,4 @@ public class ClienteController extends PessoaController{
 
         return model;
     }
-
-
 }
