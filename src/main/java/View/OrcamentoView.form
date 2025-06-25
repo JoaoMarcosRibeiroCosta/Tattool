@@ -100,8 +100,6 @@
               <EmptySpace max="32767" attributes="0"/>
               <Component id="BtNovo" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="BtGravar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
               <Component id="BtAlterar" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="BtExcluir" min="-2" max="-2" attributes="0"/>
@@ -194,7 +192,6 @@
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="BtNovo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="BtGravar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="BtAlterar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="BtExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -425,23 +422,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtNovoActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="BtGravar">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="14" style="3"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Gravar"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtGravarActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="BtAlterar">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="3"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Alterar"/>
+        <Property name="text" type="java.lang.String" value="Gravar"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtAlterarActionPerformed"/>

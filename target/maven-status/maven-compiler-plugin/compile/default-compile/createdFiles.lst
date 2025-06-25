@@ -1,7 +1,6 @@
 View\CadTatuadorView$5.class
 View\OrcamentoView$1.class
 View\ConsultaArteView$1.class
-View\OrcamentoView$16.class
 View\CadProView$5.class
 View\TelaCadContrato$6.class
 View\CadClienteView$7.class
@@ -33,6 +32,7 @@ Interfaces\ArteSelecionadoListener.class
 Controller\ConexaoSQLServer.class
 View\ConsultaClienteView$4.class
 Controller\ClienteController.class
+Controller\ItemController.class
 View\ConsultaOrcamentoView$6.class
 View\ConsultaClienteView.class
 Controller\PessoaController.class
@@ -130,6 +130,7 @@ View\ConsultaProdutoView$5.class
 View\CadArteView$5.class
 View\ConsultaTatuadorView.class
 View\OrcamentoView$15.class
+Model\ItemOrcamento.class
 View\ConsultaTatuadorView$6.class
 View\TelaCadContrato$1.class
 View\CadProView$2.class

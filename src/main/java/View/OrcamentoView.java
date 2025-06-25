@@ -4,6 +4,7 @@
  */
 package View;
 
+import Controller.ItemController;
 import Controller.OrcamentoController;
 import Controller.ProdutoController;
 import Interfaces.ArteSelecionadoListener;
@@ -15,9 +16,11 @@ import Interfaces.TatuadorSelecionadoListener;
 import Model.Arte;
 import Model.Cliente;
 import Model.Contrato;
+import Model.ItemOrcamento;
 import Model.Orcamento;
 import Model.Produto;
 import Model.Tatuador;
+import java.math.BigDecimal;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -37,11 +40,13 @@ public class OrcamentoView extends javax.swing.JFrame implements
      * Creates new form CadastroView
      */
     public OrcamentoView() {
-    initComponents();
-    DefaultTableModel model = new DefaultTableModel(
-        new Object[]{"ID", "Descrição", "Valor", "Quantidade", "Subtotal"}, 0
-    );
-    jTable1.setModel(model);
+        initComponents();
+        DefaultTableModel model = new DefaultTableModel(
+            new Object[]{"ID", "Descrição", "Valor", "Quantidade", "Subtotal"}, 0
+        );
+        jTable1.setModel(model);
+        carregarProdutos(0);
+        desligarInserts();
     }
      
    
@@ -79,7 +84,6 @@ public class OrcamentoView extends javax.swing.JFrame implements
         BtConsultarContrato = new javax.swing.JButton();
         BtConsultarArte = new javax.swing.JButton();
         BtNovo = new javax.swing.JButton();
-        BtGravar = new javax.swing.JButton();
         BtAlterar = new javax.swing.JButton();
         BtExcluir = new javax.swing.JButton();
         BtadicionarProduto = new javax.swing.JButton();
@@ -197,16 +201,8 @@ public class OrcamentoView extends javax.swing.JFrame implements
             }
         });
 
-        BtGravar.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        BtGravar.setText("Gravar");
-        BtGravar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtGravarActionPerformed(evt);
-            }
-        });
-
         BtAlterar.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
-        BtAlterar.setText("Alterar");
+        BtAlterar.setText("Gravar");
         BtAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtAlterarActionPerformed(evt);
@@ -313,8 +309,6 @@ public class OrcamentoView extends javax.swing.JFrame implements
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(BtNovo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BtGravar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BtAlterar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BtExcluir)
@@ -389,7 +383,6 @@ public class OrcamentoView extends javax.swing.JFrame implements
                         .addGap(19, 19, 19)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(BtNovo)
-                            .addComponent(BtGravar)
                             .addComponent(BtAlterar)
                             .addComponent(BtExcluir)))
                     .addGroup(layout.createSequentialGroup()
@@ -421,6 +414,7 @@ public class OrcamentoView extends javax.swing.JFrame implements
     private void BtConsultarOrcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtConsultarOrcActionPerformed
         ConsultaOrcamentoView consulta = new ConsultaOrcamentoView(this);
         consulta.setVisible(true);
+        ligarInserts();
     }//GEN-LAST:event_BtConsultarOrcActionPerformed
 
     private void BtConsultarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtConsultarContratoActionPerformed
@@ -447,12 +441,16 @@ public class OrcamentoView extends javax.swing.JFrame implements
     private void BtNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtNovoActionPerformed
         limparCampos();
         TxtIdCli.requestFocus();
-    }//GEN-LAST:event_BtNovoActionPerformed
-
-    private void BtGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtGravarActionPerformed
-         try {
+        TxtIDTatu.setText("0");
+        TxtIdArte.setText("0");
+        TxtIdCli.setText("0");
+        TxtIdContrato.setText("0");
+        TxtMaodeObra.setText("0");
+        TxtTotal.setText("0");
+        TxtIdProduto.setText("0");
+       
         Orcamento orcamento = new Orcamento();
-
+        
         orcamento.setCliente(Integer.parseInt(TxtIdCli.getText()));
         orcamento.setTatuador(Integer.parseInt(TxtIDTatu.getText()));
         orcamento.setContratoId(Integer.parseInt(TxtIdContrato.getText()));
@@ -460,20 +458,12 @@ public class OrcamentoView extends javax.swing.JFrame implements
         orcamento.setAprovado(CheckBoxAprovado.isSelected());
         orcamento.setMaoDeObra(Float.parseFloat(TxtMaodeObra.getText()));
         orcamento.setTotal(Float.parseFloat(TxtTotal.getText()));
-
-        boolean sucesso = new OrcamentoController().inserirOrcamento(orcamento);
-
-        if (sucesso) {
-            JOptionPane.showMessageDialog(this, "Orçamento salvo com sucesso.");
-            limparCampos();
-        } else {
-            JOptionPane.showMessageDialog(this, "Erro ao salvar orçamento.");
-        }
-
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage());
-    }
-    }//GEN-LAST:event_BtGravarActionPerformed
+        
+        OrcamentoController controller = new OrcamentoController();
+        controller.inserirOrcamento(orcamento);
+        TxtIdOrc.setText(String.valueOf(controller.buscarUltimoOrcamentoId()));
+        ligarInserts();
+    }//GEN-LAST:event_BtNovoActionPerformed
 
     private void BtAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtAlterarActionPerformed
             try {
@@ -492,63 +482,64 @@ public class OrcamentoView extends javax.swing.JFrame implements
 
         if (atualizado) {
             JOptionPane.showMessageDialog(this, "Orçamento atualizado.");
+            desligarInserts();
+            limparCampos();
+            carregarProdutos(0);
         } else {
             JOptionPane.showMessageDialog(this, "Erro ao atualizar.");
         }
 
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage());
-    }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage());
+        }
     }//GEN-LAST:event_BtAlterarActionPerformed
 
     private void BtExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtExcluirActionPerformed
-            try {
-        int id = Integer.parseInt(TxtIdOrc.getText());
+        try {
+            int id = Integer.parseInt(TxtIdOrc.getText());
 
-        int confirmar = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir?", "Confirmar", JOptionPane.YES_NO_OPTION);
+            int confirmar = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir?", "Confirmar", JOptionPane.YES_NO_OPTION);
 
-        if (confirmar == JOptionPane.YES_OPTION) {
-            boolean excluido = new OrcamentoController().excluirOrcamento(id);
-            if (excluido) {
-                JOptionPane.showMessageDialog(this, "Orçamento excluído.");
-                limparCampos();
-            } else {
-                JOptionPane.showMessageDialog(this, "Erro ao excluir.");
+            if (confirmar == JOptionPane.YES_OPTION) {
+                boolean excluido = new OrcamentoController().excluirOrcamento(id);
+                if (excluido) {
+                    JOptionPane.showMessageDialog(this, "Orçamento excluído.");
+                    desligarInserts();
+                    limparCampos();
+                    carregarProdutos(0);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Erro ao excluir.");
+                }
             }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage());
         }
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage());
-    }
     }//GEN-LAST:event_BtExcluirActionPerformed
 
     private void BtadicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtadicionarProdutoActionPerformed
         try {
-        int id = Integer.parseInt(TxtIdProduto.getText());
+            int idProduto = Integer.parseInt(TxtIdProduto.getText());
+            int idOrcamento = Integer.parseInt(TxtIdOrc.getText());
+            ItemController itemController = new ItemController();
+            ProdutoController controller = new ProdutoController();
+            Produto produto = controller.buscarProduto(idProduto);
+            ItemOrcamento item = new ItemOrcamento();
 
-        ProdutoController controller = new ProdutoController();
-        Produto produto = controller.buscarProduto(id); // método que retorna Produto por ID
-
-        if (produto != null) {
-            int quantidade = 1; // ou peça para o usuário escolher
-            float subtotal = produto.getValor() * quantidade;
-
-            DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-            model.addRow(new Object[]{
-                produto.getId(),
-                produto.getDescricao(),
-                produto.getValor(),
-                quantidade,
-                subtotal
-            });
-
-            // Atualiza o total
-            atualizarTotal();
-        } else {
-            JOptionPane.showMessageDialog(this, "Produto não encontrado.");
+            if (produto != null) {
+                // INSERIR ITEM NA TABELA
+                item.setOrcamento_id(idOrcamento);
+                item.setProduto_id(idProduto);
+                
+                itemController.inserirItem(item);
+                // BUSCAR NA TABELA ITEM PASSANDO ID
+                carregarProdutos(idOrcamento);
+                atualizarTotal();
+            } else {
+                JOptionPane.showMessageDialog(this, "Produto não encontrado.");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro ao adicionar item: " + e.getMessage());
         }
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Erro ao adicionar produto: " + e.getMessage());
-    }
     }//GEN-LAST:event_BtadicionarProdutoActionPerformed
 
     private void TxtTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtTotalActionPerformed
@@ -621,6 +612,64 @@ public void onArteSelecionada(Arte arte) {
 
 public void onOrcametoSelecionado(Orcamento orcamento){
     TxtIdOrc.setText(String.valueOf(orcamento.getId()));
+    TxtIdArte.setText(String.valueOf(orcamento.getArte()));
+    TxtIdCli.setText(String.valueOf(orcamento.getCliente()));
+    TxtIdContrato.setText(String.valueOf(orcamento.getContratoId()));
+    TxtMaodeObra.setText(String.valueOf(orcamento.getMaoDeObra())); 
+    TxtTotal.setText(String.valueOf(orcamento.getTotal()));
+    TxtIdProduto.setText(String.valueOf(orcamento.getProduto()));
+    TxtIDTatu.setText(String.valueOf(orcamento.getTatuador()));
+    if(orcamento.getAprovado()){
+        CheckBoxAprovado.setSelected(true);
+    }
+    carregarProdutos(orcamento.getId());
+    atualizarTotal();
+}
+
+public void carregarProdutos(int id){
+    ItemController controller = new ItemController();
+    String filtro = " WHERE orcamento_id = " + id;
+    DefaultTableModel model = controller.carregarTabela(filtro);
+    jTable1.setModel(model);
+}
+
+public void desligarInserts(){
+    TxtIDTatu.setEnabled(false);
+    TxtIdArte.setEnabled(false);
+    TxtIdCli.setEnabled(false);
+    TxtIdContrato.setEnabled(false);
+    TxtIdOrc.setEnabled(false);
+    TxtMaodeObra.setEnabled(false);
+    TxtTotal.setEnabled(false);
+    TxtIdProduto.setEnabled(false);
+    BtAlterar.setEnabled(false);
+    BtConsultarArte.setEnabled(false);
+    BtConsultarCli.setEnabled(false);
+    BtConsultarContrato.setEnabled(false);
+    BtConsultarPro.setEnabled(false);
+    BtConsultarTatu.setEnabled(false);
+    BtExcluir.setEnabled(false);
+    BtadicionarProduto.setEnabled(false);
+    CheckBoxAprovado.setEnabled(false);
+}
+public void ligarInserts() {
+    TxtIDTatu.setEnabled(true);
+    TxtIdArte.setEnabled(true);
+    TxtIdCli.setEnabled(true);
+    TxtIdContrato.setEnabled(true);
+    TxtIdOrc.setEnabled(true);
+    TxtMaodeObra.setEnabled(true);
+    TxtTotal.setEnabled(true);
+    TxtIdProduto.setEnabled(true);
+    BtAlterar.setEnabled(true);
+    BtConsultarArte.setEnabled(true);
+    BtConsultarCli.setEnabled(true);
+    BtConsultarContrato.setEnabled(true);
+    BtConsultarPro.setEnabled(true);
+    BtConsultarTatu.setEnabled(true);
+    BtExcluir.setEnabled(true);
+    BtadicionarProduto.setEnabled(true);
+    CheckBoxAprovado.setEnabled(true);
 }
 public void limparCampos() {
     TxtIDTatu.setText("");
@@ -632,23 +681,30 @@ public void limparCampos() {
     TxtTotal.setText("");
     TxtIdProduto.setText("");
 }
-private void atualizarTotal() {
-    DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-    float total = 0f;
+    private void atualizarTotal() {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        double total = 0;
+        for (int i = 0; i < model.getRowCount(); i++) {
+            Object valorObj = model.getValueAt(i, 3); // Coluna "Subtotal"
 
-    for (int i = 0; i < model.getRowCount(); i++) {
-        total += (float) model.getValueAt(i, 4); // coluna "Subtotal"
+            if (valorObj != null) {
+                try {
+                    if (valorObj instanceof Number) {
+                        total += ((Number) valorObj).doubleValue();
+                    } else {
+                        total += Double.parseDouble(valorObj.toString());
+                    }
+                } catch (Exception e) {
+                    System.out.println("Erro ao somar valor na linha " + i + ": " + e.getMessage());
+                }
+            }
+        }
+        float totalFloat = (float) total; // total é double
+        TxtTotal.setText(String.format("%.2f", totalFloat));
+        TxtTotal.setText(TxtTotal.getText().replace(",", "."));
     }
 
-    try {
-        float maoDeObra = Float.parseFloat(TxtMaodeObra.getText());
-        total += maoDeObra;
-    } catch (NumberFormatException e) {
-        // Se estiver vazio ou inválido, ignora
-    }
 
-    TxtTotal.setText(String.format("%.2f", total));
-}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtAlterar;
@@ -659,7 +715,6 @@ private void atualizarTotal() {
     private javax.swing.JButton BtConsultarPro;
     private javax.swing.JButton BtConsultarTatu;
     private javax.swing.JButton BtExcluir;
-    private javax.swing.JButton BtGravar;
     private javax.swing.JButton BtNovo;
     private javax.swing.JButton BtadicionarProduto;
     private javax.swing.JCheckBox CheckBoxAprovado;

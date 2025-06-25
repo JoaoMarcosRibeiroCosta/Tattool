@@ -236,32 +236,32 @@ public class ConsultaClienteView extends javax.swing.JFrame {
             }
         });
     }
-        public void carregarTabela() { 
+    public void carregarTabela() { 
         String pesquisa = "";
         String filtro = " WHERE c.pessoa_id LIKE '%"+pesquisa+"%' ;";
         DefaultTableModel model = controller.carregarTabela(filtro);
         jTable1.setModel(model);
     }
-            private void aplicarFiltro() {
-    String textoBusca = TxtBuscar.getText().trim();
-    String coluna = ComboFiltro.getSelectedItem().toString();
+    private void aplicarFiltro() {
+        String textoBusca = TxtBuscar.getText().trim();
+        String coluna = ComboFiltro.getSelectedItem().toString();
 
-    String colunaBD = switch (coluna) {
-        case "ID" -> "id";
-        case "CPF" -> "cpf";
-        case "Nome" -> "nome";
-        default -> "nome"; 
-    };
+        String colunaBD = switch (coluna) {
+            case "ID" -> "id";
+            case "CPF" -> "cpf";
+            case "Nome" -> "nome";
+            default -> "nome"; 
+        };
     
 
-    String filtro = "";
-    if (!textoBusca.isEmpty()) {
-        filtro = " WHERE " + colunaBD + " LIKE '%" + textoBusca + "%'";
-    }
+        String filtro = "";
+        if (!textoBusca.isEmpty()) {
+            filtro = " WHERE " + colunaBD + " LIKE '%" + textoBusca + "%'";
+        }
 
-    DefaultTableModel model = controller.carregarTabela(filtro);
-    jTable1.setModel(model);
-}
+        DefaultTableModel model = controller.carregarTabela(filtro);
+        jTable1.setModel(model);
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

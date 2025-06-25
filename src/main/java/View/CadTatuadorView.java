@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  */
 public class CadTatuadorView extends javax.swing.JFrame implements 
     TatuadorSelecionadoListener{
-
+    TatuadorController controller = new TatuadorController();
     /**
      * Creates new form CadTatuadorView
      */
@@ -299,7 +299,7 @@ public class CadTatuadorView extends javax.swing.JFrame implements
         tatuador.setEstilo(TxtEstiloTatu.getText());
         tatuador.setTotalVenda(Float.parseFloat(TxtTotalVendaTatu.getText()));
 
-        TatuadorController controller = new TatuadorController();
+        
         boolean sucesso = controller.inserirTatuador(tatuador);
 
         if (sucesso) {

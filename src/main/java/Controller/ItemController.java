@@ -17,7 +17,7 @@ import java.sql.ResultSetMetaData;
 import javax.swing.table.DefaultTableModel;
 public class ItemController extends ConexaoSQLServer{
     public boolean inserirItem(ItemOrcamento item) {
-        String sql = "INSERT INTO item_orcamento (produto_id, orcamento_id) VALUES (?, ?)";
+        String sql = "INSERT INTO ItemOrcamento (produto_id, orcamento_id) VALUES (?, ?)";
         try (Connection con = conectar(); 
             PreparedStatement stmt = con.prepareStatement(sql)) {
             stmt.setInt(1, item.getProduto_id());
@@ -34,16 +34,14 @@ public class ItemController extends ConexaoSQLServer{
     }
 
     public ItemOrcamento buscarItem(int id) {
-        String sql = "SELECT * FROM item_orcamento WHERE id = ?";
+        String sql = "SELECT * FROM ItemOrcamento WHERE id = ?";
         try (Connection con = conectar(); 
              PreparedStatement stmt = con.prepareStatement(sql)) {
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 ItemOrcamento item = new ItemOrcamento();
-                item.setId(rs.getInt("id"));
-                item.setOrcamento_id(rs.getInt("orcamento_id"));
-                item.setProduto_id(rs.getInt("produto_id"));
+                
                 return item;
             }
             rs.close();
@@ -57,7 +55,7 @@ public class ItemController extends ConexaoSQLServer{
     }
 
     public boolean atualizarItem(ItemOrcamento item) {
-        String sql = "UPDATE item_orcamento SET produto_id = ?, orcamento_id = ? WHERE id = ?";
+        String sql = "UPDATE ItemOrcamento SET produto_id = ?, orcamento_id = ? WHERE id = ?";
         try (Connection con = conectar(); 
              PreparedStatement stmt = con.prepareStatement(sql)) {
             stmt.setInt(1, item.getProduto_id());
@@ -75,7 +73,7 @@ public class ItemController extends ConexaoSQLServer{
     }
 
     public boolean excluirItem(int id) {
-        String sql = "DELETE FROM item_orcamento WHERE id = ?";
+        String sql = "DELETE FROM ItemOrcamento WHERE id = ?";
         try (
             Connection con = conectar();     
             PreparedStatement stmt = con.prepareStatement(sql)) {
@@ -97,11 +95,10 @@ public class ItemController extends ConexaoSQLServer{
         String sql = """
                     SELECT 
                     i.id As ID,
-                    i.produto_id AS ID Produto,
-                    p.nome AS Produto,
-                    p.valor AS Valor,
-                    i.quantidade As Quantidade
-                    FROM ItemOrcamento id
+                    i.produto_id AS IDProduto,
+                    p.descricao AS Produto,
+                    p.valor AS Valor
+                    FROM ItemOrcamento i
                     INNER JOIN Produto p ON i.produto_id = p.id
                             """+filtro;
         

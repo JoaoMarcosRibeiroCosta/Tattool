@@ -96,15 +96,19 @@ public class OrcamentoController extends ConexaoSQLServer{
     }
 
     public boolean excluirOrcamento(int id) {
+        String sqlItem = "DELETE FROM ItemOrcamento WHERE orcamento_id = ?";
         String sql = "DELETE FROM Orcamento WHERE id = ?";
         try (
-            Connection con = conectar();     
+            Connection con = conectar();
+            PreparedStatement stmtItem = con.prepareStatement(sqlItem);
             PreparedStatement stmt = con.prepareStatement(sql)) {
+            
+            stmtItem.setInt(1, id);
+            stmtItem.executeUpdate();
+            
             stmt.setInt(1, id);
             stmt.executeUpdate();
-            stmt.close();
-            con.close();
-
+           
             return true;
         } catch (Exception e) {
             System.out.println("Erro ao excluir Orcamento: " + e.getMessage());
@@ -142,6 +146,24 @@ public class OrcamentoController extends ConexaoSQLServer{
 
         
         return model;
+    }
+    
+    public int buscarUltimoOrcamentoId() {
+        String sql = "SELECT TOP 1 id FROM Orcamento ORDER BY id DESC";
+
+        try (Connection con = conectar();
+             PreparedStatement stmt = con.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            if (rs.next()) {
+                return rs.getInt("id");
+            }
+
+        } catch (Exception e) {
+            System.out.println("Erro ao buscar último ID de orçamento: " + e.getMessage());
+        }
+
+        return -1; // ou 0, se preferir indicar "nenhum encontrado"
     }
 
 }

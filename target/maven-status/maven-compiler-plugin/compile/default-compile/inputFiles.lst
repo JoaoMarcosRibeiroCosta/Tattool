@@ -14,6 +14,7 @@ C:\script\poo2\Tattool\src\main\java\View\CadArteView.java
 C:\script\poo2\Tattool\src\main\java\Controller\PessoaController.java
 C:\script\poo2\Tattool\src\main\java\View\CadProView.java
 C:\script\poo2\Tattool\src\main\java\Controller\TatuadorController.java
+C:\script\poo2\Tattool\src\main\java\Controller\ItemController.java
 C:\script\poo2\Tattool\src\main\java\Controller\ArteController.java
 C:\script\poo2\Tattool\src\main\java\View\ConsultaOrcamentoView.java
 C:\script\poo2\Tattool\src\main\java\View\MainView.java
@@ -31,5 +32,6 @@ C:\script\poo2\Tattool\src\main\java\Controller\ContratoController.java
 C:\script\poo2\Tattool\src\main\java\Controller\ClienteController.java
 C:\script\poo2\Tattool\src\main\java\View\ConsultaTatuadorView.java
 C:\script\poo2\Tattool\src\main\java\Interfaces\TatuadorSelecionadoListener.java
+C:\script\poo2\Tattool\src\main\java\Model\ItemOrcamento.java
 C:\script\poo2\Tattool\src\main\java\Model\Produto.java
 C:\script\poo2\Tattool\src\main\java\View\ConsultaContratoView.java
