@@ -4,6 +4,7 @@
  */
 package View;
 
+import Controller.OrcamentoController;
 import Controller.ProdutoController;
 import Interfaces.ArteSelecionadoListener;
 import Interfaces.ClienteSelecionadoListener;
@@ -238,6 +239,11 @@ public class OrcamentoView extends javax.swing.JFrame implements
         });
 
         TxtMaodeObra.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        TxtMaodeObra.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                TxtMaodeObraFocusLost(evt);
+            }
+        });
 
         TxtTotal.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         TxtTotal.addActionListener(new java.awt.event.ActionListener() {
@@ -432,23 +438,87 @@ public class OrcamentoView extends javax.swing.JFrame implements
     }//GEN-LAST:event_TxtIdOrcActionPerformed
 
     private void CheckBoxAprovadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckBoxAprovadoActionPerformed
-        // TODO add your handling code here:
+
+        
+        
+        
     }//GEN-LAST:event_CheckBoxAprovadoActionPerformed
 
     private void BtNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtNovoActionPerformed
         limparCampos();
+        TxtIdCli.requestFocus();
     }//GEN-LAST:event_BtNovoActionPerformed
 
     private void BtGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtGravarActionPerformed
-        // TODO add your handling code here:
+         try {
+        Orcamento orcamento = new Orcamento();
+
+        orcamento.setCliente(Integer.parseInt(TxtIdCli.getText()));
+        orcamento.setTatuador(Integer.parseInt(TxtIDTatu.getText()));
+        orcamento.setContratoId(Integer.parseInt(TxtIdContrato.getText()));
+        orcamento.setArte(Integer.parseInt(TxtIdArte.getText()));
+        orcamento.setAprovado(CheckBoxAprovado.isSelected());
+        orcamento.setMaoDeObra(Float.parseFloat(TxtMaodeObra.getText()));
+        orcamento.setTotal(Float.parseFloat(TxtTotal.getText()));
+
+        boolean sucesso = new OrcamentoController().inserirOrcamento(orcamento);
+
+        if (sucesso) {
+            JOptionPane.showMessageDialog(this, "Orçamento salvo com sucesso.");
+            limparCampos();
+        } else {
+            JOptionPane.showMessageDialog(this, "Erro ao salvar orçamento.");
+        }
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage());
+    }
     }//GEN-LAST:event_BtGravarActionPerformed
 
     private void BtAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtAlterarActionPerformed
-        // TODO add your handling code here:
+            try {
+        Orcamento orcamento = new Orcamento();
+
+        orcamento.setId(Integer.parseInt(TxtIdOrc.getText()));
+        orcamento.setCliente(Integer.parseInt(TxtIdCli.getText()));
+        orcamento.setTatuador(Integer.parseInt(TxtIDTatu.getText()));
+        orcamento.setContratoId(Integer.parseInt(TxtIdContrato.getText()));
+        orcamento.setArte(Integer.parseInt(TxtIdArte.getText()));
+        orcamento.setAprovado(CheckBoxAprovado.isSelected());
+        orcamento.setMaoDeObra(Float.parseFloat(TxtMaodeObra.getText()));
+        orcamento.setTotal(Float.parseFloat(TxtTotal.getText()));
+
+        boolean atualizado = new OrcamentoController().atualizarOrcamento(orcamento);
+
+        if (atualizado) {
+            JOptionPane.showMessageDialog(this, "Orçamento atualizado.");
+        } else {
+            JOptionPane.showMessageDialog(this, "Erro ao atualizar.");
+        }
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage());
+    }
     }//GEN-LAST:event_BtAlterarActionPerformed
 
     private void BtExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtExcluirActionPerformed
-        // TODO add your handling code here:
+            try {
+        int id = Integer.parseInt(TxtIdOrc.getText());
+
+        int confirmar = JOptionPane.showConfirmDialog(this, "Deseja realmente excluir?", "Confirmar", JOptionPane.YES_NO_OPTION);
+
+        if (confirmar == JOptionPane.YES_OPTION) {
+            boolean excluido = new OrcamentoController().excluirOrcamento(id);
+            if (excluido) {
+                JOptionPane.showMessageDialog(this, "Orçamento excluído.");
+                limparCampos();
+            } else {
+                JOptionPane.showMessageDialog(this, "Erro ao excluir.");
+            }
+        }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage());
+    }
     }//GEN-LAST:event_BtExcluirActionPerformed
 
     private void BtadicionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtadicionarProdutoActionPerformed
@@ -484,6 +554,10 @@ public class OrcamentoView extends javax.swing.JFrame implements
     private void TxtTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtTotalActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TxtTotalActionPerformed
+
+    private void TxtMaodeObraFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_TxtMaodeObraFocusLost
+        atualizarTotal();
+    }//GEN-LAST:event_TxtMaodeObraFocusLost
 
     /**
      * @param args the command line arguments

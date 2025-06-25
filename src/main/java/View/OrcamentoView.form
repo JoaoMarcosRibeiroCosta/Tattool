@@ -491,6 +491,9 @@
           <Font name="Segoe UI" size="12" style="3"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="TxtMaodeObraFocusLost"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="TxtTotal">
       <Properties>
