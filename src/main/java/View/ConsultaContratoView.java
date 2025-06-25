@@ -5,6 +5,7 @@
 package View;
 
 import Controller.ContratoController;
+import Interfaces.ContratoSelecionadoListener;
 import Model.Contrato;
 import View.TelaCadContrato;
 import javax.swing.JOptionPane;
@@ -17,10 +18,11 @@ import javax.swing.table.DefaultTableModel;
 public class ConsultaContratoView extends javax.swing.JFrame {
     ContratoController controller = new ContratoController();
     private TelaCadContrato telaCadastro;
+    private ContratoSelecionadoListener listener;
     /**
      * Creates new form ConsultaContratoView
      */
-    public ConsultaContratoView(TelaCadContrato telaCadastro) {
+    public ConsultaContratoView(ContratoSelecionadoListener listener) {
         initComponents();
         this.telaCadastro = telaCadastro;
         carregarTabela();
@@ -174,16 +176,20 @@ public class ConsultaContratoView extends javax.swing.JFrame {
     private void BtSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtSelecionarActionPerformed
 
         int linha = jTable1.getSelectedRow();
-        if (linha != -1) {
-                telaCadastro.preencherCampos(
-                    jTable1.getValueAt(linha, 0).toString(),
-                    jTable1.getValueAt(linha, 1).toString(),
-                    jTable1.getValueAt(linha, 2).toString()
-                   );
-                this.dispose();
-            } else {
-                JOptionPane.showMessageDialog(this, "Contrato não encontrado.");
+        if (linha >= 0) {
+            int id = Integer.parseInt(jTable1.getValueAt(linha, 0).toString());
+            Contrato contrato = new Contrato();
+            contrato.setId(id);
+            contrato.setClienteId(Integer.parseInt(jTable1.getValueAt(linha, 1).toString()));
+            contrato.setDados((jTable1.getValueAt(linha, 2).toString()));
+            if (listener != null && contrato != null) {
+                listener.onContratoSelecionado(contrato);
             }
+
+            this.dispose(); // fecha a tela
+        } else {
+            JOptionPane.showMessageDialog(this, "Selecione um contrato.");
+        }
 
     }//GEN-LAST:event_BtSelecionarActionPerformed
 

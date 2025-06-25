@@ -6,6 +6,7 @@ package View;
 
 import Controller.ContratoController;
 import Interfaces.ClienteSelecionadoListener;
+import Interfaces.ContratoSelecionadoListener;
 import Model.Cliente;
 import Model.Contrato;
 import javax.swing.JOptionPane;
@@ -203,7 +204,7 @@ ContratoController controller = new ContratoController();
     }//GEN-LAST:event_BtContratoNovoActionPerformed
 
     private void BtContratoConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtContratoConsultarActionPerformed
-        ConsultaContratoView consulta = new ConsultaContratoView(this);
+        ConsultaContratoView consulta = new ConsultaContratoView((ContratoSelecionadoListener) this);
         consulta.setVisible(true);
     }//GEN-LAST:event_BtContratoConsultarActionPerformed
 

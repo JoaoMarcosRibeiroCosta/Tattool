@@ -418,8 +418,8 @@ public class OrcamentoView extends javax.swing.JFrame implements
     }//GEN-LAST:event_BtConsultarOrcActionPerformed
 
     private void BtConsultarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtConsultarContratoActionPerformed
-        //ConsultaContratoView consulta = new ConsultaContratoView(this);
-        //consulta.setVisible(true);
+        ConsultaContratoView consulta = new ConsultaContratoView(this);
+        consulta.setVisible(true);
     }//GEN-LAST:event_BtConsultarContratoActionPerformed
 
     private void BtConsultarArteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtConsultarArteActionPerformed
