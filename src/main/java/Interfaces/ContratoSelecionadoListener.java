@@ -7,5 +7,5 @@ package Interfaces;
 import Model.Contrato;
 
 public interface ContratoSelecionadoListener {
-    void onContratoSelecionado(Contrato contrato);
+    public void onContratoSelecionado(Contrato contrato);
 }

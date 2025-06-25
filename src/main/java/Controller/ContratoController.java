@@ -36,6 +36,7 @@ public boolean inserirContrato(Contrato contrato) {
     }
 
     public Contrato buscarContrato(int id) {
+        System.out.println("id recebido em buscarContrato: " + id);
         String sql = "SELECT * FROM Contrato WHERE id = ?";
         try (Connection con = conectar(); 
              PreparedStatement stmt = con.prepareStatement(sql)) {

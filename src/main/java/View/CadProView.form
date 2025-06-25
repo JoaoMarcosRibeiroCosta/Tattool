@@ -24,54 +24,42 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="206" max="-2" attributes="0"/>
-                              <Component id="LbCadProTitulo" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                              <Component id="LbIdPro" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="TxtIdPro" min="-2" pref="50" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                              <Component id="BtConsultar" min="-2" max="-2" attributes="0"/>
-                          </Group>
+              <EmptySpace min="-2" pref="204" max="-2" attributes="0"/>
+              <Component id="LbCadProTitulo" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="LbValorPro" min="-2" max="-2" attributes="0"/>
+                          <Component id="LbEstoquePro" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="LbDescricaoPro" min="-2" max="-2" attributes="0"/>
+                          <Component id="LbIdPro" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="0" pref="174" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="TxtIdPro" pref="200" max="32767" attributes="0"/>
+                          <Component id="TxtDescricaoPro" alignment="0" max="32767" attributes="0"/>
+                          <Component id="TxtValorPro" alignment="0" max="32767" attributes="0"/>
+                          <Component id="TxtEstoquePro" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="BtConsultar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="BtNovo" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="BtGravar" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="BtAlterar" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="BtExcluir" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="LbValorPro" min="-2" max="-2" attributes="0"/>
-                                  <Component id="LbDescricaoPro" min="-2" max="-2" attributes="0"/>
-                                  <Component id="LbEstoquePro" alignment="1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="TxtValorPro" min="-2" pref="80" max="-2" attributes="0"/>
-                                  <Component id="TxtDescricaoPro" min="-2" pref="437" max="-2" attributes="0"/>
-                                  <Component id="TxtEstoquePro" min="-2" pref="80" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <EmptySpace pref="260" max="32767" attributes="0"/>
+                      <Component id="BtNovo" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                      <Component id="BtGravar" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="BtAlterar" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="BtExcluir" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -79,39 +67,41 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Component id="LbCadProTitulo" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="LbIdPro" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="TxtIdPro" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="LbIdPro" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="BtConsultar" min="-2" pref="22" max="-2" attributes="0"/>
+                  <Component id="BtConsultar" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="LbDescricaoPro" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="TxtDescricaoPro" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="TxtValorPro" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="LbValorPro" min="-2" max="-2" attributes="0"/>
+                  <Component id="LbDescricaoPro" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="TxtDescricaoPro" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="TxtValorPro" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="LbValorPro" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="TxtEstoquePro" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="LbEstoquePro" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="LbEstoquePro" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="TxtEstoquePro" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="191" max="-2" attributes="0"/>
+              <EmptySpace pref="160" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="BtExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="BtAlterar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="BtGravar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="BtNovo" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="20" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

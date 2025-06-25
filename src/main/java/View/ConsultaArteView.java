@@ -68,7 +68,7 @@ public class ConsultaArteView extends javax.swing.JFrame {
         LbTituto.setText("Consulta de Artes");
 
         ComboFiltro.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        ComboFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Descrição", "Valor", "Quantidade" }));
+        ComboFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "URL", "Nome" }));
         ComboFiltro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboFiltroActionPerformed(evt);
@@ -253,7 +253,7 @@ public class ConsultaArteView extends javax.swing.JFrame {
 
         String colunaBD = switch (coluna) {
             case "ID" -> "id";
-            case "CPF" -> "cpf";
+            case "URL" -> "imagem";
             case "Nome" -> "nome";
             default -> "nome"; 
         };

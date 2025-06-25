@@ -20,7 +20,6 @@ import Model.ItemOrcamento;
 import Model.Orcamento;
 import Model.Produto;
 import Model.Tatuador;
-import java.math.BigDecimal;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -365,29 +364,29 @@ public class OrcamentoView extends javax.swing.JFrame implements
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(CheckBoxAprovado)))
-                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(LbProduto)
                             .addComponent(TxtIdProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BtConsultarPro, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(10, 10, 10)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(LbMaoDeObra)
-                            .addComponent(TxtMaodeObra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LbTotal)
-                            .addComponent(TxtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(BtNovo)
-                            .addComponent(BtAlterar)
-                            .addComponent(BtExcluir)))
+                            .addComponent(BtConsultarPro, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(BtadicionarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(13, 13, 13)
+                        .addComponent(BtadicionarProduto)))
+                .addGap(10, 10, 10)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LbMaoDeObra)
+                    .addComponent(TxtMaodeObra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(LbTotal)
+                    .addComponent(TxtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BtNovo)
+                    .addComponent(BtAlterar)
+                    .addComponent(BtExcluir))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
@@ -685,7 +684,7 @@ public void limparCampos() {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
         double total = 0;
         for (int i = 0; i < model.getRowCount(); i++) {
-            Object valorObj = model.getValueAt(i, 3); // Coluna "Subtotal"
+            Object valorObj = model.getValueAt(i, 3); // Coluna valor
 
             if (valorObj != null) {
                 try {
@@ -699,6 +698,7 @@ public void limparCampos() {
                 }
             }
         }
+        total += Double.parseDouble(TxtMaodeObra.getText());
         float totalFloat = (float) total; // total é double
         TxtTotal.setText(String.format("%.2f", totalFloat));
         TxtTotal.setText(TxtTotal.getText().replace(",", "."));

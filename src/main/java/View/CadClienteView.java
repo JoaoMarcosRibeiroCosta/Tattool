@@ -22,7 +22,6 @@ public class CadClienteView extends javax.swing.JFrame implements ClienteSelecio
         initComponents();
         TxtIdCli.setEditable(false);
         TxtIdCli.setEnabled(false);
-        
     }
 
     /**
@@ -331,7 +330,7 @@ public class CadClienteView extends javax.swing.JFrame implements ClienteSelecio
             JOptionPane.showMessageDialog(this, "Cliente Cadastrado", "Erro", JOptionPane.ERROR_MESSAGE);
             limparCampos();
         } else {
-            JOptionPane.showMessageDialog(this, "Erro ao inserir Produto", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Erro ao inserir cliente", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_BtGravarActionPerformed
 

@@ -37,9 +37,6 @@ public class MainView extends javax.swing.JFrame {
         MenuCadContrato = new javax.swing.JMenuItem();
         MenuMovimentos = new javax.swing.JMenu();
         MenuMovOrc = new javax.swing.JMenuItem();
-        MenuRelatorio = new javax.swing.JMenu();
-        MenuRelProd = new javax.swing.JMenuItem();
-        MenuRelCli = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -126,16 +123,6 @@ public class MainView extends javax.swing.JFrame {
         MenuMovimentos.add(MenuMovOrc);
 
         BarraDeMenu.add(MenuMovimentos);
-
-        MenuRelatorio.setText("Relatórios");
-
-        MenuRelProd.setText("Produtos");
-        MenuRelatorio.add(MenuRelProd);
-
-        MenuRelCli.setText("Clientes");
-        MenuRelatorio.add(MenuRelCli);
-
-        BarraDeMenu.add(MenuRelatorio);
 
         setJMenuBar(BarraDeMenu);
 
@@ -231,9 +218,6 @@ public class MainView extends javax.swing.JFrame {
     private javax.swing.JMenu MenuCadastros;
     private javax.swing.JMenuItem MenuMovOrc;
     private javax.swing.JMenu MenuMovimentos;
-    private javax.swing.JMenuItem MenuRelCli;
-    private javax.swing.JMenuItem MenuRelProd;
-    private javax.swing.JMenu MenuRelatorio;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

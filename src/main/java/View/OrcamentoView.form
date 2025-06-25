@@ -172,34 +172,34 @@
                       <Component id="CheckBoxAprovado" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="LbProduto" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="TxtIdProduto" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="BtConsultarPro" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" min="-2" pref="338" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="LbMaoDeObra" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="TxtMaodeObra" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="LbTotal" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="TxtTotal" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="BtNovo" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="BtAlterar" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="BtExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
                   </Group>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
-                      <Component id="BtadicionarProduto" min="-2" pref="22" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                      <Component id="BtadicionarProduto" min="-2" max="-2" attributes="0"/>
                   </Group>
+              </Group>
+              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="338" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="LbMaoDeObra" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="TxtMaodeObra" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="LbTotal" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="TxtTotal" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="BtNovo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="BtAlterar" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="BtExcluir" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="17" max="32767" attributes="0"/>
           </Group>

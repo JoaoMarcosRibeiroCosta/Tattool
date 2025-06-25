@@ -15,11 +15,15 @@ import javax.swing.JOptionPane;
  *
  * @author usuario
  */
-public class TelaCadContrato extends javax.swing.JFrame implements ClienteSelecionadoListener{
-ContratoController controller = new ContratoController();
+public class TelaCadContrato extends javax.swing.JFrame implements 
+        ContratoSelecionadoListener,
+        ClienteSelecionadoListener{
+    
     /**
      * Creates new form TelaCadContrato
      */
+    ContratoController controller = new ContratoController();
+    
     public TelaCadContrato() {
         initComponents();
         TxtContratoId.setEditable(false);
@@ -204,7 +208,7 @@ ContratoController controller = new ContratoController();
     }//GEN-LAST:event_BtContratoNovoActionPerformed
 
     private void BtContratoConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtContratoConsultarActionPerformed
-        ConsultaContratoView consulta = new ConsultaContratoView((ContratoSelecionadoListener) this);
+        ConsultaContratoView consulta = new ConsultaContratoView(this);
         consulta.setVisible(true);
     }//GEN-LAST:event_BtContratoConsultarActionPerformed
 
@@ -234,6 +238,7 @@ ContratoController controller = new ContratoController();
         sucesso = controller.atualizarContrato(contrato);
         if (sucesso) {
             JOptionPane.showMessageDialog(this, "Contrato atualizado com sucesso!", "Atualização", JOptionPane.INFORMATION_MESSAGE);
+            limparCampos();
         } else {
             JOptionPane.showMessageDialog(this, "Erro ao atualizar o Contrato.", "Erro", JOptionPane.ERROR_MESSAGE);
         }
@@ -242,6 +247,7 @@ ContratoController controller = new ContratoController();
         sucesso = controller.inserirContrato(contrato);
         if (sucesso) {
             JOptionPane.showMessageDialog(this, "Contrato cadastrado com sucesso!", "Cadastro", JOptionPane.INFORMATION_MESSAGE);
+            limparCampos();
         } else {
             JOptionPane.showMessageDialog(this, "Erro ao cadastrar o Contrato.", "Erro", JOptionPane.ERROR_MESSAGE);
         }
@@ -305,8 +311,8 @@ ContratoController controller = new ContratoController();
     }//GEN-LAST:event_BtContratoExcluirActionPerformed
 
     private void BtConsultarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtConsultarClienteActionPerformed
-    ConsultaClienteView consulta = new ConsultaClienteView(this);
-    consulta.setVisible(true);
+        ConsultaClienteView consulta = new ConsultaClienteView((ClienteSelecionadoListener) this);
+        consulta.setVisible(true);
     }//GEN-LAST:event_BtConsultarClienteActionPerformed
 
     /**
@@ -355,10 +361,15 @@ ContratoController controller = new ContratoController();
     jTextArea1.setText("");
     }
     @Override
-public void onClienteSelecionado(Cliente cliente) {
-    TxtContratoCli.setText(String.valueOf(cliente.getId()));
-    LbCliNome.setText(cliente.getNome());
-}
+    public void onContratoSelecionado(Contrato contrato) {
+        TxtContratoId.setText(String.valueOf(contrato.getId()));
+        TxtContratoCli.setText(String.valueOf(contrato.getClienteId()));
+        jTextArea1.setText(contrato.getDados());
+    }
+    @Override
+    public void onClienteSelecionado(Cliente cliente) {
+        TxtContratoCli.setText(String.valueOf(cliente.getId()));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtConsultarCliente;
@@ -377,4 +388,6 @@ public void onClienteSelecionado(Cliente cliente) {
     private javax.swing.JTextField TxtContratoId;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
+
+    
 }

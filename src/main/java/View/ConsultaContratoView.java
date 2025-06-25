@@ -7,7 +7,6 @@ package View;
 import Controller.ContratoController;
 import Interfaces.ContratoSelecionadoListener;
 import Model.Contrato;
-import View.TelaCadContrato;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,15 +16,15 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ConsultaContratoView extends javax.swing.JFrame {
     ContratoController controller = new ContratoController();
-    private TelaCadContrato telaCadastro;
     private ContratoSelecionadoListener listener;
+    
     /**
      * Creates new form ConsultaContratoView
      */
     public ConsultaContratoView(ContratoSelecionadoListener listener) {
         initComponents();
-        this.telaCadastro = telaCadastro;
         carregarTabela();
+        this.listener = listener;
     }
 
     /**
@@ -174,14 +173,12 @@ public class ConsultaContratoView extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void BtSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtSelecionarActionPerformed
-
         int linha = jTable1.getSelectedRow();
-        if (linha >= 0) {
+        if (linha != -1) {
             int id = Integer.parseInt(jTable1.getValueAt(linha, 0).toString());
-            Contrato contrato = new Contrato();
-            contrato.setId(id);
-            contrato.setClienteId(Integer.parseInt(jTable1.getValueAt(linha, 1).toString()));
-            contrato.setDados((jTable1.getValueAt(linha, 2).toString()));
+            
+            Contrato contrato = controller.buscarContrato(id);
+
             if (listener != null && contrato != null) {
                 listener.onContratoSelecionado(contrato);
             }
@@ -252,7 +249,7 @@ public class ConsultaContratoView extends javax.swing.JFrame {
 
         String colunaBD = switch (coluna) {
             case "ID" -> "id";
-            case "Id cliente" -> "Cli_id";
+            case "Id cliente" -> "cliente_id";
             default -> "id"; 
         };
     }

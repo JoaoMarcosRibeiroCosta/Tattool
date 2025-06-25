@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package View;
+
 import Controller.ClienteController;
 import Interfaces.ClienteSelecionadoListener;
 import Model.Cliente;   
@@ -53,7 +54,7 @@ public class ConsultaClienteView extends javax.swing.JFrame {
         });
 
         ComboFiltro.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        ComboFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Descrição", "Valor", "Quantidade" }));
+        ComboFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "CPF", "Nome" }));
         ComboFiltro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComboFiltroActionPerformed(evt);
@@ -190,7 +191,7 @@ public class ConsultaClienteView extends javax.swing.JFrame {
             int id = Integer.parseInt(jTable1.getValueAt(linha, 0).toString());
             ClienteController controller = new ClienteController();
             Cliente cliente = controller.buscarCliente(id);
-
+            
             if (listener != null && cliente != null) {
                 listener.onClienteSelecionado(cliente);
             }
