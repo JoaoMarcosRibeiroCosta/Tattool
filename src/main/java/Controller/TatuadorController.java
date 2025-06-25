@@ -72,15 +72,28 @@ public class TatuadorController extends PessoaController{
     }
 
     public boolean atualizarTatuador(Tatuador tatuador) {
-        String sql = "UPDATE Tatuador SET estilo = ?, total_vendas = ? WHERE pessoa_id = ?";
+        String sqlTatuador = "UPDATE Tatuador SET estilo = ?, total_vendas = ? WHERE pessoa_id = ?";
+        String sqlPessoa = """
+            UPDATE Pessoa SET nome = ?, cpf = ?, rua = ?, numero = ?, bairro = ?, cidade = ?
+            WHERE id = ?
+        """;
         try (Connection con = conectar(); 
-             PreparedStatement stmt = con.prepareStatement(sql)) {
-            stmt.setString(1, tatuador.getEstilo());
-            stmt.setFloat(2, tatuador.getTotalVenda());
-            stmt.setInt(3, tatuador.getId());
-            stmt.executeUpdate();
-            stmt.close();
-            con.close();
+            PreparedStatement stmtTatuador = con.prepareStatement(sqlTatuador);
+            PreparedStatement stmtPessoa = con.prepareStatement(sqlPessoa))
+        {
+            stmtTatuador.setString(1, tatuador.getEstilo());
+            stmtTatuador.setFloat(2, tatuador.getTotalVenda());
+            stmtTatuador.setInt(3, tatuador.getId());
+            stmtTatuador.executeUpdate();
+            
+            stmtPessoa.setString(1, tatuador.getNome());
+            stmtPessoa.setInt(2, tatuador.getCpf());
+            stmtPessoa.setString(3, tatuador.getRua());
+            stmtPessoa.setInt(4, tatuador.getNumero());
+            stmtPessoa.setString(5, tatuador.getBairro());
+            stmtPessoa.setString(6, tatuador.getCidade());
+            stmtPessoa.setInt(7, tatuador.getId());
+            stmtPessoa.executeUpdate();
 
             return true;
         } catch (Exception e) {
