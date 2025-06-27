@@ -333,6 +333,7 @@ public class CadTatuadorView extends javax.swing.JFrame implements
 
         if (atualizado) {
             JOptionPane.showMessageDialog(this, "Tatuador atualizado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            limparCampos();
         } else {
             JOptionPane.showMessageDialog(this, "Erro ao atualizar tatuador.", "Erro", JOptionPane.ERROR_MESSAGE);
         }

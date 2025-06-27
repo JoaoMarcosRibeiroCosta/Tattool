@@ -247,6 +247,7 @@ public class CadProView extends javax.swing.JFrame implements ProdutoSelecionado
         
         if (atualizado) {
             JOptionPane.showMessageDialog(this, "Produto atualizado com sucesso!", "Atualização", JOptionPane.INFORMATION_MESSAGE);
+            limparCampos();
         } else {
             JOptionPane.showMessageDialog(this, "Erro ao atualizar produto!", "Erro", JOptionPane.ERROR_MESSAGE);
         }
